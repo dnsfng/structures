@@ -4,6 +4,7 @@
   "description": "Automation with gulp",
   "author": "dnsfng",
   "devDependencies": {
+    "browser-sync": "^2.18.8",
     "es6-promise": "^4.1.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",

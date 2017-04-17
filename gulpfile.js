@@ -6,6 +6,8 @@ var sass          = require('gulp-sass');
 var autoprefixer  = require('gulp-autoprefixer');
 var plumber       = require('gulp-plumber');
 var gutil         = require('gulp-util');
+var browserSync   = require('browser-sync').create();
+var reload        = browserSync.reload;
 
 var onError = function (err) {
   console.log('An error occurred:', gutil.colors.magenta(err.message));
@@ -23,7 +25,11 @@ gulp.task('sass', function(){
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  browserSync.init({
+    files: ['./**/*.php'],
+    proxy: 'http://localhost:8888/wordpress/',
+  });
+  gulp.watch('./sass/**/*.scss', ['sass', reload]);
 });
 
 // default task
