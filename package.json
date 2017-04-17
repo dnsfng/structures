@@ -4,6 +4,7 @@
   "description": "Automation with gulp",
   "author": "dnsfng",
   "devDependencies": {
+    "es6-promise": "^4.1.0",
     "gulp": "^3.9.1"
   }
 }
