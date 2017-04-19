@@ -3,6 +3,7 @@ require('es6-promise').polyfill();
 
 var gulp          = require('gulp');
 var sass          = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer  = require('gulp-autoprefixer');
 var plumber       = require('gulp-plumber');
 var gutil         = require('gulp-util');
@@ -17,10 +18,13 @@ var onError = function (err) {
 
 // SASS task
 gulp.task('sass', function(){
-  return gulp.src('./sass/**/*.scss')
+  return gulp
+  .src('./sass/**/*.scss')
+  .pipe(sourcemaps.init())
   .pipe(sass())
-  .pipe(autoprefixer())
   .pipe(plumber({ errorHandler: onError }))
+  .pipe(sourcemaps.write())
+  .pipe(autoprefixer())
   .pipe(gulp.dest('./'))
 });
 
