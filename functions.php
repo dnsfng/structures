@@ -67,6 +67,7 @@ function structures_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
 }
 endif;
 add_action( 'after_setup_theme', 'structures_setup' );
@@ -141,3 +142,13 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+ * Add categories and tags for pages
+ */
+function add_taxonomies_to_pages() {
+	register_taxonomy_for_object_type( 'post_tag', 'page' );
+	register_taxonomy_for_object_type( 'category', 'page' );
+}
+add_action( 'init', 'add_taxonomies_to_pages' );
