@@ -22,3 +22,9 @@
 @mixin clearfix-after() {
 	clear: both;
 }
+
+// Default content for pseudo-selector
+@mixin pseudo-content {
+	content: "";
+	position: absolute;
+}
