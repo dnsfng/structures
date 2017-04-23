@@ -4,6 +4,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .entry-title {
-	@include font-size(48/$f);
+	@include font-size($f_l);
 	line-height: $font__line-height-h1;
 }
