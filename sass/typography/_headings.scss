@@ -1,3 +1,9 @@
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	text-align: center;
+}
+
+.entry-title {
+	@include font-size(48/$f);
+	line-height: $font__line-height-h1;
 }
