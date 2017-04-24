@@ -41,3 +41,19 @@
 	bottom: 0;
 	left: 0;
 }
+
+// UI split on left side
+@mixin split-left {
+		position: fixed;
+		@include full-viewport;
+		width: 50% !important;
+		width: 50vw !important;
+		height: 100% !important;
+		height: 100vh !important;
+		object-fit: cover;
+}
+
+// UI split on left side
+@mixin split-right {
+		margin-left: 50%;
+}

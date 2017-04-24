@@ -1,6 +1,6 @@
 .main-navigation {
 	width: 100%;
-	background-color: $color__background-main-nav;
+	background-color: $color__background-nav;
 
 	&.toggled {
 		position: fixed;
@@ -38,7 +38,7 @@
 	ul {
 		//.nav-menu
 		margin: 0;
-		padding: 0 $size__main-margin 0;
+		padding: 0;
 		list-style: none;
 
 		body:not(.home) & {
@@ -95,7 +95,7 @@
 	}
 
 	li {
-		position: relative;
+		// position: relative;
 
 		&:hover > a,
 		&.focus > a {
@@ -112,7 +112,7 @@
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
-		color: $color__link-alt;
+		color: $color__link;
 		@include text-antialiased;
 
 		li:first-child & {
@@ -150,7 +150,7 @@
 		left: 0;
 		padding: 0;
 		color: $color__text-alt;
-		background: $color__background-main-nav;
+		background: $color__background-nav;
 		border-radius: 0;
 		border: 0;
 		border-color: transparent;
@@ -160,12 +160,44 @@
 	}
 }
 
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
-	.main-navigation ul {
-		display: block;
+// @media screen and (min-width: 37.5em) {
+// 	.menu-toggle {
+// 		display: none;
+// 	}
+// 	.main-navigation ul {
+// 		display: block;
+// 	}
+// }
+
+@media screen and (min-width: 64em) { //1024px
+	// TODO: Add mq mixin
+
+	.main-navigation {
+		position: absolute;
+		@include full-viewport;
+		min-height: 100%;
+		z-index: 1;
+
+			ul {
+				@include split-right;
+
+				li {
+
+					img {
+						@include split-left;
+						z-index: 5;
+					}
+
+					&:hover img {
+						z-index: 10;
+					}
+				}
+
+				a {
+					text-align: left;
+				}
+
+			}
 	}
 }
 

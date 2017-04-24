@@ -26,3 +26,21 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+@media screen and (min-width: 64em) { //1024px
+	// TODO: Add mq mixin
+
+	.post {
+
+		.entry-header,
+		.entry-content {
+			@include split-right;
+		}
+
+		.entry-image {
+			img {
+				@include split-left;
+			}
+		}
+	}
+}
