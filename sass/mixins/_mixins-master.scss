@@ -4,6 +4,11 @@
 	font-size: $sizeValue * 1rem;
 }
 
+// Activate anti-aliasing
+@mixin text-antialiased{
+	-webkit-font-smoothing: antialiased;
+}
+
 // Center block
 @mixin center-block {
 	display: block;
@@ -24,8 +29,8 @@
 }
 
 // Default content for pseudo-selector
-@mixin pseudo-content {
-	content: "";
+@mixin pseudo-content($content: "") {
+	content: $content;
 	position: absolute;
 }
 
