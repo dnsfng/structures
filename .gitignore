@@ -6,3 +6,5 @@ style.original.css
 
 # php
 header.old.php
+
+template-parts/content.old.php
