@@ -43,6 +43,11 @@ function structures_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	// Image size for single posts
+	// add_image_size( 'single-post-thumbnail', 1920,1920 );
+	// TODO: revert thumbnail size
+	add_image_size( 'single-post-thumbnail', 200,200 );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary-menu' => esc_html__( 'Primary', 'structures' ),
@@ -103,7 +108,9 @@ function structures_setup() {
 	 			'<li class="%s"><a href="%s">%s%s%s%s</a>',
 	 			$css_classes,
 	 			get_permalink( $page->ID ),
-				get_the_post_thumbnail($page->ID, array(1920,1920)),
+				// get_the_post_thumbnail($page->ID, array(1920,1920)),
+				// TODO: revert thumbnail size
+				get_the_post_thumbnail($page->ID, array(200,200)),
 	 			$args['link_before'],
 	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
 	 			$args['link_after']
