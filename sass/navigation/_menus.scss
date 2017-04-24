@@ -1,15 +1,59 @@
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
 	width: 100%;
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
+	&.toggled {
+		position: fixed;
+		@include full-viewport;
+		overflow: scroll;
+		background-color: $color__background-main-nav;
 
+		.admin-bar & {
+			padding-top: $size_admin-bar;
+		}
+
+		.menu-toggle{
+			position: fixed;
+			z-index: 1;
+			font-size: 0;
+
+			&:after {
+				@include pseudo-content("Close");
+				@include font-size(1);
+				transform: translateX(-50%);
+			}
+		}
+
+		.nav-menu {
+			margin-top: 60px;
+
+			.children {
+				display: none;
+			}
+		}
+	}
+
+	body.page & {
+		// TODO: Pour .menu-toggle
+		position: fixed;
+		bottom: 0;
+		padding: 0;
+	}
+
+	//.nav-menu
+	ul {
+
+		&.nav-menu {
+			display: none;
+			margin: 0;
+			padding: 0 $size__main-margin 0;
+			list-style: none;
+		}
+
+		&:first-child {
+			padding-top: $size__main-margin;
+		}
+
+		//.nav-menu .children
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
@@ -50,18 +94,42 @@
 	}
 
 	li {
-		float: left;
 		position: relative;
 
 		&:hover > a,
 		&.focus > a {
 		}
+
+		// .admin-bar &:first-child {
+		// 	padding-top: $size_admin-bar;
+		// }
 	}
 
 	a {
 		display: block;
+		padding: 17px 0 18px;
+		@include font-size($f_l);
+		line-height: $font__line-height-nav-menu;
+		font-weight: 700;
+		text-align: center;
 		text-decoration: none;
+		text-transform: uppercase;
+		color: $color__link-alt;
+		@include text-antialiased;
+
+		li:first-child & {
+			padding-top: 0;
+		}
+
+		:hover & {
+			color: $color__link-hover-alt;
+
+			&:hover {
+				color: $color__link-hover;
+			}
+		}
 	}
+
 
 	.current_page_item > a,
 	.current-menu-item > a,
@@ -74,6 +142,26 @@
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
+
+	body.page & {
+		background: $color__background-main-nav;
+	}
+
+}
+
+.menu-toggle {
+	.page & {
+		width: 100%;
+		height: 60px;
+		color: $color__text-alt;
+		background: $color__background-main-nav;
+		border-radius: 0;
+		border: 0;
+		border-color: transparent;
+		text-transform: uppercase;
+		font-weight: 700;
+		text-decoration: underline;
+	}
 }
 
 @media screen and (min-width: 37.5em) {
