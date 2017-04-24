@@ -7,6 +7,7 @@
  * @package structures
  */
 
+
 if ( ! function_exists( 'structures_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -44,8 +45,72 @@ function structures_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'structures' ),
+		'primary-menu' => esc_html__( 'Primary', 'structures' ),
 	) );
+
+	/**
+	 * Main navigation custom walker
+	 */
+	 class Menu_with_images_Walker extends Walker_Page {
+
+		 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+
+	 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
+	 			$t = "\t";
+	 			$n = "\n";
+	 		} else {
+	 			$t = '';
+	 			$n = '';
+	 		}
+
+	 		if ( $depth ) {
+	 			$indent = str_repeat( $t, $depth );
+	 		} else {
+	 			$indent = '';
+	 		}
+
+	 		$css_class = array( 'page_item', 'page-item-' . $page->ID );
+
+	 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
+	 			$css_class[] = 'page_item_has_children';
+	 		}
+
+	 		if ( ! empty( $current_page ) ) {
+	 			$_current_page = get_post( $current_page );
+	 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+	 				$css_class[] = 'current_page_ancestor';
+	 			}
+	 			if ( $page->ID == $current_page ) {
+	 				$css_class[] = 'current_page_item';
+	 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+	 				$css_class[] = 'current_page_parent';
+	 			}
+	 		} elseif ( $page->ID == get_option('page_for_posts') ) {
+	 			$css_class[] = 'current_page_parent';
+	 		}
+
+	 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+	 		if ( '' === $page->post_title ) {
+	 			/* translators: %d: ID of a post */
+	 			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+	 		}
+
+	 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+	 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
+	 		$output .= $indent . sprintf(
+	 			'<li class="%s"><a href="%s">%s%s%s%s</a>',
+	 			$css_classes,
+	 			get_permalink( $page->ID ),
+				get_the_post_thumbnail($page->ID, array(1920,1920)),
+	 			$args['link_before'],
+	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
+	 			$args['link_after']
+	 		);
+
+	 	}
+	 }
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments

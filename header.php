@@ -27,7 +27,25 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Veloce', 'structures' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+			<?php
+				if (has_nav_menu('primary-menu')){
+					wp_nav_menu(
+						array(
+							'theme_location' => 'primary-menu',
+							'menu_class' => 'menu primary-menu',
+							'fallback_cb' => false,
+							'walker' => new Menu_with_images_Walker()
+						)
+					);
+				} else {
+					wp_page_menu(
+						array(
+							'menu_class' => 'menu primary-menu',
+							'walker' => new Menu_with_images_Walker()
+						)
+					);
+				}
+			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

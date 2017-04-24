@@ -1,11 +1,11 @@
 .main-navigation {
 	width: 100%;
+	background-color: $color__background-main-nav;
 
 	&.toggled {
 		position: fixed;
 		@include full-viewport;
 		overflow: scroll;
-		background-color: $color__background-main-nav;
 
 		.admin-bar & {
 			padding-top: $size_admin-bar;
@@ -13,11 +13,13 @@
 
 		.menu-toggle{
 			position: fixed;
+			bottom: auto;
 			z-index: 1;
 			font-size: 0;
 
 			&:after {
 				@include pseudo-content("Close");
+				// TODO: Replace by icon
 				@include font-size(1);
 				transform: translateX(-50%);
 			}
@@ -25,6 +27,7 @@
 
 		.nav-menu {
 			margin-top: 60px;
+			display: block;
 
 			.children {
 				display: none;
@@ -32,29 +35,27 @@
 		}
 	}
 
-	body.page & {
-		// TODO: Pour .menu-toggle
-		position: fixed;
-		bottom: 0;
-		padding: 0;
-	}
-
-	//.nav-menu
 	ul {
+		//.nav-menu
+		margin: 0;
+		padding: 0 $size__main-margin 0;
+		list-style: none;
 
-		&.nav-menu {
+		body:not(.home) & {
 			display: none;
-			margin: 0;
-			padding: 0 $size__main-margin 0;
-			list-style: none;
+
+				img {
+					display: none;
+					// TODO: Remove image on body:not(.home)
+				}
 		}
 
 		&:first-child {
 			padding-top: $size__main-margin;
 		}
 
-		//.nav-menu .children
 		ul {
+			//.nav-menu .children
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
 			position: absolute;
@@ -100,9 +101,6 @@
 		&.focus > a {
 		}
 
-		// .admin-bar &:first-child {
-		// 	padding-top: $size_admin-bar;
-		// }
 	}
 
 	a {
@@ -130,7 +128,6 @@
 		}
 	}
 
-
 	.current_page_item > a,
 	.current-menu-item > a,
 	.current_page_ancestor > a,
@@ -139,20 +136,19 @@
 }
 
 /* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-
-	body.page & {
-		background: $color__background-main-nav;
+.menu-toggle {
+	body.home & {
+		display: none;
 	}
 
-}
-
-.menu-toggle {
-	.page & {
+	body.page & {
+		display: block;
+		position: fixed;
 		width: 100%;
 		height: 60px;
+		bottom: 0;
+		left: 0;
+		padding: 0;
 		color: $color__text-alt;
 		background: $color__background-main-nav;
 		border-radius: 0;
