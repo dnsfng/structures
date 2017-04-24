@@ -1,2 +1,8 @@
 node_modules
+
+# Archive template
+# css
 style.original.css
+
+# php
+header.old.php
