@@ -2,6 +2,10 @@
 	width: 100%;
 	background-color: $color__background-nav;
 
+	.site-header > & {
+		padding-top: 55px;
+	}
+
 	&.toggled {
 		position: fixed;
 		@include full-viewport;
@@ -35,8 +39,7 @@
 		}
 	}
 
-	ul {
-		//.nav-menu
+	ul { //.nav-menu
 		margin: 0;
 		padding: 0;
 		list-style: none;
@@ -52,10 +55,11 @@
 
 		&:first-child {
 			padding-top: $size__main-margin;
+			// NOTE: mobile only ?
+			// NOTE: should move this rule to first ul depending on sub menu
 		}
 
-		ul {
-			//.nav-menu .children
+		ul { //.nav-menu .children
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
 			position: absolute;
@@ -95,7 +99,9 @@
 	}
 
 	li {
-		// position: relative;
+		.wp-post-image {
+			display: none;
+		}
 
 		&:hover > a,
 		&.focus > a {
@@ -118,6 +124,7 @@
 
 		@media screen and (min-width: 64em) {
 			// TODO: mq mixin
+			padding: 30px 0;
 			@include font-size($f_l);
 			@include line-height($lh_l,$f_l);
 		}
@@ -126,12 +133,8 @@
 			padding-top: 0;
 		}
 
-		:hover & {
+		&:hover {
 			color: $color__link-hover-alt;
-
-			&:hover {
-				color: $color__link-hover;
-			}
 		}
 	}
 
@@ -156,7 +159,7 @@
 		bottom: 0;
 		left: 0;
 		padding: 0;
-		color: $color__text-alt;
+		color: $color__text;
 		background: $color__background-nav;
 		border-radius: 0;
 		border: 0;
@@ -180,28 +183,50 @@
 	// TODO: Add mq mixin
 
 	.main-navigation {
-		position: absolute;
-		@include full-viewport;
-		min-height: 100%;
-		z-index: 1;
 
-			ul {
+		body.home {
+			position: absolute;
+			@include full-viewport;
+			min-height: 100%;
+			z-index: 1;	
+		}
+
+		.site-header > & {
+			padding: 0;
+		}
+
+			ul { //.nav-menu
 				@include split-right;
+				padding: 50px;
+
+
+				&:first-child {
+					padding: 160px 50px;
+				}
 
 				li {
 
-					img {
+					.wp-post-image {
+						display: block;
 						@include split-left;
 						z-index: 5;
 					}
 
-					&:hover img {
+					&:hover .wp-post-image {
 						z-index: 10;
 					}
 				}
 
 				a {
 					text-align: left;
+
+					:hover & {
+						color: $color__link-hover-alt;
+
+						&:hover {
+							color: $color__link-hover;
+						}
+					}
 				}
 
 			}
