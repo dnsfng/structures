@@ -3,12 +3,20 @@ $font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font__pre: "Courier 10 Pitch", Courier, monospace;
 
 $font__font-size : 16;
-$f_s : 14 / $font__font-size;
-$f_m : 19 / $font__font-size;
-$f_l : 25 / $font__font-size;
-$f_xl : 48 / $font__font-size;
+$f_xxs : 14 / $font__font-size;
+$f_xs  : 16 / $font__font-size;
+$f_s   : 19 / $font__font-size;
+$f_m   : 26 / $font__font-size;
+$f_l   : 50 / $font__font-size;
+$f_xl  : 90 / $font__font-size;
 
 $font__line-height-h1: 1.25; // 60px / 48px
 $font__line-height-nav-menu: 1.2; // 30px / 25px
+
+$lh_m : 30;
+$lh_l : 55;
+
+
+// TODO: add variable for line height
 $font__line-height-body: 1.5789473684;
 $font__line-height-pre: 1.6;

@@ -5,7 +5,7 @@ select,
 textarea {
 	color: $color__text;
 	font-family: $font__main;
-	@include font-size($f_m);
+	@include font-size($f_s);
 	line-height: $font__line-height-body;
 }
 

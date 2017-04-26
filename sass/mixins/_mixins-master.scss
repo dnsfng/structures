@@ -4,6 +4,12 @@
 	font-size: $sizeValue * 1rem;
 }
 
+// Rem output with px fallback
+@mixin line-height($heightValue, $fontSizeValue: 16) {
+	line-height: ($heightValue) * 1px;
+	line-height: ($heightValue / ($fontSizeValue * 16) ); /* #{$heightValue}/#{$fontSizeValue * 16} */
+}
+
 // Activate anti-aliasing
 @mixin text-antialiased{
 	-webkit-font-smoothing: antialiased;
