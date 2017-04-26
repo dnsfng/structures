@@ -181,7 +181,7 @@ add_action( 'after_setup_theme', 'structures_content_width', 0 );
 function structures_scripts() {
 
 	// Add custom google fonts
-	wp_register_style('google-fonts', "https://fonts.googleapis.com/css?family=Old+Standard+TT:400,400i,700");
+	wp_register_style('google-fonts', "https://fonts.googleapis.com/css?family=Old+Standard+TT&#58;400&#44;400i&#44;700&amp;subset=latin",array(),null);
 	wp_enqueue_style( 'google-fonts');
 
 	wp_enqueue_style( 'structures-style', get_stylesheet_uri() );
