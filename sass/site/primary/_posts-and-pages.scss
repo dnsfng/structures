@@ -27,6 +27,13 @@
 	margin: 0 0 1.5em;
 }
 
+body.home {
+	.post {
+		display: none;
+		// TODO: find another way to hide this when coding about section behaviour
+	}
+}
+
 @media screen and (min-width: 64em) { //1024px
 	// TODO: Add mq mixin
 
@@ -41,6 +48,13 @@
 			img {
 				@include split-left;
 			}
+		}
+	}
+
+	.page {
+		.entry-header {
+			@include split-left;
+			color: $color__text;
 		}
 	}
 }

@@ -61,5 +61,6 @@
 
 // UI split on left side
 @mixin split-right {
-		margin-left: 50%;
+		float: right;
+		width: 50%;
 }
