@@ -19,9 +19,7 @@
 }
 
 .main-navigation {
-	// width: 100%;
-	// background-color: $color__background-nav;
-	background-color: blue;
+	background-color: $color__background-nav;
 
 	body:not(.home) & {
 		.nav-menu {	display: none; }
