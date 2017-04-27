@@ -9,7 +9,19 @@ html {
 }
 
 body {
-	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+	background: $color__background-body-alt; /* Fallback for when there is no custom background color defined. */
+
+	&.home {
+		background: $color__background-body;
+	}
+
+	@media screen and (min-width: 64em) { //1024px
+		// TODO: Add mq mixin
+
+		&.page {
+			background: $color__background-body;
+		}
+	}
 }
 
 blockquote, q {
