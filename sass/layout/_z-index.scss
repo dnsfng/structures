@@ -1,0 +1,12 @@
+// 10
+.menu-toggle {z-index: 10;}
+
+// 5
+@media screen and (min-width: 64em) {
+	.main-navigation,
+	.main-navigation .page_item:hover .wp-post-image  {
+		z-index: 5;
+	}
+}
+
+// 0
