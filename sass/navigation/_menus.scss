@@ -1,9 +1,34 @@
-.main-navigation {
+.menu-toggle {
+	position: fixed;
 	width: 100%;
-	background-color: $color__background-nav;
+	height: 60px;
+	left: 0;
+	bottom: 0;
+	padding: 0;
+	color: $color__text;
+	background: $color__background-nav;
+	border-radius: 0;
+	border: 0;
+	border-color: transparent;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-decoration: underline;
 
-	.site-header > & {
-		padding-top: 55px;
+	body.home & {	display: none;	}
+	body.page & {	display: block;	}
+}
+
+.main-navigation {
+	// width: 100%;
+	// background-color: $color__background-nav;
+	background-color: blue;
+
+	body:not(.home) & {
+		.nav-menu {	display: none; }
+		&.toggled .nav-menu{ display: block; }
+
+		img {	display: none; }
+		// TODO: Remove image on body:not(.home)
 	}
 
 	&.toggled {
@@ -11,14 +36,10 @@
 		@include full-viewport;
 		overflow: scroll;
 
-		.admin-bar & {
-			padding-top: $size_admin-bar;
-		}
+		.admin-bar & { padding-top: $size_admin-bar; }
 
 		.menu-toggle{
-			position: fixed;
 			bottom: auto;
-			z-index: 1;
 			font-size: 0;
 
 			&:after {
@@ -28,44 +49,26 @@
 				transform: translateX(-50%);
 			}
 		}
-
-		.nav-menu {
-			margin-top: 60px;
-			display: block;
-
-			.children {
-				display: none;
-			}
-		}
 	}
 
 	ul { //.nav-menu
-		margin: 0;
+		display: block;
+		margin: 80px 0 0;
 		padding: 0;
 		list-style: none;
 
-		body:not(.home) & {
-			display: none;
-
-				img {
-					display: none;
-					// TODO: Remove image on body:not(.home)
-				}
-		}
-
-		&:first-child {
-			padding-top: $size__main-margin;
-			// NOTE: mobile only ?
-			// NOTE: should move this rule to first ul depending on sub menu
-		}
-
 		ul { //.nav-menu .children
+			// TODO: change when designing sub level nav
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			float: left;
 			position: absolute;
 			top: 1.5em;
 			left: -999em;
 			z-index: 99999;
+
+			&.children {
+				display: none;
+			}
 
 			ul {
 				left: -999em;
@@ -145,92 +148,56 @@
 	}
 }
 
-/* Small menu. */
-.menu-toggle {
-	body.home & {
-		display: none;
-	}
-
-	body.page & {
-		display: block;
-		position: fixed;
-		width: 100%;
-		height: 60px;
-		bottom: 0;
-		left: 0;
-		padding: 0;
-		color: $color__text;
-		background: $color__background-nav;
-		border-radius: 0;
-		border: 0;
-		border-color: transparent;
-		text-transform: uppercase;
-		font-weight: 700;
-		text-decoration: underline;
-	}
-}
-
-// @media screen and (min-width: 37.5em) {
-// 	.menu-toggle {
-// 		display: none;
-// 	}
-// 	.main-navigation ul {
-// 		display: block;
-// 	}
-// }
-
 @media screen and (min-width: 64em) { //1024px
 	// TODO: Add mq mixin
 
+	.menu-toggle {
+		top: 0;
+		width: 50%;
+		background-color: transparent;
+		pointer-events: auto;
+	}
+
 	.main-navigation {
+		background-color: transparent;
+		pointer-events: none;
 
-		body.home {
-			position: absolute;
-			@include full-viewport;
-			min-height: 100%;
-			z-index: 1;	
-		}
+		.site-header > & { padding: 0; }
 
-		.site-header > & {
-			padding: 0;
-		}
+		ul { //.nav-menu
+			@include split-right;
+			padding: 50px;
+			pointer-events: auto;
 
-			ul { //.nav-menu
-				@include split-right;
-				padding: 50px;
+			body:not(.home) & {
+				@include split-left;
+				overflow: scroll;
+			}
 
-
-				&:first-child {
-					padding: 160px 50px;
-				}
-
-				li {
-
-					.wp-post-image {
-						display: block;
-						@include split-left;
-						z-index: 5;
-					}
-
-					&:hover .wp-post-image {
-						z-index: 10;
-					}
-				}
-
-				a {
-					text-align: left;
-
-					:hover & {
-						color: $color__link-hover-alt;
-
-						&:hover {
-							color: $color__link-hover;
-						}
-					}
-				}
+			&.nav-menu {
+				padding: 80px 50px;
+				background-color: $color__background-nav;
 
 			}
+		}
+
+		li {
+			.wp-post-image {
+				display: block;
+				@include split-left;
+			}
+		}
+
+		a {
+			text-align: left;
+
+			:hover & {
+				color: $color__link-hover-alt;
+				&:hover {	color: $color__link-hover; }
+			}
+		}
 	}
+
 }
 
 .comment-navigation,
