@@ -11,7 +11,8 @@ html {
 body {
 	background: $color__background-body-alt; /* Fallback for when there is no custom background color defined. */
 
-	&.home {
+	&.home,
+	&.single {
 		background: $color__background-body;
 	}
 

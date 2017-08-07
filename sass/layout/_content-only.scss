@@ -9,7 +9,10 @@
 	@media screen and (min-width: 64em) { //1024px
 		// TODO: Add mq mixin
 		@include split-right;
-		background-color: $color__background-body-alt;
-		color: $color__text-alt;
+
+			.page & {
+				background-color: $color__background-body-alt;
+				color: $color__text-alt;
+			}
 	}
 }
