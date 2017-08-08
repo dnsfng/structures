@@ -162,6 +162,23 @@
 
 		.site-header > & { padding: 0; }
 
+		.menu-item--about {
+			position: absolute;
+
+			width: 50%;
+			padding: 0 50px;
+
+			text-transform: none;
+			pointer-events: auto;
+
+			@include font-size($f_s);
+
+			.home & {
+				left: 50%;
+				top: 150px;
+			}
+		}
+
 		ul { //.nav-menu
 			@include split-right;
 			padding: 50px;

@@ -27,6 +27,8 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Veloce', 'structures' ); ?></button>
+			<a class="menu-item--about" href="/a-propos">À propos</a>
+			<?php // TODO: translate this ?>
 			<?php
 				if (has_nav_menu('primary-menu')){
 					wp_nav_menu(
