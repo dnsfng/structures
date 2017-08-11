@@ -29,6 +29,28 @@
 		// TODO: Remove image on body:not(.home)
 	}
 
+	body.home &.show-about {
+		.nav-menu,
+		.switch-about {
+			display: none;
+		}
+
+		.switch-menu {
+			display: block;
+		}
+	}
+
+	body.single &.show-menu {
+		.nav-menu,
+		.switch-about {
+			display: block;
+		}
+
+		.switch-menu {
+			display: none;
+		}
+	}
+
 	&.toggled {
 		position: fixed;
 		@include full-viewport;
@@ -165,7 +187,7 @@
 
 	.single & {
 		.switch-menu{
-			display: block;
+			display: none;
 		}
 	}
 
@@ -201,7 +223,7 @@
 
 			pointer-events: auto;
 
-			body:not(.home) & {
+			body.page & {
 				overflow: scroll;
 
 				@include split-left;
@@ -240,6 +262,12 @@
 
 			width: 50%;
 			padding: 0 50px;
+		}
+
+		.single & {
+			.switch-menu{
+				display: block;
+			}
 		}
 	}
 
