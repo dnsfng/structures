@@ -5,6 +5,7 @@
 }
 
 // Rem output with px fallback
+// TODO: Still useful ?
 @mixin line-height($heightValue, $fontSizeValue: 16) {
 	line-height: ($heightValue) * 1px;
 	line-height: ($heightValue / ($fontSizeValue * 16) ); /* #{$heightValue}/#{$fontSizeValue * 16} */

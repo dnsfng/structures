@@ -43,3 +43,20 @@ mark, ins {
 big {
 	font-size: 125%;
 }
+
+.post{
+
+	@media screen and (min-width: 48em) {
+		@include font-size($f_l);
+		line-height: $font__line-height-about;
+	}
+
+	@media screen and (min-width: 64em) {
+		@include font-size($f_m);
+	}
+
+	@media screen and (min-width: 75em) {
+		@include font-size($f_l);
+	}
+
+}

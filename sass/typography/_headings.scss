@@ -10,4 +10,18 @@ h1, h2, h3, h4, h5, h6 {
 	.post & {
 		@include font-size($f_s);
 	}
+
+	.home & {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 64em) { //1024px
+
+	.single {
+		.entry-title {
+			display: none;
+		}
+	}
+
 }
