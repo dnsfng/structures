@@ -51,26 +51,30 @@
 
 	ul { //.nav-menu
 		display: block;
-		margin: 80px 0 0;
+
+		margin: 0;
 		padding: 0;
+
 		list-style: none;
 
-		ul { //.nav-menu .children
-			// TODO: change when designing sub level nav
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
+		ul {
 			position: absolute;
+			z-index: 99999;
 			top: 1.5em;
 			left: -999em;
-			z-index: 99999;
+
+			float: left; //.nav-menu .children
+			// TODO: change when designing sub level nav
+
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 
 			&.children {
 				display: none;
 			}
 
 			ul {
-				left: -999em;
 				top: 0;
+				left: -999em;
 			}
 
 			li {
@@ -139,6 +143,32 @@
 		}
 	}
 
+	.switch-about,
+	.switch-menu {
+
+		display: none;
+
+		text-transform: none;
+		pointer-events: auto;
+
+		font-weight: normal;
+
+		@include font-size($f_s);
+		@include font-sub-pixel;
+	}
+
+	.home & {
+		.switch-about{
+			display: block;
+		}
+	}
+
+	.single & {
+		.switch-menu{
+			display: block;
+		}
+	}
+
 	.current_page_item > a,
 	.current-menu-item > a,
 	.current_page_ancestor > a,
@@ -162,35 +192,24 @@
 
 		.site-header > & { padding: 0; }
 
-		.menu-item--about {
+		ul { //.nav-menu
 			position: absolute;
+			left: 50%;
 
 			width: 50%;
-			padding: 0 50px;
-
-			text-transform: none;
-			pointer-events: auto;
-
-			@include font-size($f_s);
-
-			.home & {
-				left: 50%;
-				top: 150px;
-			}
-		}
-
-		ul { //.nav-menu
-			@include split-right;
 			padding: 50px;
+
 			pointer-events: auto;
 
 			body:not(.home) & {
-				@include split-left;
 				overflow: scroll;
+
+				@include split-left;
 			}
 
 			&.nav-menu {
-				padding: 80px 50px;
+				padding: 160px 50px;
+
 				background-color: $color__background-nav;
 
 			}
@@ -210,6 +229,17 @@
 				color: $color__link-hover-alt;
 				&:hover {	color: $color__link-hover; }
 			}
+		}
+
+		.switch-about,
+		.switch-menu {
+			position: absolute;
+			top: 50px;
+			// TODO: change top value
+			left: 50%;
+
+			width: 50%;
+			padding: 0 50px;
 		}
 	}
 
