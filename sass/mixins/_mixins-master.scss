@@ -64,3 +64,8 @@
 		float: right;
 		width: 50%;
 }
+
+// Webkit Font Aliasing
+@mixin font-sub-pixel {
+		-webkit-font-smoothing: subpixel-antialiased;
+}
