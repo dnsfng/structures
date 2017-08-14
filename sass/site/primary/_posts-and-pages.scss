@@ -97,10 +97,6 @@
 
 	.post {
 		margin-top: 160px;
-
-		.entry-image img{
-				@include split-left;
-		}
 	}
 
 }
@@ -109,6 +105,10 @@
 
 	.post {
 		margin-top: 200px;
+
+		.entry-image img{
+				@include split-left;
+		}
 	}
 
 }
