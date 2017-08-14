@@ -27,8 +27,8 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Veloce', 'structures' ); ?></button>
-			<a class="switch-about menu-switch" href="/a-propos">À propos</a>
-			<a class="switch-menu menu-switch" href="/">Retour au menu</a>
+			<a class="menu-switch menu-switch__about" href="/a-propos">À propos</a>
+			<a class="menu-switch menu-switch__menu" href="/">Retour au menu</a>
 			<?php // TODO: translate this ?>
 			<?php
 				if (has_nav_menu('primary-menu')){

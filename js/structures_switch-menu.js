@@ -6,8 +6,8 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-	var switch_about 	= document.getElementsByClassName('switch-about')[0],
-			switch_menu 	= document.getElementsByClassName('switch-menu')[0];
+	var switch_about 	= document.getElementsByClassName('menu-switch__about')[0],
+			switch_menu 	= document.getElementsByClassName('menu-switch__menu')[0];
 
 	switch_about.addEventListener('click', function(e){
 		e.preventDefault();

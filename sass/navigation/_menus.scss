@@ -31,22 +31,22 @@
 
 	body.home &.show-about {
 		.nav-menu,
-		.switch-about {
+		.menu-switch__about {
 			display: none;
 		}
 
-		.switch-menu {
+		.menu-switch__menu {
 			display: block;
 		}
 	}
 
 	body.single &.show-menu {
 		.nav-menu,
-		.switch-about {
+		.menu-switch__about {
 			display: block;
 		}
 
-		.switch-menu {
+		.menu-switch__menu {
 			display: none;
 		}
 	}
@@ -165,8 +165,8 @@
 		}
 	}
 
-	.switch-about,
-	.switch-menu {
+	.menu-switch__about,
+	.menu-switch__menu {
 
 		display: none;
 
@@ -180,13 +180,13 @@
 	}
 
 	.home & {
-		.switch-about{
+		.menu-switch__about{
 			display: block;
 		}
 	}
 
 	.single & {
-		.switch-menu{
+		.menu-switch__menu{
 			display: none;
 		}
 	}
@@ -253,8 +253,8 @@
 			}
 		}
 
-		.switch-about,
-		.switch-menu {
+		.menu-switch__about,
+		.menu-switch__menu {
 			position: absolute;
 			top: 50px;
 			// TODO: change top value
@@ -265,7 +265,7 @@
 		}
 
 		.single & {
-			.switch-menu{
+			.menu-switch__menu{
 				display: block;
 			}
 		}
