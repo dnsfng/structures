@@ -60,3 +60,15 @@ big {
 	}
 
 }
+
+.entry-excerpt {
+	font-size: 29px; // TODO: fs variable
+	line-height: 40px; // TODO: lh mixin
+	margin-bottom: 60px;
+
+	@media screen and (min-width: 48em) { //768px
+		font-size: 34px; // TODO: fs variable
+		line-height: 46px; // TODO: lh mixin
+	}
+}
+
