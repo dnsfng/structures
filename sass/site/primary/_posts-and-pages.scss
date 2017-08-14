@@ -22,24 +22,26 @@
 	margin: 1.5em 0 0;
 }
 
-	.entry-content {
-		width: 80%;
-		min-width: 280px;
-		max-width: 680px;
-		margin: 0 auto;
+.entry-content {
+	width: 80%;
+	min-width: 280px;
+	max-width: 680px;
+	margin: 0 auto;
 
-		@media screen and (min-width: 75em) { //1200px
-			width: 100%;
-			min-width: 0;
-			max-width: 700px;
-			padding: 30px 5%;
+	@media screen and (min-width: 75em) {
+		position: relative; //1200px
 
-			.post & {
-				padding-left: 50px;
-				margin: 0;
-			}
+		width: auto;
+		min-width: 0;
+		max-width: none;
+		margin: 450px 10% 30px;
+
+		.post & {
+			margin: 0;
+			padding-left: 50px;
 		}
 	}
+}
 
 .entry-header {
 	width: 80%;
