@@ -9,6 +9,19 @@ h1, h2, h3, h4, h5, h6 {
 	// TODO: remove old style
 	@include font-size($f_l);
 	line-height: $font__line-height-h1;
+	// TODO: better lh mixin
+
+	@media screen and (min-width: 48em) { //768px
+		@include font-size($f_xl);
+		line-height: $font__line-height-h1_xl;
+		// TODO: better lh mixin
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+		@include font-size($f_xxl);
+		line-height: $font__line-height-h1_xxl;
+		// TODO: better lh mixin
+	}
 
 	.post & {
 		@include font-size($f_s);

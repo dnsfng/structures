@@ -8,9 +8,12 @@ $f_xs  : 16 / $font__font-size;
 $f_s   : 19 / $font__font-size;
 $f_m   : 26 / $font__font-size;
 $f_l   : 50 / $font__font-size;
-$f_xl  : 90 / $font__font-size;
+$f_xl  : 75 / $font__font-size;
+$f_xxl  : 90 / $font__font-size;
 
 $font__line-height-h1: 1.25; // 60px / 48px
+$font__line-height-h1_xl: 1.267; // 75 / 95px
+$font__line-height-h1_xxl: 1.111; // 90 / 100px
 $font__line-height-nav-menu: 1.2; // 30px / 25px
 
 $lh_m : 30;
