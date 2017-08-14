@@ -47,24 +47,33 @@
 	right : 0;
 	bottom: 0;
 	left: 0;
+	margin: 0; // NOTE: added for .entry-header
 }
 
 // UI split on left side
 @mixin split-left {
-		position: fixed;
-		@include full-viewport;
-		width: 50% !important;
-		width: 50vw !important;
-		height: 100% !important;
-		height: 100vh !important;
-		object-fit: cover;
+	position: fixed;
+	@include full-viewport;
+	width: 50% !important;
+	width: 50vw !important;
+	height: 100% !important;
+	height: 100vh !important;
+	object-fit: cover;
 }
 
 // UI split on left side
 @mixin split-right {
-		float: right;
-		width: 50%;
+	float: right;
+	width: 50%;
 }
+
+// UI centered vertically
+@mixin center-vertical {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 
 // Webkit Font Aliasing
 @mixin font-sub-pixel {
