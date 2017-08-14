@@ -45,12 +45,14 @@ function structures_setup() {
 	/*
 	 * Enable support for Excerpt on pages.
 	 * Add class to excerpt.
+	 * Remove excerpt length limit.
 	 */
 	add_post_type_support( 'page', 'excerpt' );
 	add_filter( "the_excerpt", "add_class_to_excerpt" );
 	function add_class_to_excerpt( $excerpt ) {
 	    return str_replace('<p', '<p class="entry-excerpt"', $excerpt);
 	}
+
 
 
 	// Image size for single posts

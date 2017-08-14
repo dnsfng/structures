@@ -16,7 +16,9 @@
 
 	<div class="entry-content">
 		<?php
-			the_excerpt();
+			if( has_excerpt() ){
+				the_excerpt();
+			}
 
 			the_content();
 
