@@ -1,5 +1,9 @@
 p {
 	margin-bottom: 1.5em;
+
+	.entry-content & {
+		margin-bottom: 20px;
+	}
 }
 
 dfn, cite, em, i {
@@ -61,14 +65,24 @@ big {
 
 }
 
-.entry-excerpt {
-	font-size: 29px; // TODO: fs variable
-	line-height: 40px; // TODO: lh mixin
-	margin-bottom: 60px;
+.entry-content {
+	@include font-size($f_s);
+	line-height: $font__line-height-body;
 
 	@media screen and (min-width: 48em) { //768px
-		font-size: 34px; // TODO: fs variable
-		line-height: 46px; // TODO: lh mixin
+		font-size: 22px; // TODO: add fs variable
+		line-height: 35px;
+	}
+
+	.entry-excerpt {
+		margin-bottom: 60px;
+
+		font-size: 29px; // TODO: fs variable
+		line-height: 40px; // TODO: lh mixin
+
+		@media screen and (min-width: 48em) { //768px
+			font-size: 34px; // TODO: fs variable
+			line-height: 46px; // TODO: lh mixin
+		}
 	}
 }
-
