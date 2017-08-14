@@ -16,6 +16,8 @@
 
 	<div class="entry-content">
 		<?php
+			the_excerpt();
+
 			the_content();
 
 			wp_link_pages( array(

@@ -38,10 +38,20 @@ function structures_setup() {
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
-	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+
+	/*
+	 * Enable support for Excerpt on pages.
+	 * Add class to excerpt.
+	 */
+	add_post_type_support( 'page', 'excerpt' );
+	add_filter( "the_excerpt", "add_class_to_excerpt" );
+	function add_class_to_excerpt( $excerpt ) {
+	    return str_replace('<p', '<p class="entry-excerpt"', $excerpt);
+	}
+
 
 	// Image size for single posts
 	// add_image_size( 'single-post-thumbnail', 1920,1920 );
