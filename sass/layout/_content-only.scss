@@ -6,13 +6,13 @@
 
 
 .site-main {
-	@media screen and (min-width: 64em) { //1024px
+	@media screen and (min-width: 75em) { //1200px
 		// TODO: Add mq mixin
 		@include split-right;
 
-			.page & {
-				background-color: $color__background-body-alt;
-				color: $color__text-alt;
-			}
+		.page & {
+			background-color: $color__background-body-alt;
+			color: $color__text-alt;
+		}
 	}
 }
