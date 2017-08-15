@@ -4,23 +4,25 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0; // NOTE: normalize
 }
 
+h2, h3 {
+	text-transform: uppercase;
+}
+
 .entry-title {
 	// @include font-size($f_xl);
 	// TODO: remove old style
+
 	@include font-size($f_l);
-	line-height: $font__line-height-h1;
-	// TODO: better lh mixin
+	line-height: $font__line-height-h1; // TODO: better lh mixin
 
 	@media screen and (min-width: 48em) { //768px
 		@include font-size($f_xl);
-		line-height: $font__line-height-h1_xl;
-		// TODO: better lh mixin
+		line-height: $font__line-height-h1_xl; // TODO: better lh mixin
 	}
 
 	@media screen and (min-width: 75em) { //1200px
 		@include font-size($f_xxl);
-		line-height: $font__line-height-h1_xxl;
-		// TODO: better lh mixin
+		line-height: $font__line-height-h1_xxl; // TODO: better lh mixin
 	}
 
 	.post & {
@@ -30,6 +32,19 @@ h1, h2, h3, h4, h5, h6 {
 	.home & {
 		display: none;
 	}
+
+}
+
+.entry-subtitle {
+		margin-top: 20px;
+
+		font-size: 29px; // TODO: better variable
+		line-height: 40px;
+
+		@media screen and (min-width: 48em) { //768px
+			font-size: 34px; // TODO: better variable
+			line-height: 50px;
+		}
 }
 
 .entry-content {
@@ -40,8 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 
 	h3 {
 		margin-top: 45px;
-
-		text-transform: uppercase;
 
 		font-weight: bold;
 

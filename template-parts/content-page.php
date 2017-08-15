@@ -12,6 +12,12 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+		<?php
+			$custom_values = get_post_custom_values( 'sous-titre' );
+			foreach ( $custom_values as $key => $value ) {
+			 echo '<h2 class="entry-subtitle">' . $value . '</h2>';
+			}
+		?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

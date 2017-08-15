@@ -53,11 +53,15 @@
 // UI split on left side
 @mixin split-left {
 	position: fixed;
-	@include full-viewport;
-	width: 50% !important;
-	width: 50vw !important;
-	height: 100% !important;
-	height: 100vh !important;
+	top: 0;
+	left: 0;
+
+	width: 50%;
+	width: 50vw;
+	height: 100%;
+	height: 100vh;
+	margin: 0;
+
 	object-fit: cover;
 }
 
@@ -69,7 +73,7 @@
 
 // UI centered vertically
 @mixin center-vertical {
-	position: absolute;
+	// position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 }

@@ -63,14 +63,17 @@
 
 		.page & {
 			@include split-left;
+			@include center-vertical;
+
+			height: auto;
+			padding: 200px 5%;
+
 			color: $color__text;
+
 		}
 
 		.entry-title {
-			width: 100%;
-			padding: 200px 5%;
 
-			@include center-vertical;
 			// opacity: 0;
 			// transition: opacity 300ms ease-out;
 			// TODO: transition

@@ -44,23 +44,6 @@ big {
 	font-size: 125%;
 }
 
-.post{
-
-	@media screen and (min-width: 48em) {
-		@include font-size($f_l);
-		line-height: $font__line-height-about;
-	}
-
-	@media screen and (min-width: 64em) {
-		@include font-size($f_m);
-	}
-
-	@media screen and (min-width: 75em) {
-		@include font-size($f_l);
-	}
-
-}
-
 .entry-content {
 	@include font-size($f_s);
 	line-height: $font__line-height-body;
@@ -89,5 +72,23 @@ big {
 
 	h3 + p {
 		margin-top: 30px
+	}
+
+	.post & {
+
+		// TODO: Add specific rules for .post .entry-content
+
+		@media screen and (min-width: 48em) {
+			@include font-size($f_l);
+			line-height: $font__line-height-about;
+		}
+
+		@media screen and (min-width: 64em) {
+			@include font-size($f_m);
+		}
+
+		@media screen and (min-width: 75em) {
+			@include font-size($f_l);
+		}
 	}
 }
