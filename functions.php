@@ -53,12 +53,20 @@ function structures_setup() {
 	    return str_replace('<p', '<p class="entry-excerpt"', $excerpt);
 	}
 
-
-
 	// Image size for single posts
 	// add_image_size( 'single-post-thumbnail', 1920,1920 );
 	// TODO: revert thumbnail size
 	add_image_size( 'single-post-thumbnail', 200,200 );
+
+	// Automatic non breakable space in content
+	if( !function_exists( 'strucutures_automatic_nbsp' ) ) {
+	    function strucutures_automatic_nbsp($content) {
+	        $chars_after = '?!:;”»';
+	        $content = preg_replace('/ (['.$chars_after.'])/', '&nbsp;${1}', $content);
+	        return $content;
+	    }
+	}
+	add_filter( 'the_content', 'strucutures_automatic_nbsp' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
