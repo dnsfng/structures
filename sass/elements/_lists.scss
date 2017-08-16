@@ -25,27 +25,33 @@ dd {
 	margin: 0 1.5em 1.5em;
 }
 
-.entry-content li {
-	// NOTE: shared style in _posts-and-pages.scss
+li {
+	.entry-content &{
+		// NOTE: shared style in _posts-and-pages.scss
 
-	position: relative;
-	margin-bottom: 15px;
-	list-style-type: none;
+		position: relative;
+		margin-bottom: 15px;
+		list-style-type: none;
 
-	&:before {
-		position: absolute;
-		left: -1.25em;
-		padding-top: 3px;
+		&:last-child {
+			margin-bottom: 40px;
 
-		content: "*";
-		@include font-size;
+			@media screen and (min-width: 75em) { //1200px
+				margin-bottom: 60px;
+			}
+		}
 	}
 
-	&:last-child {
-		margin-bottom: 40px;
+	.entry-content div:not(.menu) & {
+		
+		&:before {
+			position: absolute;
+			left: -1.25em;
+			padding-top: 3px;
 
-		@media screen and (min-width: 75em) { //1200px
-			margin-bottom: 60px;
+			content: "*";
+			@include font-size;
 		}
+
 	}
 }

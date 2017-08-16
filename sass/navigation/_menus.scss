@@ -18,6 +18,37 @@
 	body.page & {	display: block;	}
 }
 
+.menu {
+	a {
+		display: block;
+		padding: 17px 0 18px;
+		@include font-size($f_m);
+		@include line-height($lh_m,$f_m);
+		// line-height: $font__line-height-nav-menu;
+		font-weight: 700;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $color__link;
+		@include text-antialiased;
+
+		@media screen and (min-width: 64em) {
+			// TODO: mq mixin
+			padding: 30px 0;
+			@include font-size($f_l);
+			@include line-height($lh_l,$f_l);
+		}
+
+		li:first-child & {
+			padding-top: 0;
+		}
+
+		&:hover {
+			color: $color__link-hover-alt;
+		}
+	}
+}
+
 .main-navigation {
 	background-color: $color__background-nav;
 
@@ -136,34 +167,7 @@
 
 	}
 
-	a {
-		display: block;
-		padding: 17px 0 18px;
-		@include font-size($f_m);
-		@include line-height($lh_m,$f_m);
-		// line-height: $font__line-height-nav-menu;
-		font-weight: 700;
-		text-align: center;
-		text-decoration: none;
-		text-transform: uppercase;
-		color: $color__link;
-		@include text-antialiased;
-
-		@media screen and (min-width: 64em) {
-			// TODO: mq mixin
-			padding: 30px 0;
-			@include font-size($f_l);
-			@include line-height($lh_l,$f_l);
-		}
-
-		li:first-child & {
-			padding-top: 0;
-		}
-
-		&:hover {
-			color: $color__link-hover-alt;
-		}
-	}
+	a {}
 
 	.menu-switch__about,
 	.menu-switch__menu {
@@ -272,6 +276,12 @@
 		}
 	}
 
+}
+
+.secondary-navigation {
+	a {
+		color : black;
+	}
 }
 
 .comment-navigation,
