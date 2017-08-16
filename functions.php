@@ -48,8 +48,8 @@ function structures_setup() {
 	 * Remove excerpt length limit.
 	 */
 	add_post_type_support( 'page', 'excerpt' );
-	add_filter( "the_excerpt", "add_class_to_excerpt" );
-	function add_class_to_excerpt( $excerpt ) {
+	add_filter( "the_excerpt", "structures_add_class_to_excerpt" );
+	function structures_add_class_to_excerpt( $excerpt ) {
 	    return str_replace('<p', '<p class="entry-excerpt"', $excerpt);
 	}
 
@@ -59,8 +59,9 @@ function structures_setup() {
 	add_image_size( 'single-post-thumbnail', 200,200 );
 
 	// Automatic non breakable space in content
+	add_filter( 'the_content', 'structures_automatic_nbsp' );
 	if( !function_exists( 'strucutures_automatic_nbsp' ) ) {
-	    function strucutures_automatic_nbsp($content) {
+	    function structures_automatic_nbsp($content) {
 	        $chars_after = '?!:;”»';
 	        $content = preg_replace('/ (['.$chars_after.'])/', '&nbsp;${1}', $content);
 	        return $content;
