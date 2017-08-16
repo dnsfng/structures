@@ -24,9 +24,12 @@
 
 .entry-content {
 	width: 80%;
-	min-width: 280px;
-	max-width: 680px;
 	margin: 0 auto;
+
+	body:not(.page-parent) {
+		min-width: 280px;
+		max-width: 680px;
+	}
 
 	@media screen and (min-width: 75em) {
 		position: relative; //1200px

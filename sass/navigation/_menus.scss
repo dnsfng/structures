@@ -19,34 +19,50 @@
 }
 
 .menu {
-	a {
-		display: block;
-		padding: 17px 0 18px;
-		@include font-size($f_m);
-		@include line-height($lh_m,$f_m);
-		// line-height: $font__line-height-nav-menu;
-		font-weight: 700;
-		text-align: center;
-		text-decoration: none;
-		text-transform: uppercase;
-		color: $color__link;
-		@include text-antialiased;
 
-		@media screen and (min-width: 64em) {
-			// TODO: mq mixin
-			padding: 30px 0;
-			@include font-size($f_l);
-			@include line-height($lh_l,$f_l);
-		}
-
-		li:first-child & {
-			padding-top: 0;
-		}
-
-		&:hover {
-			color: $color__link-hover-alt;
-		}
+	li {
+		margin-bottom: 5px;
 	}
+
+		a {
+			display: block;
+			padding: 17px 0 18px;
+			@include font-size($f_m);
+			@include line-height($lh_m,$f_m);
+			// line-height: $font__line-height-nav-menu;
+			text-align: center;
+			text-decoration: none;
+			color: $color__link_alt;
+			@include text-antialiased;
+
+			li:first-child & {
+				padding-top: 0;
+			}
+
+			&:hover {
+				color: $color__link-hover-alt;
+			}
+		}
+
+		&.primary-menu a {
+			font-weight: 700;
+			text-transform: uppercase;
+			color: $color__link;
+
+			@media screen and (min-width: 64em) { //1024
+				// TODO: mq mixin
+				padding: 30px 0;
+				@include font-size($f_l);
+				@include line-height($lh_l,$f_l);
+			}
+		}
+
+		body:not(.page) &.primary-menu a{
+			@media screen and (min-width: 75em) { //1200
+				text-align: left;
+			}
+		}
+
 }
 
 .main-navigation {
@@ -131,6 +147,8 @@
 			}
 
 			li {
+				margin: 0;
+
 				&:hover > ul,
 				&.focus > ul {
 					left: 100%;
@@ -167,7 +185,9 @@
 
 	}
 
-	a {}
+	a {
+		text-decoration: none;
+	}
 
 	.menu-switch__about,
 	.menu-switch__menu {
@@ -250,7 +270,6 @@
 		}
 
 		a {
-			text-align: left;
 
 			:hover & {
 				color: $color__link-hover-alt;
@@ -276,12 +295,6 @@
 		}
 	}
 
-}
-
-.secondary-navigation {
-	a {
-		color : black;
-	}
 }
 
 .comment-navigation,
