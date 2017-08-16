@@ -241,6 +241,7 @@
 			.wp-post-image {
 				display: block;
 				@include split-left;
+				pointer-events: none;
 			}
 		}
 
