@@ -36,15 +36,26 @@ h2, h3 {
 }
 
 .entry-subtitle {
-		margin-top: 20px;
+	margin-top: 20px;
 
-		font-size: 29px; // TODO: better variable
-		line-height: 40px;
+	font-size: 29px; // TODO: better variable
+	line-height: 40px;
 
-		@media screen and (min-width: 48em) { //768px
-			font-size: 34px; // TODO: better variable
-			line-height: 50px;
-		}
+	@media screen and (min-width: 48em) { //768px
+		font-size: 34px; // TODO: better variable
+		line-height: 50px;
+	}
+
+}
+
+.entry-subtitle--long {
+	font-size: 19px; // TODO: better variable
+	line-height: 30px;
+
+	@media screen and (min-width: 48em) { //768px
+		font-size: 22px; // TODO: better variable
+		line-height: 35px;
+	}
 }
 
 .entry-content {

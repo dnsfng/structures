@@ -15,7 +15,12 @@
 		<?php
 			$custom_values = get_post_custom_values( 'sous-titre' );
 			foreach ( $custom_values as $key => $value ) {
-			 echo '<h2 class="entry-subtitle">' . $value . '</h2>';
+				$title_length = strlen($value);
+				if ($title_length < 30) {
+					echo '<h2 class="entry-subtitle">' . $value . '</h2>';
+				} else {
+					echo '<h2 class="entry-subtitle entry-subtitle--long">' . $value . '</h2>';
+				}
 			}
 		?>
 	</header><!-- .entry-header -->
