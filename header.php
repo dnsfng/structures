@@ -31,6 +31,7 @@
 			<a class="menu-switch menu-switch__menu" href="/">Retour au menu</a>
 			<?php // TODO: translate this ?>
 			<?php
+			// Display primary-menu : All pages
 				if (has_nav_menu('primary-menu')){
 					wp_nav_menu(
 						array(
@@ -50,6 +51,31 @@
 				}
 			?>
 		</nav><!-- #site-navigation -->
+
+		<?php
+		// Display secondary-menu : Siblings pages
+
+		if ( $post->post_parent ) {
+
+			$parent_title = get_the_title($post->post_parent);
+			echo $parent_title;
+
+			$output_before =  "
+			<nav id='subpage-navigation' class='secondary-navigation'>
+				<button class='menu-toggle' aria-controls='secondary-menu' aria-expanded='false'>".$parent_title."</button>
+				<div class='menu secondary-menu'>
+					<ul class='subpage-nav-menu'>";
+			$output_after =  "</ul></div></nav>";
+
+			echo $output_before;
+			wp_list_pages(array(
+				'title_li'    => '',
+				'child_of' => $post->post_parent,
+				'sort_column' => 'menu_order'
+			));
+			echo $output_after;
+		};
+		?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

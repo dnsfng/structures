@@ -16,6 +16,13 @@
 
 	body.home & {	display: none;	}
 	body.page & {	display: block;	}
+
+	.secondary-navigation & {
+		top: 0;
+		bottom: none;
+		background-color: $color__background-alt-nav;
+		color: $color__text-alt;
+	}
 }
 
 .menu {
@@ -114,15 +121,19 @@
 		.admin-bar & { padding-top: $size_admin-bar; }
 
 		.menu-toggle{
-			bottom: auto;
+			// bottom: auto;
 			font-size: 0;
 
 			&:after {
 				@include pseudo-content("Close");
 				// TODO: Replace by icon
-				@include font-size(1);
-				transform: translateX(-50%);
+				@include font-size(.875);
+				transform: translate3d(-50%,-50%,0);
 			}
+		}
+
+		.nav-menu {
+			padding: 60px 0 90px;
 		}
 	}
 
@@ -237,6 +248,14 @@
 	.current_page_ancestor > a,
 	.current-menu-ancestor > a {
 		text-decoration: line-through;
+	}
+}
+
+
+.secondary-navigation {
+	.site-header &{
+		// display: none;
+		background-color: red;
 	}
 }
 

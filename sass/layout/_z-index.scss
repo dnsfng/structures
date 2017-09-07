@@ -1,3 +1,11 @@
+// 15
+.main-navigation.toggled,
+.main-navigation.toggled .menu-toggle,
+.secondary-navigation.toggled,
+.secondary-navigation.toggled .menu-toggle {
+	z-index: 15;
+}
+
 // 10
 .menu-toggle,
 .menu-switch {
