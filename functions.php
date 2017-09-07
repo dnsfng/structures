@@ -76,8 +76,9 @@ function structures_setup() {
     wp_list_pages( array(
         'title_li'    => '',
         'child_of'    => $id,
-        'sort_column' => 'menu_order',
-				'walker'			=> new Subpages_list_Walker()
+        'sort_column' => 'menu_order'
+				// 'walker'			=> new Subpages_list_Walker()
+				// TODO: remove useless walker ?
     ) );
 	}
 
@@ -94,7 +95,7 @@ function structures_setup() {
 	 * Main navigation custom walker
 	 */
 	 class Subpages_list_Walker extends Walker_Page {
-
+		 // TODO: Remove useless walker ?
 		 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
 
 	 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
