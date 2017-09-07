@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var item = stack[i];
 		item.addEventListener('click', function(e){
-			console.log(e);
 			e.preventDefault();
 
 			var parentClass = e.target.parentElement.classList;
-			if (bodyClass("home")) 	{ parentClass.toggle('show-stack');	}
+			parentClass.toggle('show-stack');
+			// if (bodyClass("home")) 	{ parentClass.toggle('show-stack');	}
 
 		})
 	}
