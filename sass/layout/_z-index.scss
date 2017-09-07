@@ -1,11 +1,16 @@
 // 10
 .menu-toggle,
-.menu-switch {z-index: 10;}
+.menu-switch {
+	z-index: 10;
+}
 
 // 5
 
+.main-navigation {
+	z-index: 5;
+}
+
 @media screen and (min-width: 75em) { //1200
-	.main-navigation,
 	.main-navigation .page_item:hover .wp-post-image,
 	.nav-menu  {
 		z-index: 5;

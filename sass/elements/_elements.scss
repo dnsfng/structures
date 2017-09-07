@@ -51,6 +51,13 @@ img {
 		width: 100%;
 		font-size: 0;
 	}
+
+	.entry-content & {
+
+		&.alignnone {
+			width: 100%;
+		}
+	}
 }
 
 figure {
