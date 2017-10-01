@@ -58,13 +58,12 @@
 		if ( $post->post_parent ) {
 
 			$parent_title = get_the_title($post->post_parent);
-			echo $parent_title;
 
 			$output_before =  "
 			<nav id='subpage-navigation' class='secondary-navigation'>
 				<button class='menu-toggle' aria-controls='secondary-menu' aria-expanded='false'>".$parent_title."</button>
 				<div class='menu secondary-menu'>
-					<ul class='subpage-nav-menu'>";
+					<ul class='nav-menu subpage-nav-menu'>";
 			$output_after =  "</ul></div></nav>";
 
 			echo $output_before;

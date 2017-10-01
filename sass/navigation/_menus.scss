@@ -20,8 +20,13 @@
 	.secondary-navigation & {
 		top: 0;
 		bottom: none;
-		background-color: $color__background-alt-nav;
+		background-color: $color__background-nav-alt;
 		color: $color__text-alt;
+
+		@media screen and (min-width: 75em) { //1024
+			// TODO: mq mixin
+			left : 50%;
+		}
 	}
 }
 
@@ -80,12 +85,66 @@
 
 }
 
+.nav-menu {
+	display: none;
+	margin: 0;
+	padding: 60px 0 90px;
+	list-style: none;
+
+	body.home .main-navigation &,
+	body:not(.home) .toggled &,
+	body:not(.home) .toggled &{ display: block; }
+
+	.main-navigation & {
+		background-color: $color__background-nav;
+	}
+	.secondary-navigation & {
+		background-color: $color__background-nav-alt;
+	}
+
+}
+
+.main-navigation,
+.secondary-navigation {
+	&.toggled {
+		position: fixed;
+		@include full-viewport;
+		overflow: scroll;
+
+		.admin-bar & { padding-top: $size_admin-bar; }
+
+		.menu-toggle{
+			// bottom: auto;
+			font-size: 0;
+
+			&:after {
+				@include pseudo-content("Close");
+				// TODO: Replace by icon
+				@include font-size(.875);
+				transform: translate3d(-50%,-50%,0);
+			}
+		}
+	}
+}
+
+.page_item {
+	list-style: none;
+
+	&.current_page_item > a,
+	&.current-menu-item > a,
+	&.current_page_ancestor > a,
+	&.current-menu-ancestor > a {
+		text-decoration: line-through;
+	}
+}
+
 .main-navigation {
+	// TODO: remove main-navigation specification
 	background-color: $color__background-nav;
 
 	body:not(.home) & {
-		.nav-menu {	display: none; }
-		&.toggled .nav-menu{ display: block; }
+		// .nav-menu {	display: none; }
+		// &.toggled .nav-menu{ display: block; }
 
 		img {	display: none; }
 		// TODO: Remove image on body:not(.home)
@@ -113,34 +172,30 @@
 		}
 	}
 
-	&.toggled {
-		position: fixed;
-		@include full-viewport;
-		overflow: scroll;
-
-		.admin-bar & { padding-top: $size_admin-bar; }
-
-		.menu-toggle{
-			// bottom: auto;
-			font-size: 0;
-
-			&:after {
-				@include pseudo-content("Close");
-				// TODO: Replace by icon
-				@include font-size(.875);
-				transform: translate3d(-50%,-50%,0);
-			}
-		}
-
-		.nav-menu {
-			padding: 60px 0 90px;
-		}
-	}
+	// &.toggled {
+	// 	position: fixed;
+	// 	@include full-viewport;
+	// 	overflow: scroll;
+	//
+	// 	.admin-bar & { padding-top: $size_admin-bar; }
+	//
+	// 	.menu-toggle{
+	// 		// bottom: auto;
+	// 		font-size: 0;
+	//
+	// 		&:after {
+	// 			@include pseudo-content("Close");
+	// 			// TODO: Replace by icon
+	// 			@include font-size(.875);
+	// 			transform: translate3d(-50%,-50%,0);
+	// 		}
+	// 	}
+	// }
 
 	ul { //.nav-menu
-		display: block;
-		margin: 0;
-		list-style: none;
+		// display: block;
+		// margin: 0;
+		// list-style: none;
 
 		ul { //.children
 			// position: absolute;
@@ -242,22 +297,12 @@
 			display: none;
 		}
 	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-		text-decoration: line-through;
-	}
 }
-
 
 .secondary-navigation {
-	.site-header &{
-		// display: none;
-		background-color: red;
-	}
+	background-color: $color__background-nav-alt;
 }
+
 
 @media screen and (min-width: 75em) { //1200px
 	// TODO: Add mq mixin
@@ -265,43 +310,74 @@
 	.menu-toggle {
 		top: 0;
 		width: 50%;
-		background-color: transparent;
 		pointer-events: auto;
+
+		&,
+		.secondary-navigation & {
+			background-color: transparent;
+		}
 	}
+
+	.nav-menu {
+
+		position: relative;
+		pointer-events: auto;
+		padding: 160px 0 160px 50%; // TODO: set as a specificity on body.home
+		background-color: $color__background-nav;
+
+		body.page & {
+			overflow: scroll;
+			@include split-left;
+			// padding: 160px 50px 0;
+			// NOTE: already set above
+		}
+
+		body.page .secondary-navigation & {
+			left: 50%;
+			background-color: $color__background-nav-alt;
+		}
+
+		.main-navigation.toggled &,
+		.secondary-navigation.toggled & {
+			padding: 160px 50px 0;
+		}
+
+	}
+
+	.main-navigation,
+	.secondary-navigation {
+		background-color: transparent;
+	}
+
 
 	.main-navigation {
 		position: absolute;
 		width: 100%;
-		background-color: transparent;
 		pointer-events: none;
 
 		ul { //.nav-menu
-			position: relative;
-			// position: absolute;
-			// left: 50%;
+			// position: relative;
+			// padding: 50px;
 			//
-			// width: 50%;
-			padding: 50px;
+			// pointer-events: auto;
 
-			pointer-events: auto;
+			// &.nav-menu {
+			// 	padding: 160px 0 160px 50%;
+			// 	background-color: $color__background-nav;
+			//
+			// }
 
-			&.nav-menu {
-				padding: 160px 0 160px 50%;
-				background-color: $color__background-nav;
-
-			}
-
-			body.page & {
-				overflow: scroll;
-				left: 50%;
-				width: 50%;
-
-				@include split-left;
-
-				&.nav-menu {
-					padding: 160px 50px 0;
-				}
-			}
+			// body.page & {
+			// 	overflow: scroll;
+			// 	left: 50%;
+			// 	width: 50%;
+			//
+			// 	@include split-left;
+			//
+			// 	&.nav-menu {
+			// 		padding: 160px 50px 0;
+			// 	}
+			// }
 		}
 
 		li {

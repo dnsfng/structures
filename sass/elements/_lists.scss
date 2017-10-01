@@ -33,17 +33,6 @@ li {
 		margin-bottom: 15px;
 		list-style-type: none;
 
-		&:last-child {
-			margin-bottom: 40px;
-
-			@media screen and (min-width: 75em) { //1200px
-				margin-bottom: 60px;
-			}
-		}
-	}
-
-	.entry-content div:not(.menu) & {
-		
 		&:before {
 			position: absolute;
 			left: -1.25em;
@@ -53,5 +42,13 @@ li {
 			@include font-size;
 		}
 
+		&:last-child {
+			margin-bottom: 40px;
+
+			@media screen and (min-width: 75em) { //1200px
+				margin-bottom: 60px;
+			}
+		}
 	}
+
 }

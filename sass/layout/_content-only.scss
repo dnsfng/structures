@@ -20,5 +20,6 @@
 
 
 .site-header {
-	> .main-navigation { padding: 0; }
+	> .main-navigation,
+	> .secondary-navigation { padding: 0; }
 }
