@@ -58,6 +58,22 @@ img {
 			width: 100%;
 		}
 	}
+
+	&.aligncenter {
+		width: 100vw;
+		max-width: none;
+		position: relative;
+		margin-left: -10vw;
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+		&.aligncenter {
+			// width: 100vw;
+			margin: 20% 0 20% -55vw;
+			padding: 25%;
+			background-color: white		;
+		}
+	}
 }
 
 figure {
