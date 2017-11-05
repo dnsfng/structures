@@ -9,20 +9,24 @@ h2, h3 {
 }
 
 .entry-title {
-	// @include font-size($f_xl);
-	// TODO: remove old style
 
-	@include font-size($f_l);
-	line-height: $font__line-height-h1; // TODO: better lh mixin
-
-	@media screen and (min-width: 48em) { //768px
-		@include font-size($f_xl);
-		line-height: $font__line-height-h1_xl; // TODO: better lh mixin
+	.page-parent & {
+		@include font-size($f_s);
 	}
 
-	@media screen and (min-width: 75em) { //1200px
-		@include font-size($f_xxl);
-		line-height: $font__line-height-h1_xxl; // TODO: better lh mixin
+	body:not(.page-parent) &{
+		@include font-size($f_l);
+		line-height: $font__line-height-h1; // TODO: better lh mixin
+
+		@media screen and (min-width: 48em) { //768px
+			@include font-size($f_xl);
+			line-height: $font__line-height-h1_xl; // TODO: better lh mixin
+		}
+
+		@media screen and (min-width: 75em) { //1200px
+			@include font-size($f_xxl);
+			line-height: $font__line-height-h1_xxl; // TODO: better lh mixin
+		}
 	}
 
 	.post & {
@@ -30,7 +34,17 @@ h2, h3 {
 	}
 
 	.home & {
-		display: none;
+		// display: none;
+		// TODO: remove if empty
+	}
+
+	.page-parent & {
+
+		font-weight: normal;
+
+		@media screen and (min-width: 75em) { //1200px
+			text-align: left;
+		}
 	}
 
 }

@@ -3,72 +3,111 @@
 	display: block;
 	float: left;
 	width: 100%;
-
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 1.5em;
-			left: -999em;
-			z-index: 99999;
-
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-
-	li {
-		float: left;
-		position: relative;
-
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-
-	a {
-		display: block;
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
 }
+
+.menu {
+
+	.main-navigation & {
+
+	}
+
+	.secondary-navigation & {
+
+	}
+
+}
+
+.nav-menu { //ul
+	display: none;
+	margin: 0;
+	padding: 60px 0 90px;
+	list-style: none;
+
+	@media screen and (min-width: 75em) {
+		position: relative;
+		pointer-events: auto;
+		padding: 85px 0 160px;
+		// padding: 160px 0 160px; // NOTE: remove 75px because entry-title in the feed and not absolute
+		background-color: $color__background-nav;
+	}
+
+	body.home .main-navigation &,
+	body:not(.home) .toggled &,
+	body:not(.home) .toggled &{ display: block; }
+
+	.main-navigation & {
+		background-color: $color__background-nav;
+	}
+	.secondary-navigation & {
+		background-color: $color__background-nav-alt;
+	}
+
+}
+
+
+.page_item { //li
+	list-style: none;
+	margin-bottom: 5px;
+
+	// a (link)
+	a {
+
+		display: block;
+		padding: 17px 5% 18px;
+		@include font-size($f_m);
+		@include line-height($lh_m,$f_m);
+		text-align: center;
+		text-decoration: none;
+		color: $color__link;
+		@include text-antialiased;
+
+		&:hover {
+			color: $color__link-hover-alt;
+		}
+
+		.main-navigation & {
+			text-transform: uppercase;
+
+			font-weight: 700;
+
+			@media screen and (min-width: 64em) {
+				padding: 30px 50px;
+
+				@include font-size($f_l);
+				@include line-height($lh_l,$f_l);
+			}
+
+			@media screen and (min-width: 75em) {
+				text-align: left;
+			}
+		}
+
+		.secondary-navigation & {
+
+		}
+	}
+
+	&.current_page_item > a,
+	&.current-menu-item > a,
+	&.current_page_ancestor > a,
+	&.current-menu-ancestor > a {
+		text-decoration: line-through;
+	}
+
+	// img
+	.wp-post-image {
+		display: none;
+
+		@media screen and (min-width: 75em) {
+			display: block;
+			@include split-left;
+			pointer-events: none;
+		}
+	}
+
+}
+
+
 
 /* Small menu. */
 .menu-toggle,
@@ -76,13 +115,34 @@
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
+// @media screen and (min-width: 37.5em) {
+// 	.menu-toggle {
+// 		display: none;
+// 	}
+// 	.main-navigation ul {
+// 		display: block;
+// 	}
+// }
+
+
+@media screen and (min-width: 75em) { //1200px
+	// TODO: Add mq mixin
+
+	.nav-menu {
+
+		body.page .secondary-navigation & {
+			left: 50%;
+			background-color: $color__background-nav-alt;
+		}
+
+		.main-navigation.toggled &,
+		.secondary-navigation.toggled & {
+			padding: 160px 50px 0;
+		}
+
 	}
-	.main-navigation ul {
-		display: block;
-	}
+
+
 }
 
 .comment-navigation,

@@ -3,7 +3,8 @@
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+	// margin: 0 0 1.5em;
+	margin: 0;
 }
 
 .byline,
@@ -22,22 +23,125 @@
 	margin: 1.5em 0 0;
 }
 
-.entry-content {
-	width: 80%;
-	margin: 0 auto;
+.entry-image {
+	font-size: 0;
 
-	body:not(.page-parent) {
-		min-width: 280px;
-		max-width: 680px;
+	@media screen and (min-width: 75em) { //1200px
+		@include split-left;
+	}
+}
+
+.entry-header {
+	// NOTE: could be set in absolute, check with designer
+
+	.page-parent &{
+		position: relative;
+
+		height: 10vh;
+		// padding: 10px 50px;
+
+		@media screen and (min-width: 75em) { //1200px
+			height: auto;
+			padding: 50px 50px 0;
+		}
 	}
 
-	@media screen and (min-width: 75em) {
-		position: relative; //1200px
+	body:not(.page-parent) & {
 
-		width: auto;
-		min-width: 0;
-		max-width: none;
-		margin: 10% 10% 30px;
+		width: 80%;
+		margin: 80px auto 60px;
+
+		@media screen and (min-width: 36.25em) { //580px
+			margin-bottom: 80px;
+		}
+
+		@media screen and (min-width: 48em) { //768px
+			margin: 120px auto 100px;
+		}
+
+		@media screen and (min-width: 64em) { //1024px
+
+		}
+
+		@media screen and (min-width: 75em) { //1200px
+
+			@include split-left;
+			@include center-vertical;
+
+			height: auto;
+			padding: 200px 5%;
+
+			color: $color__text;
+		}
+	}
+
+	.entry-title {
+		position: absolute;
+		top:50%;
+
+		width: 100%;
+
+		transform: translate3d(0,-50%,0);
+
+		@media screen and (min-width: 75em) { //1200px
+			// opacity: 0;
+			// transition: opacity 300ms ease-out;
+			// TODO: transition
+			position: static;
+			top: auto;
+
+			width: auto;
+
+			transform: none;
+
+			.visible & {
+				z-index: 10;
+				// opacity: 1;
+				// transition: opacity 1200ms ease-in 300ms;
+				// TODO: transition
+
+				background-color: black;
+				// TODO: z-index
+			}
+		}
+
+		a.onboarding-navigation,
+		a.onboarding-navigation:focus,
+		a.onboarding-navigation:visited {
+			text-decoration: none;
+
+			color: white;
+		}
+	}
+
+}
+
+.entry-content {
+
+	margin: 0 auto;
+
+	body:not(.page-parent) & {
+		width: 80%;
+		min-width: 280px;
+		max-width: 680px;
+		position: relative;
+		// NOTE: What's this for again ?
+
+		@media screen and (min-width: 75em) {
+			width: auto;
+			min-width: 0;
+			max-width: none;
+			margin: 10% 10% 30px;
+		}
+	}
+
+	.page-parent &{
+		@media screen and (min-width: 75em) {
+				margin: 0 auto;
+		}
+	}
+
+	@media screen and (min-width: 75em) { //1200px
 
 		.post & {
 			margin: 0;
@@ -75,10 +179,10 @@
 }
 
 .entry-content {
-	p,
-	ul,
-	ol,
-	.cols {
+	> p,
+	> ul,
+	> ol,
+	> .cols {
 
 		margin: 0 auto 20px;
 
@@ -89,57 +193,10 @@
 
 	}
 
-	h3 + p {
+	> h3 + p {
 		margin-top: 30px
 	}
 
-}
-
-.entry-header {
-	width: 80%;
-	margin: 80px auto 60px;
-
-	@media screen and (min-width: 36.25em) { //580px
-		margin-bottom: 80px;
-	}
-
-	@media screen and (min-width: 48em) { //768px
-		margin: 120px auto 100px;
-	}
-
-	@media screen and (min-width: 64em) { //1024px
-
-	}
-
-	@media screen and (min-width: 75em) { //1200px
-
-		.page & {
-			@include split-left;
-			@include center-vertical;
-
-			height: auto;
-			padding: 200px 5%;
-
-			color: $color__text;
-
-		}
-
-		.entry-title {
-
-			// opacity: 0;
-			// transition: opacity 300ms ease-out;
-			// TODO: transition
-
-			.visible & {
-				// opacity: 1;
-				// transition: opacity 1200ms ease-in 300ms;
-				// TODO: transition
-				background-color: black;
-				z-index: 10;
-				// TODO: z-index
-			}
-		}
-	}
 }
 
 .page-links {
@@ -163,6 +220,7 @@
 
 		.entry-image img{
 				@include split-left;
+				// TODO: replace by a declaration on .entry-image
 		}
 	}
 

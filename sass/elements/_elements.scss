@@ -46,9 +46,20 @@ hr {
 img {
 	height: auto; /* Make sure images are scaled correctly. */
 	max-width: 100%; /* Adhere to container width. */
+	width: 100%;
+
+	body.page-parent .entry-image & {
+		height: 90vh;
+		object-fit: cover;
+
+		@media screen and (min-width: 75em) { //1200
+			height: 100%;
+			height: 100vh;
+		}
+	}
 
 	.post .entry-image & {
-		width: 100%;
+		// NOTE: replace .entry-image by higher level declaration ?
 		font-size: 0;
 	}
 

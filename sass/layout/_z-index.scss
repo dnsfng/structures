@@ -7,22 +7,33 @@
 }
 
 // 10
+.page_item:hover .wp-post-image,
 .menu-toggle,
 .menu-switch {
 	z-index: 10;
 }
 
+
+
 // 5
 
-.main-navigation {
-	z-index: 5;
-}
+// TODO: remove all, useless since change in navigation
+// .main-navigation {
+// 	z-index: 5;
+// }
+
+// @media screen and (min-width: 75em) { //1200
+// 	.nav-menu  {
+// 		z-index: 5;
+// 	}
+// }
 
 @media screen and (min-width: 75em) { //1200
-	.main-navigation .page_item:hover .wp-post-image,
-	.nav-menu  {
-		z-index: 5;
+	body.page-parent .entry-image  {
+		z-index: 10;
 	}
 }
+
+
 
 // 0

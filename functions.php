@@ -53,10 +53,24 @@ function structures_setup() {
 	    return str_replace('<p', '<p class="entry-excerpt"', $excerpt);
 	}
 
+	/*
+	 * Check if curren page is a parent-page
+	 */
+	function has_children() {
+    global $post;
+
+    $children = get_pages( array( 'child_of' => $post->ID ) );
+    if( count( $children ) == 0 ) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 	// Image size for single posts
 	// add_image_size( 'single-post-thumbnail', 1920,1920 );
 	// TODO: revert thumbnail size
-	add_image_size( 'single-post-thumbnail', 200,200 );
+	add_image_size( 'single-post-thumbnail', 800,800 );
 
 	// Automatic non breakable space in content
 	add_filter( 'the_content', 'structures_automatic_nbsp' );
@@ -76,14 +90,14 @@ function structures_setup() {
     wp_list_pages( array(
         'title_li'    => '',
         'child_of'    => $id,
-        'sort_column' => 'menu_order'
+        'sort_column' => 'menu_order',
 				// 'walker'			=> new Subpages_list_Walker()
-				// TODO: remove useless walker ?
+				'walker'			=> new Menu_with_images_Walker()
     ) );
 	}
 
 	function structures_list_child_posts_output($output) {
-		$output_before =  "<nav id='subpage-navigation' class='secondary-navigation'> <div class='menu secondary-menu'><ul class='subpage-nav-menu'>";
+		$output_before =  "<nav id='article-navigation' class='main-navigation'> <div class='menu primary-menu'><ul class='nav-menu'>";
 		$output_after =  "</ul></div></nav>";
 
 		$output = $output_before.$output.$output_after ;

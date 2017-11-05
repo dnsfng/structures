@@ -10,8 +10,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+	<?php
+	if ( has_children() ) {
+			echo '<aside class="entry-image">
+							<a class="onboarding-navigation" href="#article-navigation">';
+					the_post_thumbnail('single-post-thumbnail');
+			echo '</a>
+						</aside> <!-- .entry-image -->';
+		};
+	?>
+
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+		<?php the_title( '<h1 class="entry-title"> <a class="onboarding-navigation" href="#article-navigation">', '</a></h1>' ); ?>
+
 		<?php
 			$custom_values = get_post_custom_values( 'sous-titre' );
 			foreach ( $custom_values as $key => $value ) {
@@ -39,6 +52,7 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
+
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">

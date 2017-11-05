@@ -11,7 +11,7 @@
 		min-height: 100%;
 		min-height: 100vh;
 
-		.page & {
+		body:not(.page-parent) & {
 			background-color: $color__background-body-alt;
 			color: $color__text-alt;
 		}

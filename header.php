@@ -26,29 +26,33 @@
 	<header id="masthead" class="site-header" role="banner">
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
+
+			<!-- <a class="menu-toggle" href="/"><?php esc_html_e( 'Veloce', 'structures' ); ?></a> -->
+			<!--
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Veloce', 'structures' ); ?></button>
 			<a class="menu-switch menu-switch__about" href="/a-propos">À propos</a>
 			<a class="menu-switch menu-switch__menu" href="/">Retour au menu</a>
-			<?php // TODO: translate this ?>
+			-->
+
 			<?php
 			// Display primary-menu : All pages
-				if (has_nav_menu('primary-menu')){
-					wp_nav_menu(
-						array(
-							'theme_location' => 'primary-menu',
-							'menu_class' => 'menu primary-menu',
-							'fallback_cb' => false,
-							'walker' => new Menu_with_images_Walker()
-						)
-					);
-				} else {
-					wp_page_menu(
-						array(
-							'menu_class' => 'menu primary-menu',
-							'walker' => new Menu_with_images_Walker()
-						)
-					);
-				}
+			// if (has_nav_menu('primary-menu')){
+			// 	wp_nav_menu(
+			// 		array(
+			// 			'theme_location' => 'primary-menu',
+			// 			'menu_class' => 'menu primary-menu',
+			// 			'fallback_cb' => false,
+			// 			'walker' => new Menu_with_images_Walker()
+			// 		)
+			// 	);
+			// } else {
+			// 	wp_page_menu(
+			// 		array(
+			// 			'menu_class' => 'menu primary-menu',
+			// 			'walker' => new Menu_with_images_Walker()
+			// 		)
+			// 	);
+			// }
 			?>
 		</nav><!-- #site-navigation -->
 
