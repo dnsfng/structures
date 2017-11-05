@@ -12,8 +12,13 @@
 }
 
 // Activate anti-aliasing
-@mixin text-antialiased{
+@mixin font-antialiased{
 	-webkit-font-smoothing: antialiased;
+}
+
+// Webkit Font Aliasing
+@mixin font-sub-pixel {
+		-webkit-font-smoothing: subpixel-antialiased;
 }
 
 // Center block
@@ -63,7 +68,23 @@
 	margin: 0;
 
 	object-fit: cover;
+	// TODO: fix for ie/edge
 }
+
+// @mixin split-left {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+//
+// 	width: 50%;
+// 	width: 50vw;
+// 	// height: 100%;
+// 	// height: 100vh;
+// 	bottom: 0;
+// 	margin: 0;
+//
+// 	object-fit: cover;
+// }
 
 // UI split on left side
 @mixin split-right {
@@ -76,10 +97,4 @@
 	// position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-}
-
-
-// Webkit Font Aliasing
-@mixin font-sub-pixel {
-		-webkit-font-smoothing: subpixel-antialiased;
 }

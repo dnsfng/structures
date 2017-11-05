@@ -49,7 +49,7 @@ img {
 	width: 100%;
 
 	body.page-parent .entry-image & {
-		height: 90vh;
+		height: 50vh;
 		object-fit: cover;
 
 		@media screen and (min-width: 75em) { //1200

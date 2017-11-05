@@ -4,17 +4,23 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0; // NOTE: normalize
 }
 
-h2, h3 {
+h2, h3,
+.page-parent .entry-title,
+.page-parent .section-title {
 	text-transform: uppercase;
 }
 
-.entry-title {
+.entry-title,
+.section-title {
 
 	.page-parent & {
-		@include font-size($f_s);
+		@include font-size($f_xxs);
 	}
 
 	body:not(.page-parent) &{
+
+		pointer-events: none;
+
 		@include font-size($f_l);
 		line-height: $font__line-height-h1; // TODO: better lh mixin
 
@@ -40,13 +46,21 @@ h2, h3 {
 
 	.page-parent & {
 
-		font-weight: normal;
-
 		@media screen and (min-width: 75em) { //1200px
 			text-align: left;
 		}
 	}
 
+}
+
+.section-title {
+
+	.page-parent & {
+
+		@media screen and (min-width: 75em) { //1200px
+			text-align: center;
+		}
+	}
 }
 
 .entry-subtitle {

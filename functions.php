@@ -91,9 +91,10 @@ function structures_setup() {
         'title_li'    => '',
         'child_of'    => $id,
         'sort_column' => 'menu_order',
-				// 'walker'			=> new Subpages_list_Walker()
 				'walker'			=> new Menu_with_images_Walker()
     ) );
+		remove_filter( 'wp_list_pages', 'structures_list_child_posts_output' );
+		// NOTE: Need to remove filter so other menus don't herit this specific output
 	}
 
 	function structures_list_child_posts_output($output) {
@@ -108,65 +109,65 @@ function structures_setup() {
 	/**
 	 * Main navigation custom walker
 	 */
-	 class Subpages_list_Walker extends Walker_Page {
-		 // TODO: Remove useless walker ?
-		 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
-
-	 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
-	 			$t = "\t";
-	 			$n = "\n";
-	 		} else {
-	 			$t = '';
-	 			$n = '';
-	 		}
-
-	 		if ( $depth ) {
-	 			$indent = str_repeat( $t, $depth );
-	 		} else {
-	 			$indent = '';
-	 		}
-
-	 		$css_class = array( 'subpage-item', 'subpage-item-' . $page->ID );
-
-	 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
-	 			$css_class[] = 'page_item_has_children';
-	 		}
-
-	 		if ( ! empty( $current_page ) ) {
-	 			$_current_page = get_post( $current_page );
-	 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
-	 				$css_class[] = 'current_page_ancestor';
-	 			}
-	 			if ( $page->ID == $current_page ) {
-	 				$css_class[] = 'current_page_item';
-	 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
-	 				$css_class[] = 'current_page_parent';
-	 			}
-	 		} elseif ( $page->ID == get_option('page_for_posts') ) {
-	 			$css_class[] = 'current_page_parent';
-	 		}
-
-	 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-
-	 		if ( '' === $page->post_title ) {
-	 			/* translators: %d: ID of a post */
-	 			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
-	 		}
-
-	 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
-	 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
-
-	 		$output .= $indent . sprintf(
-	 			'<li class="%s"><a href="%s">%s%s%s</a>',
-	 			$css_classes,
-	 			get_permalink( $page->ID ),
-	 			$args['link_before'],
-	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
-	 			$args['link_after']
-	 		);
-
-	 	}
-	 }
+	//  class Subpages_list_Walker extends Walker_Page {
+	// 	 // TODO: Remove useless walker ?
+	// 	 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+	 //
+	//  		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
+	//  			$t = "\t";
+	//  			$n = "\n";
+	//  		} else {
+	//  			$t = '';
+	//  			$n = '';
+	//  		}
+	 //
+	//  		if ( $depth ) {
+	//  			$indent = str_repeat( $t, $depth );
+	//  		} else {
+	//  			$indent = '';
+	//  		}
+	 //
+	//  		$css_class = array( 'subpage-item', 'subpage-item-' . $page->ID );
+	 //
+	//  		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
+	//  			$css_class[] = 'page_item_has_children';
+	//  		}
+	 //
+	//  		if ( ! empty( $current_page ) ) {
+	//  			$_current_page = get_post( $current_page );
+	//  			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+	//  				$css_class[] = 'current_page_ancestor';
+	//  			}
+	//  			if ( $page->ID == $current_page ) {
+	//  				$css_class[] = 'current_page_item';
+	//  			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+	//  				$css_class[] = 'current_page_parent';
+	//  			}
+	//  		} elseif ( $page->ID == get_option('page_for_posts') ) {
+	//  			$css_class[] = 'current_page_parent';
+	//  		}
+	 //
+	//  		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+	 //
+	//  		if ( '' === $page->post_title ) {
+	//  			/* translators: %d: ID of a post */
+	//  			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+	//  		}
+	 //
+	//  		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+	//  		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+	 //
+	//  		$output .= $indent . sprintf(
+	//  			'<li class="%s"><a href="%s">%s%s%s</a>',
+	//  			$css_classes,
+	//  			get_permalink( $page->ID ),
+	//  			$args['link_before'],
+	//  			apply_filters( 'the_title', $page->post_title, $page->ID ),
+	//  			$args['link_after']
+	//  		);
+	 //
+	//  	}
+	//  }
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -231,9 +232,86 @@ function structures_setup() {
 				// get_the_post_thumbnail($page->ID, array(1920,1920)),
 				// TODO: revert thumbnail size
 				// TODO: display thumbnail on homepage only
-				get_the_post_thumbnail($page->ID, array(200,200)),
+				get_the_post_thumbnail($page->ID, array(800,800)),
 	 			$args['link_before'],
 	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
+	 			$args['link_after']
+	 		);
+
+	 	}
+	 }
+
+	 /**
+ 	 * Secondary navigation custom walker
+ 	 */
+	 class Menu_with_images_and_extra_label_Walker extends Walker_Page {
+
+		 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+
+	 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
+	 			$t = "\t";
+	 			$n = "\n";
+	 		} else {
+	 			$t = '';
+	 			$n = '';
+	 		}
+
+	 		if ( $depth ) {
+	 			$indent = str_repeat( $t, $depth );
+	 		} else {
+	 			$indent = '';
+	 		}
+
+	 		$css_class = array( 'page_item', 'page-item-' . $page->ID );
+
+	 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
+	 			$css_class[] = 'page_item_has_children';
+	 		}
+
+	 		if ( ! empty( $current_page ) ) {
+	 			$_current_page = get_post( $current_page );
+	 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+	 				$css_class[] = 'current_page_ancestor';
+	 			}
+	 			if ( $page->ID == $current_page ) {
+	 				$css_class[] = 'current_page_item';
+	 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+	 				$css_class[] = 'current_page_parent';
+	 			}
+	 		} elseif ( $page->ID == get_option('page_for_posts') ) {
+	 			$css_class[] = 'current_page_parent';
+	 		}
+
+	 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+	 		if ( '' === $page->post_title ) {
+	 			/* translators: %d: ID of a post */
+	 			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+	 		}
+
+	 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+	 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
+			$post_meta = get_post_meta($page->ID, 'periode', true);
+			if ( ! empty ( $post_meta ) ) {
+				$post_meta = '<time datetime="'.get_the_date("c").'">'.$post_meta.'</time>';
+			} else {
+				$post_meta = '<time datetime="'.get_the_date("c").'">'.get_the_date('d M. Y').'</time>';
+			};
+
+			$post_title = '<strong>'.apply_filters( 'the_title', $page->post_title, $page->ID ).'</strong>';
+
+	 		$output .= $indent . sprintf(
+	 			'<li class="%s"><a href="%s">%s%s%s%s%s</a>',
+	 			$css_classes,
+	 			get_permalink( $page->ID ),
+				// get_the_post_thumbnail($page->ID, array(1920,1920)),
+				// TODO: revert thumbnail size
+				// TODO: display thumbnail on homepage only
+				get_the_post_thumbnail($page->ID, array(360,360)),
+	 			$args['link_before'],
+	 			$post_title,
+				$post_meta,
 	 			$args['link_after']
 	 		);
 

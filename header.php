@@ -25,47 +25,22 @@
 
 	<header id="masthead" class="site-header" role="banner">
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
 
-			<!-- <a class="menu-toggle" href="/"><?php esc_html_e( 'Veloce', 'structures' ); ?></a> -->
-			<!--
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Veloce', 'structures' ); ?></button>
-			<a class="menu-switch menu-switch__about" href="/a-propos">À propos</a>
-			<a class="menu-switch menu-switch__menu" href="/">Retour au menu</a>
-			-->
+		<section class="site-header-nav nav-left nav-home" role="navigation">
+			<a href="/"><?php esc_html_e( 'Accueil', 'structures' ); ?></a>
+		</section>
 
-			<?php
-			// Display primary-menu : All pages
-			// if (has_nav_menu('primary-menu')){
-			// 	wp_nav_menu(
-			// 		array(
-			// 			'theme_location' => 'primary-menu',
-			// 			'menu_class' => 'menu primary-menu',
-			// 			'fallback_cb' => false,
-			// 			'walker' => new Menu_with_images_Walker()
-			// 		)
-			// 	);
-			// } else {
-			// 	wp_page_menu(
-			// 		array(
-			// 			'menu_class' => 'menu primary-menu',
-			// 			'walker' => new Menu_with_images_Walker()
-			// 		)
-			// 	);
-			// }
-			?>
-		</nav><!-- #site-navigation -->
+		<section class="site-header-nav nav-right nav-tome" role="navigation">
 
 		<?php
 		// Display secondary-menu : Siblings pages
-
 		if ( $post->post_parent ) {
 
 			$parent_title = get_the_title($post->post_parent);
 
 			$output_before =  "
 			<nav id='subpage-navigation' class='secondary-navigation'>
-				<button class='menu-toggle' aria-controls='secondary-menu' aria-expanded='false'>".$parent_title."</button>
+				<button class='menu-toggle menu-toggle-nav' aria-controls='secondary-menu' aria-expanded='false'>".$parent_title."</button>
 				<div class='menu secondary-menu'>
 					<ul class='nav-menu subpage-nav-menu'>";
 			$output_after =  "</ul></div></nav>";
@@ -79,6 +54,10 @@
 			echo $output_after;
 		};
 		?>
+
+		<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'>"<?php esc_html_e( 'À propos', 'structures' ); ?>"</button>
+
+		</section>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

@@ -1,18 +1,19 @@
 .main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
+	// clear: both;
+	// display: block;
+	// float: left;
+	// width: 100%;
+	// TODO: seems useless
 }
 
 .menu {
 
 	.main-navigation & {
-
+		@include font-antialiased;
 	}
 
 	.secondary-navigation & {
-
+		@include font-sub-pixel;
 	}
 
 }
@@ -24,7 +25,6 @@
 	list-style: none;
 
 	@media screen and (min-width: 75em) {
-		position: relative;
 		pointer-events: auto;
 		padding: 85px 0 160px;
 		// padding: 160px 0 160px; // NOTE: remove 75px because entry-title in the feed and not absolute
@@ -44,34 +44,57 @@
 
 }
 
+.menu ul {
+	.secondary-navigation & {
+		margin: 50px auto 0;
+
+		@media screen and (min-width: 64em) {
+			margin: 7.5% 7.5% 0;
+		}
+	}
+}
+
 
 .page_item { //li
 	list-style: none;
-	margin-bottom: 5px;
+	// margin-bottom: 5px;
+
+	.secondary-navigation & {
+		margin: 0 auto 15%;
+		width: 50%;
+		min-width: 280px;
+
+		// max-width: 320px;
+
+		@media screen and (min-width: 64em) {
+			display: inline-block;
+		}
+	}
 
 	// a (link)
 	a {
 
 		display: block;
-		padding: 17px 5% 18px;
+		padding: 17px 6.25% 18px;
 		@include font-size($f_m);
 		@include line-height($lh_m,$f_m);
 		text-align: center;
 		text-decoration: none;
-		color: $color__link;
-		@include text-antialiased;
 
 		&:hover {
 			color: $color__link-hover-alt;
 		}
 
-		.main-navigation & {
+		.main-navigation &,
+		.secondary-navigation & {
 			text-transform: uppercase;
+			font-weight: bold;
+		}
 
-			font-weight: 700;
+		.main-navigation & {
 
 			@media screen and (min-width: 64em) {
-				padding: 30px 50px;
+				padding: 32px 50px 33px;
 
 				@include font-size($f_l);
 				@include line-height($lh_l,$f_l);
@@ -83,6 +106,33 @@
 		}
 
 		.secondary-navigation & {
+			padding: 0;
+			margin: 0 auto;
+			color: $color__link-alt;
+			@include font-size($f_xxs);
+
+			@media screen and (min-width: 64em) {
+				width: 50%;
+				min-width: 280px;
+				max-width: 360px;
+			}
+
+			strong {
+				border-bottom: 1px solid currentColor;
+			}
+
+			&:hover strong {
+				border-bottom: 0 none;
+			}
+
+			time {
+				display: block;
+				margin-top: 10px;
+				@include font-size($f_xs);
+				font-weight: normal;
+				text-transform: none;
+				color: $color__text-secondary;
+			}
 
 		}
 	}
@@ -96,13 +146,26 @@
 
 	// img
 	.wp-post-image {
+
 		display: none;
 
-		@media screen and (min-width: 75em) {
-			display: block;
-			@include split-left;
-			pointer-events: none;
+		body.page-parent .main-navigation & {
+			@media screen and (min-width: 75em) {
+				display: block;
+				@include split-left;
+				pointer-events: none;
+			}
 		}
+
+		body.page-parent .secondary-navigation & {
+			display: block;
+			margin-bottom: 20px;
+
+			@media screen and (min-width: 75em) {
+				margin-bottom: 40px;
+			}
+		}
+
 	}
 
 }
