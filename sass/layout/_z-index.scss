@@ -18,6 +18,11 @@
 	z-index: 10;
 }
 
+@media screen and (min-width: 75em) { //1200
+	body.page-parent .entry-image  {
+		z-index: 10;
+	}
+}
 
 
 // 5
@@ -27,17 +32,13 @@
 // 	z-index: 5;
 // }
 
-// @media screen and (min-width: 75em) { //1200
-// 	.nav-menu  {
-// 		z-index: 5;
-// 	}
-// }
-
 @media screen and (min-width: 75em) { //1200
-	body.page-parent .entry-image  {
-		z-index: 10;
+	.site-header-nav  {
+		z-index: 5;
 	}
 }
+
+
 
 
 

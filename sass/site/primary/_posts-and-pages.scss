@@ -80,31 +80,33 @@
 	}
 
 	.entry-title {
-		position: absolute;
-		@include center-vertical;
 
-		width: 100%;
+		body.page-parent & {
+			position: absolute;
+			@include center-vertical;
 
+			width: 100%;
 
-		@media screen and (min-width: 75em) { //1200px
-			// opacity: 0;
-			// transition: opacity 300ms ease-out;
-			// TODO: transition
-			position: static;
-			top: auto;
-
-			width: auto;
-
-			transform: none;
-
-			.visible & {
-				z-index: 10;
-				// opacity: 1;
-				// transition: opacity 1200ms ease-in 300ms;
+			@media screen and (min-width: 75em) { //1200px
+				// opacity: 0;
+				// transition: opacity 300ms ease-out;
 				// TODO: transition
+				position: static;
+				top: auto;
 
-				background-color: black;
-				// TODO: z-index
+				width: auto;
+
+				transform: none;
+
+				.visible & {
+					z-index: 10;
+					// opacity: 1;
+					// transition: opacity 1200ms ease-in 300ms;
+					// TODO: transition
+
+					background-color: black;
+					// TODO: move z-index
+				}
 			}
 		}
 

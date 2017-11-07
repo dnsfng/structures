@@ -1,7 +1,10 @@
 // .content-area > *,
-.site-header > *,
 .site-footer > * {
 	padding: 0 $size__main-margin;
+}
+
+.site-header > * {
+	padding: 0;
 }
 
 .site-main {
@@ -24,21 +27,43 @@
 }
 
 .site-header-nav {
+
+	@media screen and (min-width: 75em) { //1200px
+		position: fixed;
+		height: 60px;
+		width: 50%;
+		top: 0;
+	}
+
 	&.nav-home {
-			body.home &{
-				display: none;
-			}
+		left: 0;
+		background-color: $color__background-body;
+
+		body.home &{
+			display: none;
+		}
+
 	}
 
 	&.nav-tome {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background-color: $color__background-body-alt;
+
+		body:not(.page-parent) &{
+			background-color: $color__background-body-alt;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			height: 60px;
+			z-index: 5;
+		}
 
 		@media screen and (min-width: 75em) { //1200px
+			left: 50%;
+		}
+	}
 
+	&.nav-about {
+		@media screen and (min-width: 75em) { //1200px
+			left: 50%;
 		}
 	}
 }

@@ -27,7 +27,7 @@
 
 
 		<section class="site-header-nav nav-left nav-home" role="navigation">
-			<a href="/"><?php esc_html_e( 'Accueil', 'structures' ); ?></a>
+			<a href="/"><span class="link-border"><?php esc_html_e( 'Accueil', 'structures' ); ?></span></a>
 		</section>
 
 		<section class="site-header-nav nav-right nav-tome" role="navigation">
@@ -40,7 +40,7 @@
 
 			$output_before =  "
 			<nav id='subpage-navigation' class='secondary-navigation'>
-				<button class='menu-toggle menu-toggle-nav' aria-controls='secondary-menu' aria-expanded='false'>".$parent_title."</button>
+				<button class='menu-toggle menu-toggle-nav' aria-controls='secondary-menu' aria-expanded='false'><span class='link-border'>".$parent_title."</span></button>
 				<div class='menu secondary-menu'>
 					<ul class='nav-menu subpage-nav-menu'>";
 			$output_after =  "</ul></div></nav>";
@@ -55,8 +55,10 @@
 		};
 		?>
 
-		<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'>"<?php esc_html_e( 'À propos', 'structures' ); ?>"</button>
+		</section>
 
+		<section class="site-header-nav nav-about" role="navigation">
+			<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'><span class="link-border"><?php esc_html_e( 'À propos', 'structures' ); ?></span></button>
 		</section>
 	</header><!-- #masthead -->
 
