@@ -30,20 +30,25 @@
 			<a href="/"><span class="link-border"><?php esc_html_e( 'Accueil', 'structures' ); ?></span></a>
 		</section>
 
-		<section class="site-header-nav nav-right nav-tome" role="navigation">
-
 		<?php
 		// Display secondary-menu : Siblings pages
 		if ( $post->post_parent ) {
 
+			echo '<section class="site-header-nav nav-right nav-tome" role="navigation">';
+
 			$parent_title = get_the_title($post->post_parent);
 
 			$output_before =  "
-			<nav id='subpage-navigation' class='secondary-navigation'>
-				<button class='menu-toggle menu-toggle-nav' aria-controls='secondary-menu' aria-expanded='false'><span class='link-border'>".$parent_title."</span></button>
-				<div class='menu secondary-menu'>
+			<nav id='subpage-navigation' class='third-navigation'>
+				<button class='menu-toggle menu-toggle-nav' aria-controls='third-menu' aria-expanded='false'><span class='link-border'>".$parent_title."</span></button>
+				<div class='menu third-menu'>
 					<ul class='nav-menu subpage-nav-menu'>";
-			$output_after =  "</ul></div></nav>";
+
+			$output_after =  "
+					</ul>
+				</div>
+				<a class='dl-tome' href=".get_post_meta($post->post_parent, 'telechargement', true)."><span class='link-border'>Télécharger la revue</span></a>
+			</nav>";
 
 			echo $output_before;
 			wp_list_pages(array(
@@ -52,10 +57,10 @@
 				'sort_column' => 'menu_order'
 			));
 			echo $output_after;
+
+			echo "</section>";
 		};
 		?>
-
-		</section>
 
 		<section class="site-header-nav nav-about" role="navigation">
 			<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'><span class="link-border"><?php esc_html_e( 'À propos', 'structures' ); ?></span></button>
