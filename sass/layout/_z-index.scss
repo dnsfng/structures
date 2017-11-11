@@ -1,14 +1,8 @@
-// 20
-.site-secondary {
-	z-index: 20;
-}
-
-// 15
-.main-navigation.toggled,
-.main-navigation.toggled .menu-toggle,
-.secondary-navigation.toggled,
-.secondary-navigation.toggled .menu-toggle {
-	z-index: 15;
+// 5
+@media screen and (min-width: 75em) { //1200
+	.site-header-nav  {
+		z-index: 5;
+	}
 }
 
 // 10
@@ -24,22 +18,13 @@
 	}
 }
 
-
-// 5
-
-// TODO: remove all, useless since change in navigation
-// .main-navigation {
-// 	z-index: 5;
-// }
-
-@media screen and (min-width: 75em) { //1200
-	.site-header-nav  {
-		z-index: 5;
-	}
+// 15
+.toggled .nav-home,
+.menu-toggle-nav {
+	z-index: 15;
 }
 
-
-
-
-
-// 0
+// 20
+.site-secondary {
+	z-index: 20;
+}

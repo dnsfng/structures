@@ -56,7 +56,14 @@
 				'after'  => '</div>',
 			) );
 		?>
+
 	</div><!-- .entry-content -->
+
+	<?php	if ( has_children() ) { ?>
+		<section class="site-header-nav nav-about" role="navigation">
+			<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'><span class="link-border"><?php esc_html_e( 'À propos', 'structures' ); ?></span></button>
+		</section>
+	<?php }; ?>
 
 
 	<?php if ( get_edit_post_link() ) : ?>

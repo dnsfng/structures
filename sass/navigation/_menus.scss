@@ -1,9 +1,104 @@
-.main-navigation {
-	// clear: both;
-	// display: block;
-	// float: left;
-	// width: 100%;
-	// TODO: seems useless
+.site-header-nav {
+
+	// left side link
+	&.nav-home {
+		a {
+			// margin-left: 20px;
+			display: block;
+
+			width: 100%;
+
+			text-align: center;
+
+			color: $color__text-alt;
+
+			line-height: 60px;
+
+			@include font-size($f_xxs);
+
+			@media screen and (min-width: 75em) {
+				color: $color__text;
+			}
+		}
+	}
+
+	// all links
+	&.nav-home a,
+	.menu-toggle {
+		text-decoration: none;
+		text-transform: uppercase;
+
+		font-weight: 700;
+
+		@include font-antialiased;
+
+		&.menu-toggle-about {
+			text-transform: none;
+
+			font-weight: 400;
+
+			@include font-size($f_xs);
+
+			@include font-sub-pixel;
+		}
+	}
+
+	.menu-toggle-nav,
+	.menu-toggle-about {
+		line-height: 60px;
+		padding: 0;
+
+		border: 0;
+		border-color: transparent;
+		border-radius: 0;
+		background-color: transparent;
+	}
+
+	.menu-toggle-nav {
+		position: fixed;
+		bottom: 0;
+
+		width: 100%;
+
+		color: $color__text;
+		background-color: $color__background-nav;
+
+		.toggled & {
+			box-shadow: 0 -1px 0 0 $color__border;
+		}
+
+		@media screen and (min-width: 75em) {
+			position: static;
+			bottom: auto;
+
+			color: inherit;
+			background-color: inherit;
+		}
+
+	}
+
+	.menu-toggle-about {
+		width: 100%;
+
+		text-align: center;
+
+		body.home & {
+			margin: calc((10vh - 60px)/2) auto;
+
+			color: $color__text;
+
+			@media screen and (min-width: 75em) {
+				margin: 0;
+				padding-right: 50px;
+
+				text-align: right;
+			}
+		}
+
+	}
+
+
+
 }
 
 .menu {
@@ -16,71 +111,160 @@
 		@include font-sub-pixel;
 	}
 
+	.toggled .third-navigation & {
+
+		// width: 100%;
+
+		@media screen and (min-width: 75em) {
+
+			position: static;
+
+			padding: 180px 0;
+			height: calc(100% - 120px);
+			height: calc(100vh - 120px);
+
+			background-color: $color__background-nav-alt;
+
+			@supports (display: flex) {
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+		}
+	}
+
+}
+
+.menu-footer {
+	display: none;
+
+	text-align: center;
+
+	color: $color__link;
+
+	min-height: calc(100vh - 120px);
+
+	.toggled & {
+		display: block;
+
+		@supports (display: flex) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		@media screen and (min-width: 75em) {
+			@supports (display: flex) {
+				display: block;
+			}
+		}
+	}
+
+	.dl-article,
+	.dl-tome,
+	.menu-toggle-about {
+		display: block;
+
+		text-decoration: none;
+
+		color: $color__link;
+
+		line-height: 60px;
+
+		@include font-size($f_xs);
+
+		&:hover {
+			color: currentColor;
+		}
+
+		@media screen and (min-width: 75em) {
+			color: $color__link-alt;
+		}
+	}
+
+	@media screen and (min-width: 75em) {
+		position: fixed;
+		bottom: 0;
+		left: 50%;
+
+		width: 50%;
+		height: 60px;
+		min-height: auto;
+		padding-bottom: 0;
+
+		color: $color__link-alt;
+		background-color: $color__background-nav-alt;
+
+		.dl-article,
+		.menu-toggle-about {
+				position: absolute;
+				top : 0;
+
+				width: auto;
+		}
+
+		.dl-article,
+		.dl-tome {
+				display: inline-block;
+		}
+
+		.dl-article {
+				left: 5%;
+		}
+
+		.dl-tome {}
+
+		.menu-toggle-about {
+			right: 5%;
+		}
+	}
 }
 
 .nav-menu { //ul
 	display: none;
 	margin: 0;
-	padding: 60px 0 90px;
+	padding : 60px 0 90px;
+	padding : 10vh 0 20vh;
 	list-style: none;
 
 	@media screen and (min-width: 75em) {
 		pointer-events: auto;
 		padding: 85px 0 160px;
 		// padding: 160px 0 160px; // NOTE: remove 75px because entry-title in the feed and not absolute
-		background-color: $color__background-nav;
+
 	}
 
 	body.home .main-navigation &,
 	body:not(.home) .toggled &{ display: block; }
 
-	.main-navigation & {
-		background-color: $color__background-nav;
-	}
-	.secondary-navigation & {
+	.secondary-navigation &,{
 		background-color: $color__background-nav-alt;
 	}
 
 	.third-navigation & {
-		background-color: $color__background-nav-alt;
-		height: calc(100vh - 60px);
-		overflow: scroll;
-	}
 
-}
+		padding: 120px 0 0;
+		padding: 33vh 0 0;
 
-.dl-tome {
-	display: none;
-	color: $color__link-alt;
-	text-decoration: none;
+		@media screen and (min-height: 48em) {
+			padding: 200px 0 0;
+			padding: 20vh 0 0;
+		}
 
-	// &:hover .link-border{
-	// 	border-bottom : 0 none;
-	// }
+		@media screen and (min-width: 75em) {
+			padding: 0;
+			background-color: $color__background-nav-alt;
+		}
 
-	&:hover {
-		color: currentColor;
-
-		.link-border {
-			border-bottom : 1px solid currentColor;
+		@supports (display: flex) {
+			overflow: auto;
 		}
 	}
 
-	.toggled & {
-		position: fixed;
-		bottom: 0;
-		left: 50%;
-
-		display: block;
-
-		width: 50%;
-		height: 60px;
-
-		text-align: center;
-	}
 }
 
-.menu ul {
+.secondary-menu ul {
 	.secondary-navigation & {
 		margin: 50px auto 0;
 
@@ -90,17 +274,13 @@
 	}
 }
 
-
 .page_item { //li
 	list-style: none;
-	// margin-bottom: 5px;
 
 	.secondary-navigation & {
 		margin: 0 auto 15%;
 		width: 50%;
 		min-width: 280px;
-
-		// max-width: 320px;
 
 		@media screen and (min-width: 64em) {
 			display: inline-block;
@@ -171,10 +351,36 @@
 
 		}
 
-		.secondary-navigation &,
-		.third-navigation & {
+		.secondary-navigation & {
 			color: $color__link-alt;
 		}
+
+		.third-navigation & {
+
+			color: $color__link;
+
+			@media screen and (min-width: 75em) {
+				color: $color__link-alt;
+			}
+		}
+
+		.third-navigation .nav-menu:hover & {
+			color: $color__text-secondary_alt;
+
+			&:hover {
+				color: $color__link;
+			}
+
+			@media screen and (min-width: 75em) {
+				color: $color__text-secondary;
+
+				&:hover {
+					color: $color__link-alt;
+				}
+			}
+
+		}
+
 	}
 
 	&.current_page_item > a,
@@ -182,6 +388,44 @@
 	&.current_page_ancestor > a,
 	&.current-menu-ancestor > a {
 		text-decoration: line-through;
+		pointer-events: none;
+	}
+
+	&.page-status-pending > a,
+	&.page-status-future > a {
+
+		&:before{
+			@include pseudo-content(attr(data-notice));
+			text-transform: none;
+			font-size: 400;
+			font-style: italic;
+			color: transparent;
+			left: 50%;
+			transform : translateX(-50%);
+
+			.main-navigation & {
+				@media screen and (min-width: 75em) {
+					left: auto;
+					transform: none;
+				}
+			}
+		}
+
+		&:hover {
+			color: transparent;
+
+			.third-navigation .nav-menu:hover & {
+				color: transparent
+			}
+		}
+
+		&:hover:before {
+			color : $color__text-secondary_alt;
+
+			.third-navigation .nav-menu:hover &  {
+				color : $color__text-alt;
+			}
+		}
 	}
 
 	// img
@@ -193,6 +437,7 @@
 			@media screen and (min-width: 75em) {
 				display: block;
 				@include split-left;
+				@include object-fit(cover)
 				pointer-events: none;
 			}
 		}
@@ -210,124 +455,11 @@
 
 }
 
-.site-header-nav {
-
-	// left side link
-	&.nav-home {
-		a {
-			margin-left: 20px;
-			display: inline-block;
-			line-height: 60px;
-			color: $color__text;
-			@include font-size($f_xxs);
-
-			@media screen and (min-width: 75em) {
-				margin-left: auto;
-				display: block;
-				width: 100%;
-				text-align: center;
-			}
-		}
-	}
-
-	// all links
-	&.nav-home a,
-	.menu-toggle {
-		text-decoration: none;
-		text-transform: uppercase;
-
-		font-weight: 700;
-
-		.link-border {
-			border-bottom : 1px solid currentColor;
-		}
-
-		&:hover .link-border{
-			border-bottom : 0 none;
-		}
-	}
-
-	.menu-toggle-about {
-
-		position: absolute;
-		top : 0;
-		width: auto;
-		right: 20px;
-		color: white;
-
-
-		@media screen and (min-width: 75em) {
-			right: 20%;
-			color: black;
-			// left: 75%;
-		}
-
-		body.home & {
-			right: 0;
-			bottom: 0;
-			left: 0;
-
-			color: $color__text;
-			background-color: $color__background-nav;
-
-			@media screen and (min-width: 75em) {
-				bottom: auto;
-
-				height: 122px;
-
-				padding-right: 50px;
-				text-align: right;
-
-				background-color: transparent;
-			}
-		}
-
-	}
-
-	.menu-toggle-nav {
-		width: 100%;
-
-		@media screen and (min-width: 75em) {
-			width: auto;
-			margin-left: 10%;
-		}
-	}
-
-	.menu-toggle-about,
-	.menu-toggle-nav {
-		height: 60px;
-		padding: 0;
-
-		border: 0;
-		border-color: transparent;
-		border-radius: 0;
-		background-color: transparent;
-
-		&:hover {
-			text-decoration: none;
-		}
-	}
-
-
-}
-
-
-
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
 }
-
-// @media screen and (min-width: 37.5em) {
-// 	.menu-toggle {
-// 		display: none;
-// 	}
-// 	.main-navigation ul {
-// 		display: block;
-// 	}
-// }
-
 
 .comment-navigation,
 .posts-navigation,

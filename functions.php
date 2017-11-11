@@ -91,6 +91,7 @@ function structures_setup() {
         'title_li'    => '',
         'child_of'    => $id,
         'sort_column' => 'menu_order',
+				'post_status' => array('publish', 'future', 'pending'),
 				'walker'			=> new Menu_with_images_Walker()
     ) );
 		remove_filter( 'wp_list_pages', 'structures_list_child_posts_output' );
@@ -105,69 +106,6 @@ function structures_setup() {
 
 		return $output;
 	}
-
-	/**
-	 * Main navigation custom walker
-	 */
-	//  class Subpages_list_Walker extends Walker_Page {
-	// 	 // TODO: Remove useless walker ?
-	// 	 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
-	 //
-	//  		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
-	//  			$t = "\t";
-	//  			$n = "\n";
-	//  		} else {
-	//  			$t = '';
-	//  			$n = '';
-	//  		}
-	 //
-	//  		if ( $depth ) {
-	//  			$indent = str_repeat( $t, $depth );
-	//  		} else {
-	//  			$indent = '';
-	//  		}
-	 //
-	//  		$css_class = array( 'subpage-item', 'subpage-item-' . $page->ID );
-	 //
-	//  		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
-	//  			$css_class[] = 'page_item_has_children';
-	//  		}
-	 //
-	//  		if ( ! empty( $current_page ) ) {
-	//  			$_current_page = get_post( $current_page );
-	//  			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
-	//  				$css_class[] = 'current_page_ancestor';
-	//  			}
-	//  			if ( $page->ID == $current_page ) {
-	//  				$css_class[] = 'current_page_item';
-	//  			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
-	//  				$css_class[] = 'current_page_parent';
-	//  			}
-	//  		} elseif ( $page->ID == get_option('page_for_posts') ) {
-	//  			$css_class[] = 'current_page_parent';
-	//  		}
-	 //
-	//  		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
-	 //
-	//  		if ( '' === $page->post_title ) {
-	//  			/* translators: %d: ID of a post */
-	//  			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
-	//  		}
-	 //
-	//  		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
-	//  		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
-	 //
-	//  		$output .= $indent . sprintf(
-	//  			'<li class="%s"><a href="%s">%s%s%s</a>',
-	//  			$css_classes,
-	//  			get_permalink( $page->ID ),
-	//  			$args['link_before'],
-	//  			apply_filters( 'the_title', $page->post_title, $page->ID ),
-	//  			$args['link_after']
-	//  		);
-	 //
-	//  	}
-	//  }
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -225,10 +163,22 @@ function structures_setup() {
 	 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
 	 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
 
+			// Add rules for pending and future pages
+			if ( $page->post_status != 'publish' ) {
+				$css_class[] = 'page-status-' . $page->post_status;
+				$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+				$link = "";
+				$soon = "data-notice='".__( 'Bientôt disponible', 'structures' )."'";
+			} else {
+				$link = "href='".get_permalink( $page->ID )."'";
+				$soon = "";
+			}
+
 	 		$output .= $indent . sprintf(
-	 			'<li class="%s"><a href="%s">%s%s%s%s</a>',
+	 			'<li class="%s"><a %s %s>%s%s%s%s</a>',
 	 			$css_classes,
-	 			get_permalink( $page->ID ),
+	 			$link,
+				$soon,
 				// get_the_post_thumbnail($page->ID, array(1920,1920)),
 				// TODO: revert thumbnail size
 				// TODO: display thumbnail on homepage only
@@ -318,6 +268,81 @@ function structures_setup() {
 	 	}
 	 }
 
+	 /**
+ 	 * Main navigation custom walker
+ 	 */
+ 	 class Menu_with_pending_Pages extends Walker_Page {
+
+ 		 function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+
+ 	 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
+ 	 			$t = "\t";
+ 	 			$n = "\n";
+ 	 		} else {
+ 	 			$t = '';
+ 	 			$n = '';
+ 	 		}
+
+ 	 		if ( $depth ) {
+ 	 			$indent = str_repeat( $t, $depth );
+ 	 		} else {
+ 	 			$indent = '';
+ 	 		}
+
+ 	 		$css_class = array( 'page_item', 'page-item-' . $page->ID );
+
+ 	 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
+ 	 			$css_class[] = 'page_item_has_children';
+ 	 		}
+
+ 	 		if ( ! empty( $current_page ) ) {
+ 	 			$_current_page = get_post( $current_page );
+ 	 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
+ 	 				$css_class[] = 'current_page_ancestor';
+ 	 			}
+ 	 			if ( $page->ID == $current_page ) {
+ 	 				$css_class[] = 'current_page_item';
+ 	 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
+ 	 				$css_class[] = 'current_page_parent';
+ 	 			}
+ 	 		} elseif ( $page->ID == get_option('page_for_posts') ) {
+ 	 			$css_class[] = 'current_page_parent';
+ 	 		}
+
+ 	 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+
+ 	 		if ( '' === $page->post_title ) {
+ 	 			/* translators: %d: ID of a post */
+ 	 			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
+ 	 		}
+
+ 	 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+ 	 		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
+ 			// Add rules for pending and future pages
+ 			if ( $page->post_status != 'publish' ) {
+ 				$css_class[] = 'page-status-' . $page->post_status;
+ 				$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+ 				$link = "";
+ 				$soon = "data-notice='".__( 'Bientôt disponible', 'structures' )."'";
+ 			} else {
+ 				$link = "href='".get_permalink( $page->ID )."'";
+ 				$soon = "";
+ 			}
+
+ 	 		$output .= $indent . sprintf(
+ 	 			'<li class="%s"><a %s %s>%s%s%s</a>',
+ 	 			$css_classes,
+ 	 			$link,
+ 				$soon,
+ 	 			$args['link_before'],
+ 	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
+ 	 			$args['link_after']
+ 	 		);
+
+ 	 	}
+ 	 }
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -390,11 +415,14 @@ function structures_scripts() {
 	wp_enqueue_script( 'structures-object-fit', get_template_directory_uri() . '/js/ofi.min.js', array(), '20171111', false );
 
 	//footer
-	wp_enqueue_script( 'structures-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20171111', true );
+	// wp_enqueue_script( 'structures-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20171111', true );
+	// NOTE: removable;
+
 	wp_enqueue_script( 'structures-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20171111', true );
 
 	wp_enqueue_script( 'structures_switch-menu', get_template_directory_uri() . '/js/structures_switch-menu.js', array(), '20171111', true );
-	wp_enqueue_script( 'structures_sub-menu', get_template_directory_uri() . '/js/structures_sub-menu.js', array(), '20171111', true );
+	// wp_enqueue_script( 'structures_sub-menu', get_template_directory_uri() . '/js/structures_sub-menu.js', array(), '20171111', true );
+	// NOTE: removable;
 	wp_enqueue_script( 'structures_sub-nav', get_template_directory_uri() . '/js/sub-navigation.js', array(), '20171111', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

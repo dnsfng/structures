@@ -28,11 +28,16 @@
 
 	@media screen and (min-width: 75em) { //1200px
 		@include split-left;
+
+		img {
+			@include object-fit(cover);
+		}
 	}
 }
 
 .section-title {
-	margin: 6.25% auto;
+	margin: calc((10vh - 22px)/2) auto;
+	// TODO: later, change the 22px with a dynamic value
 }
 
 .entry-header {
@@ -44,9 +49,13 @@
 		height: 10vh;
 
 		@media screen and (min-width: 75em) { //1200px
-			height: auto;
-			padding: 50px 50px 0;
+			height: 60px;
+			padding: 0 50px;
 			margin-left: 50%;
+
+			& a {
+				line-height: 60px;
+			}
 		}
 	}
 
@@ -225,6 +234,7 @@
 
 		.entry-image img{
 				@include split-left;
+				@include object-fit(cover)
 				// TODO: replace by a declaration on .entry-image
 		}
 	}

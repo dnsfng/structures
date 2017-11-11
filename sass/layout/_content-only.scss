@@ -28,6 +28,7 @@
 
 .site-header-nav {
 
+
 	@media screen and (min-width: 75em) { //1200px
 		position: fixed;
 		height: 60px;
@@ -35,38 +36,65 @@
 		top: 0;
 	}
 
+	.toggled & {
+		position: fixed;
+	}
+
 	&.nav-home {
 		left: 0;
-		background-color: $color__background-body;
 
-		body.home &{
-			display: none;
+		.toggled & {
+			width: 100%;
+			background-color: $color__background-nav-alt;
+
+			@media screen and (min-width: 75em) { //1200px
+				width: 50%;
+				background-color: $color__background-nav;
+			}
 		}
 
 	}
 
 	&.nav-tome {
 
-		body:not(.page-parent) &{
-			background-color: $color__background-body-alt;
-			position: fixed;
-			bottom: 0;
-			width: 100%;
-			height: 60px;
-			z-index: 5;
+		width: 100%;
 
-			@media screen and (min-width: 75em) { //1200px
-				left: 50%;
-				width: 50%;
+		background-color: $color__background-body;
+
+		.toggled & {
+			z-index: 5;
+			top : 0;
+
+			overflow: auto;
+
+			height: calc(100%);
+			height: calc(100vh);
+			padding-bottom: 60px;
+
+			@media screen and (min-width: 75em) {
+				top : auto; //1200px
+
+				overflow: inherit;
+
+				height: auto;
 			}
+		}
+
+		@media screen and (min-width: 75em) { //1200px
+			background-color: $color__background-body-alt;
+			left: 50%;
+			width: 50%;
 		}
 
 	}
 
 	&.nav-about {
+
 		@media screen and (min-width: 75em) { //1200px
+
+			position: absolute;
 			right: 0;
-			width: 25%;
+			width: auto;
 		}
 	}
 }

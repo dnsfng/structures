@@ -1,6 +1,7 @@
 $color__text: white;
 $color__text-alt: black;
 $color__text-secondary: rgba(black,.5);
+$color__text-secondary_alt: rgba(white,.5);
 
 $color__background-body: $color__text-alt;
 $color__background-body-alt: $color__text;
@@ -10,6 +11,8 @@ $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
+
+$color__border: rgba(white,.1);
 
 $color__background-nav: $color__text-alt;
 $color__background-nav-alt: $color__text;

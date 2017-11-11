@@ -4,11 +4,11 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
- 
+
 ( function() {
 	var container, button, menu, links, i, len;
 
-	container = document.getElementById( 'subpage-navigation' );
+	container = document.getElementById( 'masthead' );
 	if ( ! container ) {
 		return;
 	}
