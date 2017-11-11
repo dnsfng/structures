@@ -61,17 +61,30 @@
 
 				<footer class='menu-footer'>
 
+					<?php
+					if (get_post_meta(get_the_ID(), 'telechargement', true) != "" )  {?>
+
 					<a class='dl-article' href="<?php echo get_post_meta(get_the_ID(), 'telechargement', true) ?>" >
 						<span class='link-border'>
 							<?php esc_html_e( 'Télécharger ce texte', 'structures' ); ?>
 						</span>
 					</a>
 
+				<?php }; ?>
+
+				<?php
+				if (get_post_meta($post->post_parent, 'telechargement', true) != "" ) {?>
+
 					<a class='dl-tome' href="<?php echo get_post_meta($post->post_parent, 'telechargement', true) ?>" >
 						<span class='link-border'>
-							<?php esc_html_e( 'Télécharger la revue', 'structures' ); ?>
+							<?php
+							esc_html_e( 'Télécharger', 'structures' );
+							echo " ".get_the_title($post->post_parent);
+							?>
 						</span>
 					</a>
+
+				<?php }; ?>
 
 					<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'>
 						<span class='link-border'>

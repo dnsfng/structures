@@ -38,8 +38,6 @@
 			font-weight: 400;
 
 			@include font-size($f_xs);
-
-			@include font-sub-pixel;
 		}
 	}
 
@@ -172,6 +170,7 @@
 
 		line-height: 60px;
 
+		@include font-sub-pixel;
 		@include font-size($f_xs);
 
 		&:hover {
