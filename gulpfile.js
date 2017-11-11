@@ -3,12 +3,14 @@ require('es6-promise').polyfill();
 
 var gulp          = require('gulp');
 var sass          = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
+var sourcemaps    = require('gulp-sourcemaps');
 var autoprefixer  = require('gulp-autoprefixer');
 var plumber       = require('gulp-plumber');
 var gutil         = require('gulp-util');
 var browserSync   = require('browser-sync').create();
 var reload        = browserSync.reload;
+var rename        = require('gulp-rename');
+var objectFit     = require('object-fit-images');
 
 var onError = function (err) {
   console.log('An error occurred:', gutil.colors.magenta(err.message));
@@ -36,5 +38,13 @@ gulp.task('watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass', reload]);
 });
 
+gulp.task('objectFit', function(){
+  gulp.src('./node_modules/object-fit-images/dist/ofi.min.js')
+  .pipe(gulp.dest('./js/'))
+  gulp.src('./node_modules/object-fit-images/preprocessors/mixin.scss')
+  .pipe(rename('sass/mixins/object-fit.scss'))
+  .pipe(gulp.dest('./'))
+});
+
 // default task
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass', 'watch', 'objectFit']);
