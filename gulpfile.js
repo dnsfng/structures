@@ -9,8 +9,12 @@ var plumber       = require('gulp-plumber');
 var gutil         = require('gulp-util');
 var browserSync   = require('browser-sync').create();
 var reload        = browserSync.reload;
+var newer         = require('gulp-newer');
 var rename        = require('gulp-rename');
+var cleanCSS      = require('gulp-clean-css');
+var htmlreplace   = require('gulp-html-replace');
 var objectFit     = require('object-fit-images');
+
 
 var onError = function (err) {
   console.log('An error occurred:', gutil.colors.magenta(err.message));
@@ -18,7 +22,24 @@ var onError = function (err) {
   this.emit('end');
 };
 
-// SASS task
+// set the theme files
+var paths = {
+  all: ['./**/*.*'],
+  details: [
+    '*.php',
+    '*.md',
+    '*.txt',
+    '*.png',
+    '*.css',
+    './js/**/*.*',
+    './inc/**/*.*',
+    './languages/**/*.*',
+    './template-parts/**/*.*',
+    '!./style.original.css'
+  ]
+};
+
+// SASS
 gulp.task('sass', function(){
   return gulp
   .src('./sass/**/*.scss')
@@ -30,6 +51,7 @@ gulp.task('sass', function(){
   .pipe(gulp.dest('./'))
 });
 
+// Watch
 gulp.task('watch', function() {
   browserSync.init({
     files: ['./**/*.php'],
@@ -38,6 +60,7 @@ gulp.task('watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass', reload]);
 });
 
+// Init—JS
 gulp.task('objectFit', function(){
   gulp.src('./node_modules/object-fit-images/dist/ofi.min.js')
   .pipe(gulp.dest('./js/'))
@@ -46,7 +69,23 @@ gulp.task('objectFit', function(){
   .pipe(gulp.dest('./'))
 });
 
-// default task
-gulp.task('default', ['sass', 'watch']);
+// copy over all but the assets folder
+gulp.task('copy', [], function(){
+  return gulp.src(paths.details, {base: './'})
+  	.pipe(newer('build'))
+    .pipe(gulp.dest('build'));
+});
 
+gulp.task('mincss', function(){
+  return gulp.src('style.css')
+    .pipe(cleanCSS())
+    // .pipe(cleanCSS({level: 2}))
+    .pipe(rename({suffix: ".min"}))
+    .pipe(gulp.dest('build'));
+});
+
+
+// Global commands
+gulp.task('default', ['sass', 'watch']);
 gulp.task('init', ['sass', 'objectFit']);
+gulp.task('build', ['copy', 'mincss']);
