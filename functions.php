@@ -63,7 +63,7 @@ function structures_setup() {
 	}
 
 	/*
-	 * Check if curren page is a parent-page
+	 * Check if current page is a parent-page
 	 */
 	function has_children() {
     global $post;
@@ -463,6 +463,18 @@ function structures_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'structures_scripts' );
+
+
+/**
+ * Remove useless support
+ */
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+function my_deregister_scripts(){
+ wp_dequeue_script( 'wp-embed' );
+}
+add_action( 'wp_footer', 'my_deregister_scripts' );
 
 /**
  * Implement the Custom Header feature.
