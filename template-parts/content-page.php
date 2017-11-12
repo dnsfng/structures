@@ -61,12 +61,16 @@
 
 	<?php	if ( has_children() ) { ?>
 		<section class="site-header-nav nav-about" role="navigation">
-			<button class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'><span class="link-border"><?php esc_html_e( 'À propos', 'structures' ); ?></span></button>
+			<a href="#about" class='menu-toggle menu-toggle-about' aria-controls='about' aria-expanded='false'>
+				<span class="link-border">
+						<?php esc_html_e( 'À propos', 'structures' ); ?>
+				</span>
+			</a>
 		</section>
 	<?php }; ?>
 
-
 	<?php if ( get_edit_post_link() ) : ?>
+		<?php structures_entry_footer(); ?>
 		<footer class="entry-footer">
 			<?php
 				edit_post_link(

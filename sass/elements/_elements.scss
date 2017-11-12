@@ -48,20 +48,16 @@ img {
 	max-width: 100%; /* Adhere to container width. */
 	width: 100%;
 
-	body.page-parent .entry-image & {
+	body.page-parent .entry-image &,
+	.about .widget_sp_image & {
 		height: 50vh;
 
-		@include object-fit(cover)
+		// @include object-fit(cover)
 
 		@media screen and (min-width: 75em) { //1200
 			height: 100%;
 			height: 100vh;
 		}
-	}
-
-	.post .entry-image & {
-		// NOTE: replace .entry-image by higher level declaration ?
-		font-size: 0;
 	}
 
 	.entry-content & {

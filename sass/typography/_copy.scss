@@ -53,18 +53,6 @@ big {
 		line-height: 35px;
 	}
 
-	.entry-excerpt {
-		margin-bottom: 60px;
-
-		font-size: 29px; // TODO: fs variable
-		line-height: 40px; // TODO: lh mixin
-
-		@media screen and (min-width: 48em) { //768px
-			font-size: 34px; // TODO: fs variable
-			line-height: 46px; // TODO: lh mixin
-		}
-	}
-
 	.post & {
 
 		// TODO: Add specific rules for .post .entry-content
@@ -81,5 +69,18 @@ big {
 		@media screen and (min-width: 75em) {
 			@include font-size($f_l);
 		}
+	}
+}
+
+.entry-excerpt,
+.about-description .widget_text:first-child {
+	margin-bottom: 60px;
+
+	font-size: 29px; // TODO: fs variable
+	line-height: 40px; // TODO: lh mixin
+
+	@media screen and (min-width: 48em) { //768px
+		font-size: 34px; // TODO: fs variable
+		line-height: 46px; // TODO: lh mixin
 	}
 }

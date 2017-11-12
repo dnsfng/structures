@@ -22,36 +22,6 @@
 		}
 	}
 
-	// all links
-	&.nav-home a,
-	.menu-toggle {
-		text-decoration: none;
-		text-transform: uppercase;
-
-		font-weight: 700;
-
-		@include font-antialiased;
-
-		&.menu-toggle-about {
-			text-transform: none;
-
-			font-weight: 400;
-
-			@include font-size($f_xs);
-		}
-	}
-
-	.menu-toggle-nav,
-	.menu-toggle-about {
-		line-height: 60px;
-		padding: 0;
-
-		border: 0;
-		border-color: transparent;
-		border-radius: 0;
-		background-color: transparent;
-	}
-
 	.menu-toggle-nav {
 		position: fixed;
 		bottom: 0;
@@ -94,8 +64,6 @@
 		}
 
 	}
-
-
 
 }
 
@@ -422,7 +390,9 @@
 			color : $color__text-secondary_alt;
 
 			.third-navigation .nav-menu:hover &  {
-				color : $color__text-alt;
+				@media screen and (min-width: 75em) {
+					color : $color__text-alt;
+				}
 			}
 		}
 	}

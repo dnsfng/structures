@@ -110,5 +110,86 @@
 		background-color: $color__background-body-alt;
 
 		-webkit-font-smoothing: subpixel-antialiased;
+}
 
+#about {
+	position: fixed;
+	top: 0;
+	z-index: -1;
+	opacity: 0;
+	visibility: hidden;
+	overflow: auto;
+
+	width: 100%;
+	height: 100%;
+	height: 100vh;
+	padding-bottom: 60px;
+	padding-bottom: 20vh;
+
+	transition: opacity 200ms;
+
+	&:target {
+		visibility: visible;
+		opacity: 1;
+		z-index: 100;
+
+		transition: opacity 200ms;
+	}
+
+	.wrapper {
+		transition: all 2s ease-in-out;
+		// NOTE: Hack to keep the transition on parent when removing tht :target
+	}
+
+	.about-description {
+		@media screen and (min-width: 75em) { //1200px
+			@include split-right;
+		}
+	}
+
+	&.widget_sp_image{
+		padding-bottom: 90px;
+		padding-bottom: 15vh;
+	}
+
+	&.widget_sp_image,
+	& {
+		@media screen and (min-width: 75em) { //1200px
+			padding: 0;
+		}
+	}
+
+	.panel-close {
+		position: fixed;
+		bottom: 0;
+
+		width: 100%;
+		height: 60px;
+
+		text-align: center;
+
+		box-shadow: 0 -1px 0 0 $color__border;
+
+		@media screen and (min-width: 75em) { //1200px
+			right: 50px;
+
+			width: auto;
+
+			text-align: left;
+
+			box-shadow: none;
+
+			body.page-parent &{
+				top: 0;
+				bottom: auto;
+			}
+		}
+	}
+
+}
+
+#about,
+#about .panel-close {
+	color: $color__text;
+	background-color: $color__background-body;
 }

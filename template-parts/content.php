@@ -39,7 +39,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php // structures_entry_footer(); ?>
-		<?php // TODO: remove meta ? ?>
+		<?php structures_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

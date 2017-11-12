@@ -35,3 +35,35 @@ a {
 		border-bottom : 0 none;
 	}
 }
+
+.nav-home a,
+.menu-toggle,
+.panel-close {
+	text-decoration: none;
+	text-transform: uppercase;
+
+	font-weight: 700;
+
+	@include font-antialiased;
+
+	&.menu-toggle-about,
+	&.panel-close-about {
+		text-transform: none;
+
+		font-weight: 400;
+
+		@include font-size($f_xs);
+	}
+}
+
+.menu-toggle-nav,
+.menu-toggle-about,
+.panel-close {
+	line-height: 60px;
+	padding: 0;
+
+	border: 0;
+	border-color: transparent;
+	border-radius: 0;
+	background-color: transparent;
+}

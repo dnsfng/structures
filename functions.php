@@ -54,6 +54,15 @@ function structures_setup() {
 	}
 
 	/*
+	 * Remove post edit and comments edit
+	 */
+	add_action('admin_menu', 'structures_remove_menu');
+	function structures_remove_menu () {
+   remove_menu_page('edit.php');
+	 remove_menu_page('edit-comments.php');
+	}
+
+	/*
 	 * Check if curren page is a parent-page
 	 */
 	function has_children() {
@@ -385,19 +394,38 @@ add_action( 'after_setup_theme', 'structures_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 
-// TODO: remove sidebar support and widget area
-// function structures_widgets_init() {
-// 	register_sidebar( array(
-// 		'name'          => esc_html__( 'Sidebar', 'structures' ),
-// 		'id'            => 'sidebar-1',
-// 		'description'   => esc_html__( 'Add widgets here.', 'structures' ),
-// 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-// 		'after_widget'  => '</section>',
-// 		'before_title'  => '<h2 class="widget-title">',
-// 		'after_title'   => '</h2>',
-// 	) );
-// }
-// add_action( 'widgets_init', 'structures_widgets_init' );
+function structures_widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'À propos - Image', 'structures' ),
+		'id'            => 'about-image',
+		'description'   => esc_html__( 'Add widgets here.', 'structures' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '',
+		'after_title'   => '',
+		// 'before_title'  => '<h2 class="widget-title">',
+		// 'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'À propos — Texte', 'structures' ),
+		'id'            => 'about-description',
+		'description'   => esc_html__( 'Add widgets here.', 'structures' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '',
+		'after_title'   => '',
+		// 'before_title'  => '<h2 class="widget-title">',
+		// 'after_title'   => '</h2>',
+	) );
+}
+
+function structures_widget_title($t) {
+	return null;
+}
+
+add_action( 'widgets_init', 'structures_widgets_init' );
+add_filter( 'widget_title', 'structures_widget_title' );
 
 /**
  * Enqueue scripts and styles.
