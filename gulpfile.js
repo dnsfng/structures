@@ -42,9 +42,11 @@ gulp.task('objectFit', function(){
   gulp.src('./node_modules/object-fit-images/dist/ofi.min.js')
   .pipe(gulp.dest('./js/'))
   gulp.src('./node_modules/object-fit-images/preprocessors/mixin.scss')
-  .pipe(rename('sass/mixins/object-fit.scss'))
+  .pipe(rename('/sass/mixins/_object-fit.scss'))
   .pipe(gulp.dest('./'))
 });
 
 // default task
-gulp.task('default', ['sass', 'watch', 'objectFit']);
+gulp.task('default', ['sass', 'watch']);
+
+gulp.task('init', ['sass', 'objectFit']);
