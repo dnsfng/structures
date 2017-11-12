@@ -147,12 +147,13 @@
 		}
 	}
 
-	&.widget_sp_image{
+	&.widget_media_image{
 		padding-bottom: 90px;
 		padding-bottom: 15vh;
 	}
 
 	&.widget_sp_image,
+	&.widget_media_image,
 	& {
 		@media screen and (min-width: 75em) { //1200px
 			padding: 0;

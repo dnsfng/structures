@@ -11,8 +11,7 @@ html {
 body {
 	background: $color__background-body-alt; /* Fallback for when there is no custom background color defined. */
 
-	&.home,
-	&.single {
+	&.page-parent{
 		background: $color__background-body;
 	}
 
@@ -49,14 +48,15 @@ img {
 	width: 100%;
 
 	body.page-parent .entry-image &,
-	.about .widget_sp_image & {
+	.about .widget_sp_image &,
+	.about .widget_media_image & {
 		height: 50vh;
 
 		// @include object-fit(cover)
 
 		@media screen and (min-width: 75em) { //1200
 			height: 100%;
-			height: 100vh;
+			height: 100vh !important;
 		}
 	}
 
