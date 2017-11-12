@@ -3,11 +3,17 @@ button,
 input,
 select,
 textarea {
-	color: $color__text-main;
+	color: $color__text-alt;
 	font-family: $font__main;
-	@include font-size(1);
+	@include font-size($f_s);
 	line-height: $font__line-height-body;
+
+	&.home,
+	&.single {
+		color: $color__text;
+	}
 }
+
 
 @import "headings";
 

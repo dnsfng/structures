@@ -1,2 +1,12 @@
 node_modules
+
+# Archive template
+# css
 style.original.css
+
+# php
+header.old.php
+
+template-parts/content.old.php
+
+footer.old.php

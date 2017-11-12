@@ -11,15 +11,25 @@
 
 ?>
 
-	</div><!-- #content -->
+	<?php if (function_exists('dynamic_sidebar') && is_active_sidebar( 'about-image' ) && is_active_sidebar( 'about-description' )) { ?>
+		<section id="about" class="about site-about">
+			<div class="wrapper">
+				<div class="about-image">
+					<?php dynamic_sidebar('about-image'); ?>
+				</div>
+				<div class="about-description">
+					<?php dynamic_sidebar('about-description'); ?>
+				</div>
+				<a href="#hide-about" class='panel-close panel-close-about' aria-controls='about' aria-expanded='false'>
+					<span class='link-border'>
+						<?php esc_html_e( 'Masquer', 'structures' ); ?>
+					</span>
+				</a>
+			</div>
+		</section>
+	<?php } ?>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'structures' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'structures' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'structures' ), 'structures', '<a href="https://automattic.com/" rel="designer">dnsfng</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+	</div><!-- #content -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

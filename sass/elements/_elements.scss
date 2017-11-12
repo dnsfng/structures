@@ -9,7 +9,19 @@ html {
 }
 
 body {
-	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+	background: $color__background-body-alt; /* Fallback for when there is no custom background color defined. */
+
+	&.page-parent{
+		background: $color__background-body;
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+		// TODO: Add mq mixin
+
+		&.page {
+			background: $color__background-body;
+		}
+	}
 }
 
 blockquote, q {
@@ -33,6 +45,43 @@ hr {
 img {
 	height: auto; /* Make sure images are scaled correctly. */
 	max-width: 100%; /* Adhere to container width. */
+	width: 100%;
+
+	body.page-parent .entry-image &,
+	.about .widget_sp_image &,
+	.about .widget_media_image & {
+		height: 50vh;
+
+		// @include object-fit(cover)
+
+		@media screen and (min-width: 75em) { //1200
+			height: 100%;
+			height: 100vh !important;
+		}
+	}
+
+	.entry-content & {
+
+		&.alignnone {
+			width: 100%;
+		}
+	}
+
+	&.aligncenter {
+		width: 100vw;
+		max-width: none;
+		position: relative;
+		margin-left: -10vw;
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+		&.aligncenter {
+			// width: 100vw;
+			margin: 20% 0 20% -55vw;
+			padding: 25%;
+			background-color: white		;
+		}
+	}
 }
 
 figure {

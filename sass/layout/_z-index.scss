@@ -1,0 +1,34 @@
+// 5
+@media screen and (min-width: 75em) { //1200
+	.site-header-nav  {
+		z-index: 5;
+	}
+}
+
+// 10
+.page_item:hover .wp-post-image,
+.menu-toggle,
+.menu-switch {
+	z-index: 10;
+}
+
+@media screen and (min-width: 75em) { //1200
+	body.page-parent .entry-image  {
+		z-index: 10;
+	}
+}
+
+// 15
+.toggled .nav-home,
+.menu-toggle-nav {
+	z-index: 15;
+}
+
+// 20
+.site-secondary {
+	z-index: 20;
+}
+
+.site-about {
+	// z-index: 25;
+}

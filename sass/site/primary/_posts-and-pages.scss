@@ -3,7 +3,8 @@
 }
 
 .hentry {
-	margin: 0 0 1.5em;
+	// margin: 0 0 1.5em;
+	margin: 0;
 }
 
 .byline,
@@ -22,7 +23,225 @@
 	margin: 1.5em 0 0;
 }
 
+.entry-image,
+.about .widget_sp_image,
+.about .widget_media_image {
+	font-size: 0;
+
+	img {
+		@include object-fit(cover, center);
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+		@include split-left;
+	}
+}
+
+.section-title {
+	margin: calc((10vh - 22px)/2) auto;
+	// TODO: later, change the 22px with a dynamic value
+}
+
+.entry-header {
+
+	.page-parent &{
+		position: relative;
+
+		height: 10vh;
+
+		@media screen and (min-width: 75em) { //1200px
+			height: 60px;
+			padding: 0 50px;
+			margin-left: 50%;
+
+			& a {
+				line-height: 60px;
+			}
+		}
+	}
+
+	body:not(.page-parent) & {
+
+		width: 80%;
+		margin: 80px auto 60px;
+
+		@media screen and (min-width: 36.25em) { //580px
+			margin-bottom: 80px;
+		}
+
+		@media screen and (min-width: 48em) { //768px
+			margin: 120px auto 100px;
+		}
+
+		@media screen and (min-width: 64em) { //1024px
+
+		}
+
+		@media screen and (min-width: 75em) { //1200px
+
+			@include split-left;
+			@include center-vertical;
+
+			height: auto;
+			padding: 200px 5%;
+
+			color: $color__text;
+		}
+	}
+
+	.entry-title {
+
+		body.page-parent & {
+			position: absolute;
+			@include center-vertical;
+
+			width: 100%;
+
+			@media screen and (min-width: 75em) { //1200px
+				// opacity: 0;
+				// transition: opacity 300ms ease-out;
+				// TODO: transition
+				position: static;
+				top: auto;
+
+				width: auto;
+
+				transform: none;
+
+				.visible & {
+					z-index: 10;
+					// opacity: 1;
+					// transition: opacity 1200ms ease-in 300ms;
+					// TODO: transition
+
+					background-color: black;
+					// TODO: move z-index
+				}
+			}
+		}
+
+		a.onboarding-navigation,
+		a.onboarding-navigation:focus,
+		a.onboarding-navigation:visited {
+			text-decoration: none;
+
+			color: white;
+		}
+	}
+
+}
+
+.entry-content,
+.about .widget_text {
+	margin: 0 auto;
+}
+
+.entry-content {
+
+	.page-parent &{
+		@media screen and (min-width: 75em) {
+				margin: 0 0 0 50%;
+		}
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+
+		.post & {
+			margin: 0;
+			padding-left: 50px;
+		}
+
+		& > .entry-excerpt,
+		& > h3 {
+			&:first-child {
+				margin-top: calc(450px - 10%);
+
+				+ .entry-excerpt {
+					margin-top: -30px;
+				}
+			}
+		}
+
+	}
+}
+
+body:not(.page-parent) .entry-content,
+.about .widget_text {
+	width: 80%;
+	min-width: 280px;
+	max-width: 680px;
+	position: relative;
+
+	@media screen and (min-width: 75em) {
+		width: auto;
+		min-width: 0;
+		max-width: none;
+		margin: 10% 10% 30px;
+	}
+}
+
+
+.entry-content .col {
+	@media screen and (min-width: 36.25em) { //580px
+		float: left;
+		width: calc((100% - 40px) / 2);
+		/// TODO: flex ?
+
+		&.col-left {
+			margin-right: 40px;
+		}
+	}
+
+	@media screen and (min-width: 75em) { //1200px
+
+	}
+}
+
+.entry-content {
+	> p,
+	> ul,
+	> ol,
+	> .cols {
+
+		margin: 0 auto 20px;
+
+		@media screen and (min-width: 75em) { //1200px
+			max-width: 700px;
+			margin-bottom: 30px;
+		}
+
+	}
+
+	> h3 + p {
+		margin-top: 30px
+	}
+
+}
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+@media screen and (min-width: 64em) { //1024px
+	// TODO: Add mq mixin
+
+	.post {
+		margin-top: 160px;
+	}
+
+}
+
+@media screen and (min-width: 75em) { //1200px
+
+	.post {
+		margin-top: 200px;
+
+		.entry-image img{
+				@include split-left;
+				@include object-fit(cover)
+				// TODO: replace by a declaration on .entry-image
+		}
+	}
+
 }

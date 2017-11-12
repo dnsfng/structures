@@ -31,8 +31,28 @@ get_header(); ?>
 			?>
 
 		</main><!-- #main -->
+
+		<?php	if ( has_children() ) {?>
+			<aside class="site-secondary" >
+
+				<h1 class="section-title">Autres publications</h1>
+
+				<nav id="volume-navigation" class="secondary-navigation">
+					<?php // Display primary-menu : All pages
+					wp_page_menu(
+						array(
+							'depth' => 1,
+							'exclude' => get_the_ID(),
+							'menu_class' => 'menu secondary-menu',
+							'walker' => new Menu_with_images_and_extra_label_Walker()
+						)
+					);
+					?>
+				</nav><!-- #site-navigation -->
+			</aside>
+		<?php	}; ?>
+
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

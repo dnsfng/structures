@@ -1,3 +1,125 @@
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	text-align: center;
+	margin: 0; // NOTE: normalize
+}
+
+h2, h3,
+.page-parent .entry-title,
+.page-parent .section-title {
+	text-transform: uppercase;
+}
+
+.entry-title,
+.section-title {
+
+	.page-parent & {
+		@include font-size($f_xxs);
+	}
+
+	body:not(.page-parent) &{
+
+		pointer-events: none;
+
+		@include font-size($f_l);
+		line-height: $font__line-height-h1; // TODO: better lh mixin
+
+		@media screen and (min-width: 48em) { //768px
+			@include font-size($f_xl);
+			line-height: $font__line-height-h1_xl; // TODO: better lh mixin
+		}
+
+		@media screen and (min-width: 75em) { //1200px
+			@include font-size($f_xxl);
+			line-height: $font__line-height-h1_xxl; // TODO: better lh mixin
+		}
+	}
+
+	.post & {
+		@include font-size($f_s);
+	}
+
+	.home & {
+		// display: none;
+		// TODO: remove if empty
+	}
+
+	.page-parent & {
+
+		@media screen and (min-width: 75em) { //1200px
+			text-align: left;
+		}
+	}
+
+}
+
+.section-title {
+
+	.page-parent & {
+
+		@media screen and (min-width: 75em) { //1200px
+			text-align: center;
+		}
+	}
+}
+
+.entry-subtitle {
+	margin-top: 20px;
+
+	font-size: 29px; // TODO: better variable
+	line-height: 40px;
+
+	@media screen and (min-width: 48em) { //768px
+		font-size: 34px; // TODO: better variable
+		line-height: 50px;
+	}
+
+}
+
+.entry-subtitle--long {
+	font-size: 19px; // TODO: better variable
+	line-height: 30px;
+
+	@media screen and (min-width: 48em) { //768px
+		font-size: 22px; // TODO: better variable
+		line-height: 35px;
+	}
+}
+
+.entry-content {
+
+	h3, h4 {
+		font-size: 100%; // NOTE: same as paragraph
+	}
+
+	h3 {
+		margin-top: 45px;
+
+		font-weight: bold;
+
+		@media screen and (min-width: 48em) { //768px
+			margin-top: 60px;
+		}
+	}
+
+	h4 {
+		margin-bottom: 20px;
+
+		font-weight: normal;
+		font-style: italic;
+
+		@media screen and (min-width: 75em) { //1200
+			margin-bottom: 30px;
+		}
+	}
+}
+
+@media screen and (min-width: 64em) { //1024px
+
+	.single {
+		.entry-title {
+			display: none;
+		}
+	}
+
 }
