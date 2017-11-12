@@ -191,7 +191,7 @@ function structures_setup() {
 				// get_the_post_thumbnail($page->ID, array(1920,1920)),
 				// TODO: revert thumbnail size
 				// TODO: display thumbnail on homepage only
-				get_the_post_thumbnail($page->ID, array(800,800)),
+				get_the_post_thumbnail($page->ID, array(1600,1600)),
 	 			$args['link_before'],
 	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
 	 			$args['link_after']
@@ -267,7 +267,7 @@ function structures_setup() {
 				// get_the_post_thumbnail($page->ID, array(1920,1920)),
 				// TODO: revert thumbnail size
 				// TODO: display thumbnail on homepage only
-				get_the_post_thumbnail($page->ID, array(360,360)),
+				get_the_post_thumbnail($page->ID, array(720,720)),
 	 			$args['link_before'],
 	 			$post_title,
 				$post_meta,
