@@ -438,16 +438,12 @@ function structures_scripts() {
 	wp_register_style('google-fonts', "https://fonts.googleapis.com/css?family=Old+Standard+TT&#58;400&#44;400i&#44;700&amp;subset=latin",array(),null);
 	wp_enqueue_style( 'google-fonts');
 
-	<!-- build:<css> -->
 	wp_enqueue_style( 'structures-style', get_stylesheet_uri() );
-	<!-- endbuild -->
 
 	//footer
-	<!-- build:<js> -->
 	wp_enqueue_script( 'structures-object-fit', get_template_directory_uri() . '/js/vendor/ofi.min.js', array(), '20171111', false );
 	wp_enqueue_script( 'structures-skip-link-focus-fix', get_template_directory_uri() . '/js/_/skip-link-focus-fix.js', array(), '20171111', true );
 	wp_enqueue_script( 'structures_sub-nav', get_template_directory_uri() . '/js/custom/sub-navigation.js', array(), '20171111', true );
-	<!-- endbuild -->
 
 	// NOTE: removable;
 	// wp_enqueue_script( 'structures-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20171111', true );
