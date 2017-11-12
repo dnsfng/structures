@@ -438,7 +438,13 @@ function structures_scripts() {
 	wp_register_style('google-fonts', "https://fonts.googleapis.com/css?family=Old+Standard+TT&#58;400&#44;400i&#44;700&amp;subset=latin",array(),null);
 	wp_enqueue_style( 'google-fonts');
 
-	wp_enqueue_style( 'structures-style', get_stylesheet_uri() );
+
+	$located = locate_template( 'style.min.css' );
+	 if ($located != '' ) {
+	      wp_enqueue_style( 'structures-style', get_template_directory_uri() . '/style.min.css' );
+	 } else {
+	      wp_enqueue_style( 'structures-style', get_stylesheet_uri() );
+	 }
 
 	//footer
 
