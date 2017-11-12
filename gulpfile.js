@@ -9,10 +9,11 @@ var plumber       = require('gulp-plumber');
 var gutil         = require('gulp-util');
 var browserSync   = require('browser-sync').create();
 var reload        = browserSync.reload;
-var newer         = require('gulp-newer');
-var rename        = require('gulp-rename');
-var cleanCSS      = require('gulp-clean-css');
-var htmlreplace   = require('gulp-html-replace');
+var newer         = require('gulp-newer'); //file
+var rename        = require('gulp-rename'); //file
+var cleanCSS      = require('gulp-clean-css'); //css
+var uglify        = require('gulp-uglify'); //js
+var concat        = require('gulp-concat');
 var objectFit     = require('object-fit-images');
 
 
@@ -31,11 +32,16 @@ var paths = {
     '*.txt',
     '*.png',
     '*.css',
-    './js/**/*.*',
+    './js/_/customizer.js',
+    './js/polyfill/ofi.min.js',
     './inc/**/*.*',
     './languages/**/*.*',
     './template-parts/**/*.*',
     '!./style.original.css'
+  ],
+  js: [
+    './js/_/skip-link-focus-fix.js',
+    './js/custom/sub-navigation.js'
   ]
 };
 
@@ -69,7 +75,7 @@ gulp.task('objectFit', function(){
   .pipe(gulp.dest('./'))
 });
 
-// copy over all but the assets folder
+// Buil
 gulp.task('copy', [], function(){
   return gulp.src(paths.details, {base: './'})
   	.pipe(newer('build'))
@@ -84,8 +90,15 @@ gulp.task('mincss', function(){
     .pipe(gulp.dest('build'));
 });
 
+gulp.task('minjs', function() {
+	gulp.src(paths.js)
+	.pipe(concat('scripts.min.js'))
+	.pipe(uglify())
+	.pipe(gulp.dest('build/js'));
+});
+
 
 // Global commands
 gulp.task('default', ['sass', 'watch']);
 gulp.task('init', ['sass', 'objectFit']);
-gulp.task('build', ['copy', 'mincss']);
+gulp.task('build', ['copy', 'mincss', 'minjs']);
