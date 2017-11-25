@@ -128,7 +128,8 @@
 
 	transition: opacity 200ms;
 
-	&:target {
+	&:target,
+	body.about & {
 		visibility: visible;
 		opacity: 1;
 		z-index: 100;

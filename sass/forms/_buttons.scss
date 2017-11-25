@@ -2,20 +2,27 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	padding: .6em 1em .4em;
+	// padding: .6em 30px .4em;
+	padding: 2px 15px 0;
+
+	vertical-align: top;
+	text-transform: uppercase;
 
 	color: $color__text-alt;
-	border: 1px solid;
-	border-color: $color__border-button;
-	border-radius: 3px;
+	border-color: transparent;
+	// border: 1px solid;
+	// border-color: $color__border-button;
+	// border-radius: 3px;
 	background: $color__background-button;
+	// line-height: 1;
 
-	line-height: 1;
+	line-height: 40px;
 
 	@include font-size($f_xxs);
 
 	&:hover {
-		border-color: $color__border-button-hover;
+		color: $color__text;
+		background-color: #0000ff;
 	}
 
 	&:active,

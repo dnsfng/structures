@@ -1,8 +1,44 @@
 .widget {
-	margin: 0 0 1.5em;
+	// margin: 0 0 1.5em;
 
 	/* Make sure select elements fit in widgets. */
 	select {
 		max-width: 100%;
+	}
+
+	&.widget_mailchimpsf_widget {
+		.updated {
+			display: block;
+		}
+
+		.mc_header_email {
+			display: none;
+		}
+
+		.mc_input,
+		#mc_signup_submit {
+			width: 100%;
+		}
+
+		.mc_input {
+			margin-bottom: 15px;
+
+			&::placeholder {
+				color: #666;
+			}
+		}
+
+		@media screen and (min-width: 32em) { //768px
+
+			.mc_merge_var,
+			.mc_signup_submit {
+				width: 45%;
+				display: inline-block;
+			}
+
+			#mc_signup_submit {
+				width: auto;
+			}
+		}
 	}
 }
