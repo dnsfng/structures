@@ -9,6 +9,14 @@
 	&.widget_mailchimpsf_widget {
 		.updated {
 			display: block;
+			margin: 15px 0;
+
+			& > * {
+				font-weight: 400;
+				color: $color__text-alt;
+				background-color: $color__selected;
+				padding: 5px 10px;
+			}
 		}
 
 		.mc_header_email {

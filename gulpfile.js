@@ -41,7 +41,8 @@ var paths = {
   ],
   js: [
     './js/_/skip-link-focus-fix.js',
-    './js/custom/sub-navigation.js'
+    './js/custom/sub-navigation.js',
+    './js/custom/mailchimp.js'
   ]
 };
 

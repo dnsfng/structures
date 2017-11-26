@@ -23,6 +23,9 @@ a {
 	&:active {
 		outline: 0;
 	}
+
+	/*	j.mp/webkit-tap-highlight-color */
+	&:link {-webkit-tap-highlight-color: #fcd700;}
 }
 
 

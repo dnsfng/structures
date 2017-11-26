@@ -21,8 +21,7 @@ input[type="submit"] {
 	@include font-size($f_xxs);
 
 	&:hover {
-		color: $color__text;
-		background-color: #0000ff;
+		background-color: $color__selected;
 	}
 
 	&:active,
