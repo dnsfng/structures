@@ -131,6 +131,31 @@
 
 }
 
+.entry-download {
+
+	display: none;
+
+	@media screen and (min-width: 75em) {
+
+		display: block;
+
+		text-align: center;
+
+		position: fixed;
+		bottom: 0;
+		left: 0;
+
+		width: 50%;
+		height: 60px;
+		min-height: auto;
+		padding-bottom: 0;
+
+		a:hover {
+			color: $color__link;
+		}
+	}
+}
+
 .entry-content,
 .about .widget_text,
 .about .widget_mailchimpsf_widget {

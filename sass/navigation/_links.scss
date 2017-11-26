@@ -71,3 +71,19 @@ a {
 	border-radius: 0;
 	background-color: transparent;
 }
+
+.dl-article,
+.dl-tome,
+.menu-toggle-about {
+	display: block;
+
+	text-decoration: none;
+
+	line-height: 60px;
+	@include font-size($f_xs);
+
+	&:hover {
+		color: currentColor;
+	}
+
+}

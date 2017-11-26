@@ -43,6 +43,18 @@
 		?>
 	</header><!-- .entry-header -->
 
+	<?php if (get_post_meta(get_the_ID(), 'telechargement', true) != "" )  {?>
+
+		<div class="entry-download">
+			<a class='dl-article' href="<?php echo get_post_meta(get_the_ID(), 'telechargement', true) ?>" >
+				<span class='link-border'>
+					<?php esc_html_e( 'Télécharger ce texte', 'structures' ); ?>
+				</span>
+			</a>
+		</div>
+
+	<?php }; ?>
+
 	<div class="entry-content">
 		<?php
 			if( has_excerpt() ){

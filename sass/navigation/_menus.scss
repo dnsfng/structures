@@ -130,20 +130,9 @@
 	.dl-article,
 	.dl-tome,
 	.menu-toggle-about {
-		display: block;
-
-		text-decoration: none;
-
 		color: $color__link;
 
-		line-height: 60px;
-
 		@include font-sub-pixel;
-		@include font-size($f_xs);
-
-		&:hover {
-			color: currentColor;
-		}
 
 		@media screen and (min-width: 75em) {
 			color: $color__link-alt;
@@ -163,7 +152,6 @@
 		color: $color__link-alt;
 		background-color: $color__background-nav-alt;
 
-		.dl-article,
 		.menu-toggle-about {
 				position: absolute;
 				top : 0;
@@ -171,16 +159,14 @@
 				width: auto;
 		}
 
-		.dl-article,
-		.dl-tome {
-				display: inline-block;
-		}
-
 		.dl-article {
-				left: 5%;
+			display: none;
 		}
 
-		.dl-tome {}
+		.dl-tome {
+			padding-left: 5%;
+			text-align: left;
+		}
 
 		.menu-toggle-about {
 			right: 5%;
