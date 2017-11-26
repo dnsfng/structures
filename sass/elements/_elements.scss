@@ -24,6 +24,11 @@ body {
 	}
 }
 
+/* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: $color__selected; text-shadow: none;}
+::selection {background: $color__selected; text-shadow: none;}
+
+
 blockquote, q {
 	quotes: "" "";
 
