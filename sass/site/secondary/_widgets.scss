@@ -15,7 +15,9 @@
 				font-weight: 400;
 				color: $color__text-alt;
 				background-color: $color__selected;
-				padding: 5px 10px;
+				padding: 5px 0;
+				box-shadow: -10px 0 0 $color__selected, 10px 0 0 $color__selected;
+				box-decoration-break: clone; // firefox hack for multiline inline padding
 			}
 		}
 
