@@ -164,17 +164,24 @@
 		}
 
 		.dl-tome {
-			padding-left: 5%;
+			padding-left: 50px;
 			text-align: left;
 		}
 
 		.menu-toggle-about {
-			right: 5%;
+			right: 50px;
+
+			.root-menu + & {
+				left: 0;
+				right: 0;
+			}
 		}
+
 	}
 }
 
-.nav-menu { //ul
+.nav-menu,
+.root-menu ul { //ul
 	display: none;
 	margin: 0;
 	padding : 60px 0 90px;
@@ -185,6 +192,10 @@
 		body:not(.page-parent) & {
 			display: block;
 		}
+	}
+
+	.entry-footer & {
+		display: block;
 	}
 
 	@media screen and (min-width: 75em) {
@@ -290,6 +301,7 @@
 			padding: 0;
 			margin: 0 auto;
 			@include font-size($f_xxs);
+			color: $color__link-alt;
 
 			@media screen and (min-width: 64em) {
 				width: 50%;
@@ -316,11 +328,8 @@
 
 		}
 
-		.secondary-navigation & {
-			color: $color__link-alt;
-		}
 
-		.third-navigation & {
+		.third-navigation &{
 
 			color: $color__link;
 
@@ -346,6 +355,19 @@
 
 		}
 
+		.entry-footer & {
+			color: $color__link-alt;
+			position: relative;
+		}
+
+		.entry-footer .nav-menu:hover & {
+			color: $color__text-secondary;
+
+			&:hover {
+				color: $color__link-alt;
+			}
+		}
+
 	}
 
 	&.current_page_item > a,
@@ -357,7 +379,8 @@
 	}
 
 	&.page-status-pending > a,
-	&.page-status-future > a {
+	&.page-status-future > a,
+	.root-menu & > a {
 
 		&:before{
 			@include pseudo-content(attr(data-notice));
@@ -379,7 +402,8 @@
 		&:hover {
 			color: transparent;
 
-			.third-navigation .nav-menu:hover & {
+			.third-navigation .nav-menu:hover &,
+			.entry-footer .nav-menu:hover & {
 				color: transparent
 			}
 		}
@@ -387,12 +411,28 @@
 		&:hover:before {
 			color : $color__text-secondary_alt;
 
-			.third-navigation .nav-menu:hover &  {
+			.third-navigation .nav-menu:hover & {
 				@media screen and (min-width: 75em) {
 					color : $color__text-alt;
 				}
 			}
+			.entry-footer .nav-menu:hover & {
+				color : $color__text-alt;
+			}
+
 		}
+	}
+
+	.root-menu:hover & > a:hover {
+
+		.third-navigation & {
+			color: transparent;
+		}
+
+		&:before {
+			color : $color__text-alt;
+		}
+
 	}
 
 	// img

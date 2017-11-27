@@ -85,20 +85,63 @@
 		</section>
 	<?php }; ?>
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<?php structures_entry_footer(); ?>
+	<?php if (! has_children() ) {?>
+
 		<footer class="entry-footer">
-			<?php
-				edit_post_link(
-					sprintf(
-						/* translators: %s: Name of current post */
-						esc_html__( 'Edit %s', 'structures' ),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					),
-					'<span class="edit-link">',
-					'</span>'
-				);
-			?>
+
+			<?php if ( get_edit_post_link() ) : ?>
+				<?php
+					// edit_post_link(
+					// 	sprintf(
+					// 		/* translators: %s: Name of current post */
+					// 		esc_html__( 'Edit %s', 'structures' ),
+					// 		the_title( '<span class="screen-reader-text">"', '"</span>', false )
+					// 	),
+					// 	'<span class="edit-link">',
+					// 	'</span>'
+					// );
+				?>
+			<?php endif; ?>
+
+			<h2 class="section-title"><?php esc_html_e( 'À lire ensuite', 'structures' ); ?></h2>
+
+			<?php if ( has_parent() ) { ?>
+
+				<div class='menu third-menu'>
+					<ul class='nav-menu subpage-nav-menu'>
+
+					<?php
+					// Display third-menu : Siblings pages navigation
+						wp_list_pages(array(
+							'title_li'    => '',
+							'child_of' => $post->post_parent,
+							'sort_column' => 'menu_order',
+							'post_status' => array('publish', 'future', 'pending'),
+							'walker'			=> new Menu_with_pending_Pages()
+						)); ?>
+
+
+					</ul>
+				</div>
+
+			<?php }
+
+			else {
+
+						wp_page_menu(
+							array(
+								'depth' => 1,
+								'exclude' => get_the_ID(),
+								'menu_class' => 'menu root-menu',
+								// 'walker' => new Menu_with_images_and_extra_label_Walker()
+								'walker'			=> new Menu_with_pending_Pages()
+							)
+						);
+
+					}; ?>
+
 		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+
+		<?php }; ?>
+
 </article><!-- #post-## -->

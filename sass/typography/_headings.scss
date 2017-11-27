@@ -4,17 +4,27 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0; // NOTE: normalize
 }
 
-h2, h3,
+h2, h3, h4,
 .page-parent .entry-title,
-.page-parent .section-title {
+.section-title {
 	text-transform: uppercase;
 }
 
-.entry-title,
+.page-parent .entry-title ,
 .section-title {
+		@include font-size($f_xxs);
+
+		@media screen and (min-width: 75em) { //1200px
+			text-align: center;
+		}
+}
+
+.entry-title {
 
 	.page-parent & {
-		@include font-size($f_xxs);
+		@media screen and (min-width: 75em) { //1200px
+			text-align: left;
+		}
 	}
 
 	body:not(.page-parent) &{
@@ -39,29 +49,8 @@ h2, h3,
 		@include font-size($f_s);
 	}
 
-	.home & {
-		// display: none;
-		// TODO: remove if empty
-	}
-
-	.page-parent & {
-
-		@media screen and (min-width: 75em) { //1200px
-			text-align: left;
-		}
-	}
-
 }
 
-.section-title {
-
-	.page-parent & {
-
-		@media screen and (min-width: 75em) { //1200px
-			text-align: center;
-		}
-	}
-}
 
 .entry-subtitle {
 	margin-top: 20px;

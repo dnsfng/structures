@@ -173,6 +173,7 @@
 	@media screen and (min-width: 75em) { //1200px
 
 		.post & {
+			// TODO: remove since there's no post anymore
 			margin: 0;
 			padding-left: 50px;
 		}
@@ -207,8 +208,14 @@ body:not(.page-parent) .entry-content,
 	}
 }
 
+body:not(.page-parent) .entry-content {
+	margin-bottom: 50vh;
+}
+
 
 .entry-content .col {
+
+	// TODO: merge with .entry-content
 	@media screen and (min-width: 36.25em) { //580px
 		float: left;
 		width: calc((100% - 40px) / 2);
@@ -225,6 +232,9 @@ body:not(.page-parent) .entry-content,
 }
 
 .entry-content {
+
+	// TODO: merge with .entry-content
+
 	> p,
 	> ul,
 	> ol,
@@ -245,30 +255,38 @@ body:not(.page-parent) .entry-content,
 
 }
 
+.entry-footer {
+	min-height: 100vh;
+
+	// TODO: display flex ?
+}
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
 }
 
-@media screen and (min-width: 64em) { //1024px
-	// TODO: Add mq mixin
 
-	.post {
-		margin-top: 160px;
-	}
-
-}
-
-@media screen and (min-width: 75em) { //1200px
-
-	.post {
-		margin-top: 200px;
-
-		.entry-image img{
-				@include split-left;
-				@include object-fit(cover)
-				// TODO: replace by a declaration on .entry-image
-		}
-	}
-
-}
+// TODO: remove since no post
+// @media screen and (min-width: 64em) { //1024px
+// 	// TODO: Add mq mixin
+//
+// 	.post {
+// 		margin-top: 160px;
+// 	}
+//
+// }
+//
+// @media screen and (min-width: 75em) { //1200px
+//
+// 	.post {
+// 		margin-top: 200px;
+//
+// 		.entry-image img{
+// 				@include split-left;
+// 				@include object-fit(cover)
+// 				// TODO: replace by a declaration on .entry-image
+// 		}
+// 	}
+//
+// }

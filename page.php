@@ -33,9 +33,10 @@ get_header(); ?>
 		</main><!-- #main -->
 
 		<?php	if ( has_children() ) {?>
+
 			<aside class="site-secondary" >
 
-				<h1 class="section-title">Autres publications</h1>
+				<h2 class="section-title">Autres publications</h2>
 
 				<nav id="volume-navigation" class="secondary-navigation">
 					<?php // Display primary-menu : All pages

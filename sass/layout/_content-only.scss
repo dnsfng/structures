@@ -185,6 +185,13 @@
 				top: 0;
 				bottom: auto;
 			}
+
+			body:not(.page-parent) &,
+			body:not(.page-child) &{
+				left: 50%;
+				right: 0;
+				text-align: center;
+			}
 		}
 	}
 

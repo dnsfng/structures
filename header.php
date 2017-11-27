@@ -43,21 +43,41 @@
 					</span>
 				</button>
 
-				<div class='menu third-menu'>
-					<ul class='nav-menu subpage-nav-menu'>
-						<?php
-						// Display secondary-menu : Siblings pages navigation
 
-						wp_list_pages(array(
-							'title_li'    => '',
-							'child_of' => $post->post_parent,
-							'sort_column' => 'menu_order',
-							'post_status' => array('publish', 'future', 'pending'),
-							'walker'			=> new Menu_with_pending_Pages()
-						));
-						?>
-					</ul>
-				</div>
+				<?php if ( has_parent() ) { ?>
+
+					<div class='menu third-menu'>
+						<ul class='nav-menu subpage-nav-menu'>
+
+						<?php
+						// Display third-menu : Siblings pages navigation
+							wp_list_pages(array(
+								'title_li'    => '',
+								'child_of' => $post->post_parent,
+								'sort_column' => 'menu_order',
+								'post_status' => array('publish', 'future', 'pending'),
+								'walker'			=> new Menu_with_pending_Pages()
+							)); ?>
+
+
+						</ul>
+					</div>
+
+					<?php } else {
+
+							wp_page_menu(
+								array(
+									'depth' => 1,
+									'exclude' => get_the_ID(),
+									'menu_class' => 'menu root-menu',
+									// 'walker' => new Menu_with_images_and_extra_label_Walker()
+									'walker'			=> new Menu_with_pending_Pages()
+								)
+							);
+
+						}
+
+					?>
 
 				<footer class='menu-footer'>
 

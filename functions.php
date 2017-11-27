@@ -74,7 +74,17 @@ function structures_setup() {
     } else {
         return true;
     }
-}
+	}
+
+	function has_parent() {
+		global $post;
+
+		if (is_page() && $post->post_parent > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	// Image size for single posts
 	// add_image_size( 'single-post-thumbnail', 1920,1920 );
@@ -83,7 +93,7 @@ function structures_setup() {
 
 	// Automatic non breakable space in content
 	add_filter( 'the_content', 'structures_automatic_nbsp' );
-	if( !function_exists( 'strucutures_automatic_nbsp' ) ) {
+	if( !function_exists( 'structures_automatic_nbsp' ) ) {
 	    function structures_automatic_nbsp($content) {
 	        $chars_after = '?!:;”»';
 	        $content = preg_replace('/ (['.$chars_after.'])/', '&nbsp;${1}', $content);
@@ -174,10 +184,11 @@ function structures_setup() {
 
 			// Add rules for pending and future pages
 			if ( $page->post_status != 'publish' ) {
+				$publish_date = get_the_date('d M. Y',$page->ID);
 				$css_class[] = 'page-status-' . $page->post_status;
 				$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
 				$link = "";
-				$soon = "data-notice='".__( 'Bientôt disponible', 'structures' )."'";
+				$soon = "data-notice='".__( 'Disponible le ', 'structures' ).$publish_date."'";
 			} else {
 				$link = "href='".get_permalink( $page->ID )."'";
 				$soon = "";
@@ -253,9 +264,9 @@ function structures_setup() {
 
 			$post_meta = get_post_meta($page->ID, 'periode', true);
 			if ( ! empty ( $post_meta ) ) {
-				$post_meta = '<time datetime="'.get_the_date("c").'">'.$post_meta.'</time>';
+				$post_meta = '<time datetime="'.get_the_date("c",$page->ID).'">'.$post_meta.'</time>';
 			} else {
-				$post_meta = '<time datetime="'.get_the_date("c").'">'.get_the_date('d M. Y').'</time>';
+				$post_meta = '<time datetime="'.get_the_date("c",$page->ID).'">'.get_the_date('d M. Y', $page->ID).'</time>';
 			};
 
 			$post_title = '<strong>'.apply_filters( 'the_title', $page->post_title, $page->ID ).'</strong>';
@@ -330,13 +341,26 @@ function structures_setup() {
 
  			// Add rules for pending and future pages
  			if ( $page->post_status != 'publish' ) {
- 				$css_class[] = 'page-status-' . $page->post_status;
+
+				$publish_date = get_the_date('d M. Y',$page->ID);
+
+				$css_class[] = 'page-status-' . $page->post_status;
  				$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
  				$link = "";
- 				$soon = "data-notice='".__( 'Bientôt disponible', 'structures' )."'";
+ 				$soon = "data-notice='".__( 'Disponible le ', 'structures' ).$publish_date."'";
+
  			} else {
+
  				$link = "href='".get_permalink( $page->ID )."'";
- 				$soon = "";
+				$post_meta = get_post_meta($page->ID, 'periode', true);
+
+				// $soon = "";
+				if ( ! empty ( $post_meta ) ) {
+					$soon = "data-notice='".$post_meta."'";
+				} else {
+					$soon = "data-notice='".get_the_date('d M. Y',$page->ID)."'";
+				};
+
  			}
 
  	 		$output .= $indent . sprintf(
