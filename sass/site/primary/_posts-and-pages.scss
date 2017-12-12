@@ -249,7 +249,9 @@ body:not(.page-parent) .entry-content {
 
 	}
 
-	> h3 + p {
+	> h3 + p,
+	> h3 + ul,
+	> h3 + ol {
 		margin-top: 30px
 	}
 
