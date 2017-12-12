@@ -2,12 +2,18 @@ p {
 	margin-bottom: 1.5em;
 }
 
-dfn, cite, em, i {
+dfn, em, i {
 	font-style: italic;
+}
+
+blockquote cite {
+	margin-top: 15px;
+	color: $color__text-secondary;
 }
 
 blockquote {
 	margin: 0 1.5em;
+	font-style: italic;
 }
 
 address {

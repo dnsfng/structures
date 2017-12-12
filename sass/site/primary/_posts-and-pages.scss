@@ -170,6 +170,14 @@
 		}
 	}
 
+	& > .entry-excerpt {
+		margin-bottom: 60px;
+
+		+ .entry-excerpt {
+			margin-top: -30px;
+		}
+	}
+
 	@media screen and (min-width: 75em) { //1200px
 
 		.post & {
@@ -182,10 +190,6 @@
 		& > h3 {
 			&:first-child {
 				margin-top: calc(450px - 10%);
-
-				+ .entry-excerpt {
-					margin-top: -30px;
-				}
 			}
 		}
 
