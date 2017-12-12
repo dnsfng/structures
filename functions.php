@@ -54,6 +54,11 @@ function structures_setup() {
 	}
 
 	/*
+	 * Enable Markdown extension for pages
+	 */
+	add_post_type_support( 'page', 'wpcom-markdown' );
+
+	/*
 	 * Remove post edit and comments edit
 	 */
 	add_action('admin_menu', 'structures_remove_menu');
