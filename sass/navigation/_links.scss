@@ -7,7 +7,7 @@ a {
 	}
 
 	.page_item &:visited {
-		color: inherit;
+		color: $color__link;
 	}
 
 	&:hover,
