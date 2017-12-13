@@ -214,6 +214,10 @@
 			display: block;
 		}
 
+		&:hover .page_item a {
+			color: $color__text-secondary_alt;
+		}
+
 		@media screen and (min-width: 75em) {
 			min-height: 100%;
 			min-height: calc(100vh - 60px);
@@ -280,7 +284,10 @@
 		text-decoration: none;
 
 		&:hover {
-			color: $color__link-hover-alt;
+			.nav-menu:hover &,
+			.root-menu:hover ul &{
+				color: $color__text;
+			}
 		}
 
 		.main-navigation &,
@@ -409,13 +416,20 @@
 			color: transparent;
 
 			.third-navigation .nav-menu:hover &,
-			.entry-footer .nav-menu:hover & {
+			.entry-footer .nav-menu:hover &,
+			.nav-menu:hover &,
+			.root-menu:hover ul & {
 				color: transparent
 			}
 		}
 
 		&:hover:before {
 			color : $color__text-secondary_alt;
+
+			.nav-menu:hover &,
+			.root-menu:hover ul & {
+				color: $color__text;
+			}
 
 			.third-navigation .nav-menu:hover & {
 				@media screen and (min-width: 75em) {
