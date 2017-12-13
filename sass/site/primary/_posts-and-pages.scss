@@ -38,11 +38,10 @@
 }
 
 .section-title {
-	margin: calc((10vh - 22px)/2) auto;
-	// TODO: later, change the 22px with a dynamic value
+	margin: 90px auto;
 
 	@media screen and (min-width: 75em) { //1200px
-		margin: calc((10vh - 22px)/2 + 50px) auto calc((10vh - 22px)/2);
+		margin: 90px auto 60px;
 	}
 }
 
