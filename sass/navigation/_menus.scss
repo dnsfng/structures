@@ -72,6 +72,11 @@
 	.main-navigation & {
 		@include font-antialiased;
 		max-width: 860px;
+		margin : 0 auto;
+
+		@media screen and (min-width: 75em) {
+			margin : 0 inherit;
+		}
 	}
 
 	.secondary-navigation & {
@@ -146,7 +151,7 @@
 		left: 50%;
 
 		width: 50%;
-		height: 70px;	
+		height: 70px;
 		min-height: auto;
 		padding-bottom: 0;
 
