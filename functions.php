@@ -92,9 +92,7 @@ function structures_setup() {
 	}
 
 	// Image size for single posts
-	// add_image_size( 'single-post-thumbnail', 1920,1920 );
-	// TODO: revert thumbnail size
-	add_image_size( 'single-post-thumbnail', 800,800 );
+	add_image_size( 'single-post-thumbnail', 1280, 1280 );
 
 	// Automatic non breakable space in content
 	add_filter( 'the_content', 'structures_automatic_nbsp' );
@@ -204,10 +202,7 @@ function structures_setup() {
 	 			$css_classes,
 	 			$link,
 				$soon,
-				// get_the_post_thumbnail($page->ID, array(1920,1920)),
-				// TODO: revert thumbnail size
-				// TODO: display thumbnail on homepage only
-				get_the_post_thumbnail($page->ID, array(1600,1600)),
+				get_the_post_thumbnail($page->ID, 'single-post-thumbnail'),
 	 			$args['link_before'],
 	 			apply_filters( 'the_title', $page->post_title, $page->ID ),
 	 			$args['link_after']
@@ -280,10 +275,7 @@ function structures_setup() {
 	 			'<li class="%s"><a href="%s">%s%s%s%s%s</a>',
 	 			$css_classes,
 	 			get_permalink( $page->ID ),
-				// get_the_post_thumbnail($page->ID, array(1920,1920)),
-				// TODO: revert thumbnail size
-				// TODO: display thumbnail on homepage only
-				get_the_post_thumbnail($page->ID, array(720,720)),
+				get_the_post_thumbnail($page->ID, 'thumbnail'),
 	 			$args['link_before'],
 	 			$post_title,
 				$post_meta,
