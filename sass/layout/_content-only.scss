@@ -91,9 +91,10 @@
 	&.nav-about {
 
 		@media screen and (min-width: 75em) { //1200px
-
 			position: absolute;
+			top : 20px;
 			right: 0;
+
 			width: auto;
 		}
 	}
