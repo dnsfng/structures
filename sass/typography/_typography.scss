@@ -8,7 +8,7 @@ textarea {
 	@include font-size($f_s);
 	line-height: $font__line-height-body;
 
-	&.home,
+	&.page-parent,
 	&.single {
 		color: $color__text;
 	}
