@@ -23,12 +23,7 @@
 
 	<header class="entry-header">
 
-		<?php	if ( has_children() ) {
-			the_title( '<h1 class="entry-title"> <a class="onboarding-navigation" href="#article-navigation">', '</a></h1>' );
-		} else {
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		};
-		?>
+		<?php	the_title( '<h1 class="entry-title">', '</h1>' );	?>
 
 		<?php
 

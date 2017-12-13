@@ -49,14 +49,12 @@
 
 		height: 10vh;
 
+		line-height: 60px;
+
 		@media screen and (min-width: 75em) { //1200px
 			height: 60px;
-			padding: 0 50px;
 			margin-left: 50%;
-
-			& a {
-				line-height: 60px;
-			}
+			padding: 0 50px;
 		}
 	}
 
