@@ -71,6 +71,7 @@
 
 	.main-navigation & {
 		@include font-antialiased;
+		max-width: 860px;
 	}
 
 	.secondary-navigation & {
