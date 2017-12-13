@@ -178,20 +178,12 @@
 
 	@media screen and (min-width: 75em) { //1200px
 
-		.post & {
-			// TODO: remove since there's no post anymore
-			margin: 0;
-			padding-left: 50px;
-		}
-
-		& > .entry-excerpt,
-		& > h3 {
-			&:first-child {
+		body:not(.page-parent) & {
+			> :first-child {
 				margin-top: 45%;
 				margin-top: calc(50vh - 25%);
 			}
 		}
-
 	}
 }
 
