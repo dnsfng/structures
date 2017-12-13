@@ -7,12 +7,17 @@ dfn, em, i {
 }
 
 blockquote cite {
+	display: inline-block;
+
 	margin-top: 15px;
+
 	color: $color__text-secondary;
+
+	font-style: normal;
 }
 
 blockquote {
-	margin: 0 1.5em;
+	margin: 0 30px;
 	font-style: italic;
 }
 
