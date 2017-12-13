@@ -63,18 +63,10 @@
 	body:not(.page-parent) & {
 
 		width: 80%;
-		margin: 80px auto 60px;
-
-		@media screen and (min-width: 36.25em) { //580px
-			margin-bottom: 80px;
-		}
+		margin: 90px auto;
 
 		@media screen and (min-width: 48em) { //768px
-			margin: 120px auto 100px;
-		}
-
-		@media screen and (min-width: 64em) { //1024px
-
+			margin: 120px auto;
 		}
 
 		@media screen and (min-width: 75em) { //1200px
@@ -171,10 +163,18 @@
 	}
 
 	& > .entry-excerpt {
-		margin-bottom: 120px;
+		margin-bottom: 90px;
 
 		+ .entry-excerpt {
-			margin-top: -90px;
+			margin-top: -60px;
+		}
+
+		@media screen and (min-width: 75em) {
+			margin-bottom: 180px;
+
+			+ .entry-excerpt {
+				margin-top: -150px;
+			}
 		}
 	}
 
@@ -189,7 +189,8 @@
 		& > .entry-excerpt,
 		& > h3 {
 			&:first-child {
-				margin-top: calc(450px - 10%);
+				margin-top: 45%;
+				margin-top: calc(50vh - 25%);
 			}
 		}
 
