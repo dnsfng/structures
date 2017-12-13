@@ -40,6 +40,10 @@
 .section-title {
 	margin: calc((10vh - 22px)/2) auto;
 	// TODO: later, change the 22px with a dynamic value
+
+	@media screen and (min-width: 75em) { //1200px
+		margin: calc((10vh - 22px)/2 + 50px) auto calc((10vh - 22px)/2);
+	}
 }
 
 .entry-header {
