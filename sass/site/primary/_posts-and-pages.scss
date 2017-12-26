@@ -179,6 +179,10 @@
 		}
 	}
 
+	img {
+		margin: 30px auto;
+	}
+
 	@media screen and (min-width: 75em) { //1200px
 
 		body:not(.page-parent) & {
@@ -187,10 +191,15 @@
 				margin-top: calc(50vh - 25%);
 			}
 
-			> p > img {
+			> p:first-child > img {
 				margin-top: -45%;
 				margin-top: calc(-50vh + 25%);
 			}
+
+			img {
+				margin: 60px auto;
+			}
+
 		}
 	}
 }
