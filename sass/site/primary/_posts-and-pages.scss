@@ -186,6 +186,11 @@
 				margin-top: 45%;
 				margin-top: calc(50vh - 25%);
 			}
+
+			> p > img {
+				margin-top: -45%;
+				margin-top: calc(-50vh + 25%);
+			}
 		}
 	}
 }
