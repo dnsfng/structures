@@ -262,6 +262,7 @@
 
 .page_item { //li
 	list-style: none;
+	position: relative;
 
 	.secondary-navigation & {
 		margin: 0 auto 15%;
@@ -396,18 +397,23 @@
 	.root-menu & > a {
 
 		&:before{
-			@include pseudo-content(attr(data-notice));
-			text-transform: none;
-			font-size: 400;
-			font-style: italic;
-			color: transparent;
 			left: 50%;
 			transform : translateX(-50%);
+			text-transform: none;
+
+			color: transparent;
+
+			font-weight: 400;
+			font-style: italic;
+
+			@include pseudo-content(attr(data-notice));
+			@include font-size($f_m);
 
 			.main-navigation & {
 				@media screen and (min-width: 75em) {
 					left: auto;
-					transform: none;
+					top: 50%;
+					transform: translateY(-50%);;
 				}
 			}
 		}
@@ -443,14 +449,16 @@
 		}
 	}
 
-	.root-menu:hover & > a:hover {
+	.root-menu & > a {
 
-		.third-navigation & {
-			color: transparent;
-		}
+		&:hover{
+			.third-navigation & {
+				color: transparent;
+			}
 
-		&:before {
-			color : $color__text-alt;
+			&:before {
+				color : $color__text-alt;
+			}
 		}
 
 	}
