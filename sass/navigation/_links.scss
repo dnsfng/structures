@@ -3,11 +3,15 @@ a {
 	outline: 0;
 
 	&:visited {
-		color: $color__link-visited;
-	}
-
-	.page_item &:visited {
 		color: $color__link;
+
+		.entry-content & {
+			color : $color__link-alt;
+		}
+
+		.page_item & {
+			color: $color__link;
+		}
 	}
 
 	&:hover,
