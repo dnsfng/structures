@@ -32,7 +32,16 @@
 		background-color: $color__background-nav;
 
 		.toggled & {
-			box-shadow: 0 -1px 0 0 $color__border;
+
+			&:before {
+				@include pseudo-content();
+				bottom: 100%;
+				left: 0;
+				right: 0;
+				height: 120px;
+				background-image: linear-gradient(transparent, black);
+				box-shadow: 0 1px 0 0 $color__border;
+			}
 		}
 
 		@media screen and (min-width: 75em) {
@@ -41,6 +50,7 @@
 
 			color: inherit;
 			background-color: inherit;
+			background-image: none;
 		}
 
 	}
@@ -126,11 +136,22 @@
 			flex-direction: column;
 			justify-content: center;
 		}
+
 		@media screen and (min-width: 75em) {
 			@supports (display: flex) {
 				display: block;
 			}
+
+			:before {
+				@include pseudo-content();
+				bottom: 100%;
+				left: 0;
+				right: 0;
+				background-image: linear-gradient(rgba(255,255,255,0), white);
+				height: 70px;
+			}
 		}
+
 	}
 
 	.dl-article,
