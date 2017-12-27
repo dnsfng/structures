@@ -142,7 +142,7 @@
 				display: block;
 			}
 
-			:before {
+			&:before {
 				@include pseudo-content();
 				bottom: 100%;
 				left: 0;
