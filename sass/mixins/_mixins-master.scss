@@ -80,3 +80,13 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+// Hyphenate
+@mixin hyphenate {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}

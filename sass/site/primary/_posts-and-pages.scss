@@ -84,6 +84,8 @@
 
 	.entry-title {
 
+		@include hyphenate();
+		
 		body.page-parent & {
 			position: absolute;
 			@include center-vertical;
