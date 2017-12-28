@@ -418,8 +418,8 @@
 	.root-menu & > a {
 
 		&:before{
-			left: 0%;
-			width: 100%;
+			left: 0;
+			right: 0;
 			text-transform: none;
 
 			color: transparent;
@@ -435,6 +435,7 @@
 				@media screen and (min-width: 75em) {
 					top: 50%;
 					left: auto;
+					right: auto;
 
 					transform: translateY(-50%);
 					text-align: left;
