@@ -84,8 +84,13 @@
 
 	.entry-title {
 
-		@include hyphenate();
-		
+		.entry-header & {
+			-webkit-hyphens: manual;
+			-ms-hyphens: manual;
+			-moz-hyphens: manual;
+			hyphens: manual;
+		}
+
 		body.page-parent & {
 			position: absolute;
 			@include center-vertical;

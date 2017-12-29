@@ -291,6 +291,11 @@
 	list-style: none;
 	position: relative;
 
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	-moz-hyphens: none;
+	hyphens: none;
+
 	.secondary-navigation & {
 		margin: 0 auto 15%;
 		width: 50%;
