@@ -23,6 +23,6 @@
 	 }
  }
 
-document.getElementById('mc_mv_EMAIL').setAttribute('placeholder','Adresse e-mail');
+document.getElementById('mc_mv_EMAIL').setAttribute('placeholder','Votre adresse e-mail');
 
 } )();

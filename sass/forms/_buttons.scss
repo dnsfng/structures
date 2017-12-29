@@ -28,4 +28,10 @@ input[type="submit"] {
 	&:focus {
 		outline: none;
 	}
+
+	.mc_signup_submit &{
+		line-height: 52px;
+		@include font-size($f_xs);
+	}
+
 }
