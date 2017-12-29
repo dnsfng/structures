@@ -85,7 +85,7 @@
 					if (get_post_meta(get_the_ID(), 'telechargement', true) != "" )  {?>
 
 					<a class='dl-article' href="<?php echo get_post_meta(get_the_ID(), 'telechargement', true) ?>" >
-						<span class='link-border'>
+						<span class='icon-download'>
 							<?php esc_html_e( 'Télécharger ce texte', 'structures' ); ?>
 						</span>
 					</a>
@@ -96,7 +96,7 @@
 				if (get_post_meta($post->post_parent, 'telechargement', true) != "" ) {?>
 
 					<a class='dl-tome' href="<?php echo get_post_meta($post->post_parent, 'telechargement', true) ?>" >
-						<span class='link-border'>
+						<span class='icon-download'>
 							<?php
 							esc_html_e( 'Télécharger', 'structures' );
 							echo " ".get_the_title($post->post_parent);

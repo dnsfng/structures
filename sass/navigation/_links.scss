@@ -91,3 +91,26 @@ a {
 	}
 
 }
+
+.icon-download{
+	position: relative;
+	padding-left: 25px;
+
+	&:before {
+		@include pseudo-content();
+		top: 0;
+		left: 0;
+		width: 16px;
+		height: 16px;
+		background: url(i/iconmonstr-download.svg) no-repeat transparent;
+		background-position: center center;
+		background-size: cover;
+
+		.third-navigation & {
+
+			@media screen and (min-width: 75em) { //1200px
+				background-image: url(i/iconmonstr-download-black.svg);
+			}
+		}
+	}
+}
