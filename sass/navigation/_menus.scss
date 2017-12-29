@@ -263,6 +263,13 @@
 			background-color: $color__background-nav-alt;
 		}
 
+		@media screen and (min-width: 75em) and (max-height: 64em ) {
+
+			& > .page_item:first-child { margin-top : 60px }
+			& > .page_item:last-child { margin-bottom : 60px }
+
+		}
+
 		@supports (display: flex) {
 			overflow: auto;
 		}
