@@ -32,9 +32,11 @@ var paths = {
     '*.txt',
     '*.png',
     '*.css',
+    '*.svg',
     './js/_/customizer.js',
     './js/polyfill/ofi.min.js',
     './inc/**/*.*',
+    './i/**/*.*',
     './languages/**/*.*',
     './template-parts/**/*.*',
     '!./style.original.css'
