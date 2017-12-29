@@ -310,11 +310,15 @@
 	a {
 
 		display: block;
-		padding: 17px 6.25% 18px;
+		padding: 17px 3.125% 18px;
 		@include font-size($f_m);
 		@include line-height($lh_m,$f_m);
 		text-align: center;
 		text-decoration: none;
+
+		@media screen and (min-width: 23em) {
+			padding: 17px 6.25% 18px;
+		}
 
 		&:hover {
 			.nav-menu:hover &,

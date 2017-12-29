@@ -82,9 +82,9 @@
 }
 
 // Hyphenate
-@mixin hyphenate {
-	-webkit-hyphens: manual;
-	-ms-hyphens: manual;
-	-moz-hyphens: manual;
-	hyphens: manual;
+@mixin hyphenate($value: auto) {
+	-webkit-hyphens: $value;
+	-ms-hyphens: $value;
+	-moz-hyphens: $value;
+	hyphens: $value;
 }

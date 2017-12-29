@@ -42,12 +42,25 @@
 
 			.mc_merge_var,
 			.mc_signup_submit {
-				width: 45%;
+				display: inline-block;
+			}
+
+			.mc_merge_var {
+				width: 75%
+			}
+			.mc_signup_submit {
+				width: 20%;
 				display: inline-block;
 			}
 
 			#mc_signup_submit {
 				width: auto;
+			}
+		}
+
+		@media screen and (min-width: 75em) {
+			.mc_form_inside {
+				max-width: 840px;
 			}
 		}
 	}

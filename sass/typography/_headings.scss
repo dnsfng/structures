@@ -6,11 +6,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h2, h3,
 .page-parent .entry-title,
+.about .entry-title,
 .section-title {
 	text-transform: uppercase;
 }
 
-.page-parent .entry-title ,
+.page-parent .entry-title,
+.about .entry-title,
 .section-title {
 		@include font-size($f_xxs);
 
@@ -21,13 +23,14 @@ h2, h3,
 
 .entry-title {
 
-	.page-parent & {
+	.page-parent &,
+	.page .about & {
 		@media screen and (min-width: 75em) { //1200px
 			text-align: left;
 		}
 	}
 
-	body:not(.page-parent) &{
+	body:not(.page-parent) .page &{
 
 		pointer-events: none;
 

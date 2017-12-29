@@ -47,7 +47,8 @@
 
 .entry-header {
 
-	.page-parent &{
+	.page-parent &,
+	.page .about &{
 		position: relative;
 
 		height: 10vh;
@@ -61,7 +62,7 @@
 		}
 	}
 
-	body:not(.page-parent) & {
+	body:not(.page-parent) .page & {
 
 		width: 80%;
 		margin: 90px auto;
@@ -85,10 +86,7 @@
 	.entry-title {
 
 		.entry-header & {
-			-webkit-hyphens: manual;
-			-ms-hyphens: manual;
-			-moz-hyphens: manual;
-			hyphens: manual;
+			@include hyphenate(manual);
 		}
 
 		body.page-parent & {
@@ -156,13 +154,9 @@
 	}
 }
 
-.entry-content,
-.about .widget_text,
-.about .widget_mailchimpsf_widget {
-	margin: 0 auto;
-}
-
 .entry-content {
+	margin: 0 auto;
+	@include hyphenate();
 
 	.page-parent &{
 		@media screen and (min-width: 75em) {
@@ -213,9 +207,7 @@
 	}
 }
 
-body:not(.page-parent) .entry-content,
-.about .widget_text,
-.about .widget_mailchimpsf_widget {
+body:not(.page-parent) .entry-content {
 	width: 80%;
 	min-width: 280px;
 	max-width: 680px;

@@ -18,6 +18,9 @@
 					<?php dynamic_sidebar('about-image'); ?>
 				</div>
 				<div class="about-description">
+					<header class="entry-header">
+						<h1 class="entry-title"><?php esc_html_e( 'Véloce', 'structures' ); ?></h1>
+					</header>
 					<?php dynamic_sidebar('about-description'); ?>
 				</div>
 				<a href="#hide-about" class='panel-close panel-close-about' aria-controls='about' aria-expanded='false'>
