@@ -131,7 +131,18 @@
 	transition: opacity 200ms;
 
 	@media screen and (min-width: 75em) {
+		padding-bottom: 10vh;
+	}
+
+	@media screen and (min-width: 90em) and (min-height: 56.25em) {
 		padding-bottom: 0;
+
+		.widget_mailchimpsf_widget {
+			position: fixed;
+			left: calc(50% + 50px);
+			right: 50px;
+			bottom: 50px;
+		}
 	}
 
 	&:target,
@@ -222,14 +233,6 @@
 
 		}
 
-		.widget_mailchimpsf_widget {
-			@media screen and (min-width: 90em) and (min-height: 56.25em) {
-				position: fixed;
-				left: calc(50% + 50px);
-				right: 50px;
-				bottom: 50px;
-			}
-		}
 	}
 
 	.panel-close {
