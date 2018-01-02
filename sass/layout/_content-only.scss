@@ -281,3 +281,7 @@
 	color: $color__text;
 	background-color: $color__background-body;
 }
+
+body.noscroll {
+	overflow: hidden;
+}
