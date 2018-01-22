@@ -23,6 +23,8 @@ h2, h3,
 
 .entry-title {
 
+	// @include hyphenate();
+
 	.page-parent &,
 	.page .about & {
 		@media screen and (min-width: 75em) { //1200px
