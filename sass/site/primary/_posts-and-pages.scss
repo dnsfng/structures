@@ -260,6 +260,33 @@ body:not(.page-parent) .entry-content {
 			margin-bottom: 30px;
 		}
 
+		> li {
+			position: relative;
+		}
+	}
+
+	> ol,
+	> ul {
+		margin-left: 20px;
+
+		@media screen and (min-width: 25.875em) { //414px
+			margin-left: auto;
+		}
+	}
+
+	> ul {
+		> li {
+			list-style-type: none;
+			margin-bottom: 15px;
+
+			&:before {
+				content: "*";
+				position: absolute;
+				padding-top: 3px;
+				left: -1.25em;
+				font-size: 16px
+			}
+		}
 	}
 
 	> h3 + p,
