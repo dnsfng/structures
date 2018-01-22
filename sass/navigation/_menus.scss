@@ -469,7 +469,8 @@
 				color: transparent;
 			}
 
-			body.home .menu:hover & {
+			body.home .menu:hover &,
+			body.page-parent .menu:hover & {
 				color: $color__link-alt;
 			}
 		}
