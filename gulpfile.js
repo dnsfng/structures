@@ -37,6 +37,7 @@ var paths = {
     './js/polyfill/ofi.min.js',
     './inc/**/*.*',
     './i/**/*.*',
+    './f/**/*.*',
     './languages/**/*.*',
     './template-parts/**/*.*',
     '!./style.original.css'
