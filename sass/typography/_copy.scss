@@ -6,19 +6,19 @@ dfn, em, i {
 	font-style: italic;
 }
 
-blockquote cite {
-	display: inline-block;
-
-	margin-top: 15px;
-
-	color: $color__text-secondary;
-
+cite  {
 	font-style: normal;
+	color: $color__text-secondary;
 }
 
 blockquote {
 	margin: 0 30px;
 	font-style: italic;
+
+	cite {
+		display: inline-block;
+		margin-top: 15px;
+	}
 }
 
 address {
