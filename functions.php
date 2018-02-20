@@ -455,11 +455,6 @@ function structures_scripts() {
 
 	//header
 
-	// Add custom google fonts
-	wp_register_style('fonts', "https://use.typekit.net/jdc6dls.css",array(),null);
-	wp_enqueue_style( 'fonts');
-
-
 	$located = locate_template( 'style.min.css' );
 	 if ($located != '' ) {
 		 wp_enqueue_style( 'structures-style', get_template_directory_uri() . '/style.min.css', array(), '20171112' );
