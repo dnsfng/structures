@@ -458,6 +458,23 @@
 				}
 			}
 		}
+
+		@media screen and (any-hover: none) {
+			&:after{
+				left: 0;
+				right: 0;
+				text-transform: none;
+
+				display: inline-block;
+
+				font-weight: 400;
+				font-style: italic;
+				text-align: center;
+
+				content: attr(data-notice);
+				@include font-size($f_s);
+			}
+		}
 	}
 
 	&.page-status-pending > a,
@@ -504,31 +521,6 @@
 
 		}
 	}
-
-	// TODO: remove this if menu behaves correctly
-	// .root-menu & > a {
-  //
-	// 	&:hover{
-	// 		color: transparent;
-	// 		// .third-navigation & {
-	// 		// 	color: transparent;
-	// 		// }
-	// 	}
-  //
-	// 	&:hover:before {
-  //
-	// 			color : $color__link;
-  //
-	// 			.entry-footer & {
-	// 				color : $color__link-alt;
-	// 			}
-  //
-	// 			@media screen and (min-width: 75em) {
-	// 				color : $color__link-alt;
-	// 			}
-	// 	}
-  //
-	// }
 
 	// img
 	.wp-post-image {
